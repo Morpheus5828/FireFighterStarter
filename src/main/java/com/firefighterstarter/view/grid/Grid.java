@@ -17,7 +17,6 @@ public class Grid extends GridPane {
 
     private int width, height;
     private float columns, rows;
-    private List<Pane> squares;
 
     public Grid(int width, int height, float columns, float rows) {
         this.width = width;
@@ -28,6 +27,7 @@ public class Grid extends GridPane {
         drawGrid();
         createSquare();
         paintWay();
+        paintMountains();
         paintCloud();
         paintFire();
         paintFF();
@@ -54,7 +54,6 @@ public class Grid extends GridPane {
         }
     }
 
-
     public void paintFF() {
         for(int i = 0; i < 900; i++) {
             int randomNumber = (int) (Math.random() * 10);
@@ -73,7 +72,9 @@ public class Grid extends GridPane {
             int randomSquare = (int) (Math.random() * (900-1));
             // if square is cloud or way, don't paint a fire
             if(this.getChildren().get(randomSquare).getStyle().equals("-fx-background-color: #a5632a;") ||
-                this.getChildren().get(randomSquare).getStyle().equals("-fx-background-color: #706969;"))
+                this.getChildren().get(randomSquare).getStyle().equals("-fx-background-color: #706969;") ||
+                this.getChildren().get(randomSquare).getStyle().equals("-fx-background-color: #f3c9a2;")
+            )
                 continue;
             this.getChildren().get(randomSquare).setStyle("-fx-background-color: red;");
         }
@@ -91,9 +92,28 @@ public class Grid extends GridPane {
     public void paintCloud() {
         for(int i = 0; i < 50; i++) {
             int randomSquare = (int) (Math.random() * (900-1));
-            if(this.getChildren().get(randomSquare).getStyle().equals("-fx-background-color: #a5632a;"))
+            if(this.getChildren().get(randomSquare).getStyle().equals("-fx-background-color: #a5632a;") ||
+                this.getChildren().get(randomSquare).getStyle().equals("-fx-background-color: #f3c9a2;")
+            )
                 continue;
             this.getChildren().get(randomSquare).setStyle("-fx-background-color: #706969;");
+        }
+    }
+
+    public void paintMountains() {
+        for(int i = 0; i < 20; i++) {
+            int randomSquare = (int) (Math.random() * (900-1));
+            if(
+                this.getChildren().get(randomSquare).getStyle().equals("-fx-background-color: #a5632a;") ||
+                this.getChildren().get(randomSquare+1).getStyle().equals("-fx-background-color: #a5632a;") ||
+                this.getChildren().get(randomSquare+30).getStyle().equals("-fx-background-color: #a5632a;") ||
+                this.getChildren().get(randomSquare+31).getStyle().equals("-fx-background-color: #a5632a;")
+            )
+                continue;
+            this.getChildren().get(randomSquare).setStyle("-fx-background-color: #f3c9a2;");
+            this.getChildren().get(randomSquare+1).setStyle("-fx-background-color: #f3c9a2;");
+            this.getChildren().get(randomSquare+30).setStyle("-fx-background-color: #f3c9a2;");
+            this.getChildren().get(randomSquare+31).setStyle("-fx-background-color: #f3c9a2;");
         }
     }
 
