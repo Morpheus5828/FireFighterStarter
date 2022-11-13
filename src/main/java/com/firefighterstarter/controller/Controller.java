@@ -12,8 +12,6 @@ import java.util.TimerTask;
 public class Controller {
     private GridColor grid;
 
-    private static int counter = 0;
-
     @FXML GridPane gridpane;
     @FXML Button play;
 
@@ -32,6 +30,5 @@ public class Controller {
     @FXML public void restart() {
         grid = new GridColor(gridpane);
         grid.paintReset();
-        counter = 0;
     }
 }

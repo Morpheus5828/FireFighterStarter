@@ -1,0 +1,24 @@
+package com.firefighterstarter.view.grid.paint;
+
+import javafx.scene.layout.GridPane;
+
+public class WayPaint {
+    private GridPane gridPane;
+
+    public WayPaint(GridPane gridPane) {
+        this.gridPane = gridPane;
+
+        paint();
+    }
+
+    public void paint() {
+        for(int i = 0; i < 5; i++)
+            gridPane.getChildren().get(i).setStyle("-fx-background-color: #a5632a;");
+        for(int i = 37; i < 400; i += 33)
+            gridPane.getChildren().get(i).setStyle("-fx-background-color: #a5632a;");
+        for(int i = 400; i < 415; i++)
+            gridPane.getChildren().get(i).setStyle("-fx-background-color: #a5632a;");
+        for(int i =415; i < 800; i += 33)
+            gridPane.getChildren().get(i).setStyle("-fx-background-color: #a5632a;");
+    }
+}
