@@ -5,6 +5,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
+
 public class Controller {
     private GridColor grid;
 
@@ -15,18 +19,14 @@ public class Controller {
 
     @FXML public void play() {
         grid = new GridColor(gridpane);
-        if(counter == 0) {
-            grid.initialise();
-            counter = 1;
-            //play.setDisable(true);
-        } else {
-            grid.run();
-        }
-
-
-
-
-
+        grid.initialise();
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+               grid.run();
+            }
+        }, 1000, 1000);
     }
 
     @FXML public void restart() {
@@ -34,10 +34,4 @@ public class Controller {
         grid.paintReset();
         counter = 0;
     }
-
-
-
-
-
-
 }
