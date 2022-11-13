@@ -5,6 +5,7 @@ import com.firefighterstarter.view.grid.Grid;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
@@ -15,26 +16,10 @@ import java.io.IOException;
 
 public class FireFighterApp extends Application {
     @Override
-    public void start(Stage stage) {
-        Pane layout = new Pane();
-        layout.setPrefHeight(640.0);
-        layout.setPrefWidth(1071.0);
-        Grid grid = new Grid(1000, 1000, 1000, 1000);
-        grid.setStyle("-fx-background-color: white; -fx-grid-lines-visible: true");
-        grid.setLayoutX(194.0);
-        grid.setLayoutY(1.0);
-        grid.setPrefHeight(640.0);
-        grid.setPrefWidth(878.0);
-        Button play = new Button("Play");
-        play.setLayoutX(50.0);
-        play.setLayoutY(79.0);
-        play.setPrefHeight(53.0);
-        play.setPrefWidth(96.0);
+    public void start(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(FireFighterApp.class.getResource("fire-fighter.fxml"));
 
-        layout.getChildren().add(play);
-        layout.getChildren().add(grid);
-
-        Scene scene = new Scene(layout, 1500, 1000);
+        Scene scene = new Scene(fxmlLoader.load(), 1500, 800);
 
         stage.setResizable(false);
         stage.setScene(scene);

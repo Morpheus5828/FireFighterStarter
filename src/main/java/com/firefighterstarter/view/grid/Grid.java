@@ -13,107 +13,89 @@ import javafx.scene.layout.RowConstraints;
 
 import java.util.List;
 
-public class Grid extends GridPane {
+public class Grid {
+    private GridPane gridPane;
 
-    private int width, height;
-    private float columns, rows;
+    public Grid(GridPane gridPane) {
+        this.gridPane = gridPane;
+    }
 
-    public Grid(int width, int height, float columns, float rows) {
-        this.width = width;
-        this.height = height;
-        this.columns = columns;
-        this.rows = rows;
-
-        drawGrid();
-        createSquare();
+    public void initialise() {
         paintWay();
-        //paintMountains();
+        paintMountains();
         paintCloud();
         paintFire();
         paintFF();
+    }
+
+    public void paintReset() {
+        for(Node node : gridPane.getChildren())
+            node.setStyle("-fx-background-color: white;");
+    }
+
+    private void paintWay() {
+        for(int i = 0; i < 5; i++)
+            gridPane.getChildren().get(i).setStyle("-fx-background-color: #a5632a;");
+        for(int i = 37; i < 400; i += 33)
+            gridPane.getChildren().get(i).setStyle("-fx-background-color: #a5632a;");
+        for(int i = 400; i < 415; i++)
+            gridPane.getChildren().get(i).setStyle("-fx-background-color: #a5632a;");
+        for(int i =415; i < 800; i += 33)
+            gridPane.getChildren().get(i).setStyle("-fx-background-color: #a5632a;");
 
     }
 
-    public void drawGrid() {
-        for(int i = 0; i < columns; i++) {
-            ColumnConstraints column = new ColumnConstraints(40);
-            this.getColumnConstraints().add(column);
-        }
-        for(int i = 0; i < rows; i++) {
-            RowConstraints row = new RowConstraints(40);
-            this.getRowConstraints().add(row);
-        }
-    }
-
-    void createSquare(){
-        // by default all square are white and grid contains 30 square by rows and columns
-        for(int i = 0; i < 30; i++) {
-            for(int j = 0 ; j < 30; j++) {
-                this.add(new Square(i, j, "-fx-background-color: withe;"), i, j);
-            }
-        }
-    }
-
-    public void paintFF() {
-        for(int i = 0; i < 900; i++) {
+    private void paintFF() {
+        for(int i = 0; i < 1000; i++) {
             int randomNumber = (int) (Math.random() * 10);
             if(i != 0) {
                 if(randomNumber % 5 == 0) {
-                    if(this.getChildren().get(i).getStyle().equals("-fx-background-color: #a5632a;"))
-                        this.getChildren().get(i).setStyle("-fx-background-color: black;");
+                    if(this.gridPane.getChildren().get(i).getStyle().equals("-fx-background-color: #a5632a;"))
+                        this.gridPane.getChildren().get(i).setStyle("-fx-background-color: black;");
                 }
             }
 
         }
     }
 
-    public void paintFire() {
+    private void paintFire() {
         for(int i = 0; i < 200; i++) {
-            int randomSquare = (int) (Math.random() * (900-1));
+            int randomSquare = (int) (Math.random() * 1400);
             // if square is cloud or way, don't paint a fire
-            if(this.getChildren().get(randomSquare).getStyle().equals("-fx-background-color: #a5632a;") ||
-                this.getChildren().get(randomSquare).getStyle().equals("-fx-background-color: #706969;") ||
-                this.getChildren().get(randomSquare).getStyle().equals("-fx-background-color: #f3c9a2;")
+            if(this.gridPane.getChildren().get(randomSquare).getStyle().equals("-fx-background-color: #a5632a;") ||
+                this.gridPane.getChildren().get(randomSquare).getStyle().equals("-fx-background-color: #706969;") ||
+                this.gridPane.getChildren().get(randomSquare).getStyle().equals("-fx-background-color: #f3c9a2;")
             )
                 continue;
-            this.getChildren().get(randomSquare).setStyle("-fx-background-color: red;");
+            this.gridPane.getChildren().get(randomSquare).setStyle("-fx-background-color: red;");
         }
     }
 
-    public void paintWay() {
-        for(int i = 0; i < 300; i += 30)
-            this.getChildren().get(i).setStyle("-fx-background-color: #a5632a;");
-        for(int i = 300; i < 315; i += 1)
-            this.getChildren().get(i).setStyle("-fx-background-color: #a5632a;");
-        for(int i = 315; i < 900; i += 30)
-            this.getChildren().get(i).setStyle("-fx-background-color: #a5632a;");
-    }
-
-    public void paintCloud() {
+    private void paintCloud() {
         for(int i = 0; i < 50; i++) {
-            int randomSquare = (int) (Math.random() * (900-1));
-            if(this.getChildren().get(randomSquare).getStyle().equals("-fx-background-color: #a5632a;") ||
-                this.getChildren().get(randomSquare).getStyle().equals("-fx-background-color: #f3c9a2;")
+            int randomSquare = (int) (Math.random() * 1400);
+            if(this.gridPane.getChildren().get(randomSquare).getStyle().equals("-fx-background-color: #a5632a;") ||
+                this.gridPane.getChildren().get(randomSquare).getStyle().equals("-fx-background-color: #f3c9a2;")
             )
                 continue;
-            this.getChildren().get(randomSquare).setStyle("-fx-background-color: #706969;");
+            this.gridPane.getChildren().get(randomSquare).setStyle("-fx-background-color: #706969;");
         }
     }
 
-    public void paintMountains() {
+    private void paintMountains() {
         for(int i = 0; i < 10; i++) {
-            int randomSquare = (int) (Math.random() * (900-1));
+            int randomSquare = (int) (Math.random() * 1400);
             if(
-                this.getChildren().get(randomSquare).getStyle().equals("-fx-background-color: #a5632a;") ||
-                this.getChildren().get(randomSquare+1).getStyle().equals("-fx-background-color: #a5632a;") ||
-                this.getChildren().get(randomSquare+30).getStyle().equals("-fx-background-color: #a5632a;") ||
-                this.getChildren().get(randomSquare+31).getStyle().equals("-fx-background-color: #a5632a;")
+                this.gridPane.getChildren().get(randomSquare).getStyle().equals("-fx-background-color: #a5632a;") ||
+                this.gridPane.getChildren().get(randomSquare+1).getStyle().equals("-fx-background-color: #a5632a;") ||
+                this.gridPane.getChildren().get(randomSquare+33).getStyle().equals("-fx-background-color: #a5632a;") ||
+                this.gridPane.getChildren().get(randomSquare+34).getStyle().equals("-fx-background-color: #a5632a;")
             )
                 continue;
-            this.getChildren().get(randomSquare).setStyle("-fx-background-color: #f3c9a2;");
-            this.getChildren().get(randomSquare+1).setStyle("-fx-background-color: #f3c9a2;");
-            this.getChildren().get(randomSquare+30).setStyle("-fx-background-color: #f3c9a2;");
-            this.getChildren().get(randomSquare+31).setStyle("-fx-background-color: #f3c9a2;");
+            this.gridPane.getChildren().get(randomSquare).setStyle("-fx-background-color: #f3c9a2;");
+            this.gridPane.getChildren().get(randomSquare+1).setStyle("-fx-background-color: #f3c9a2;");
+            this.gridPane.getChildren().get(randomSquare+33).setStyle("-fx-background-color: #f3c9a2;");
+            this.gridPane.getChildren().get(randomSquare+34).setStyle("-fx-background-color: #f3c9a2;");
         }
     }
 

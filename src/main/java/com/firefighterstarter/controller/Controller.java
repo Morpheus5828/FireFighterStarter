@@ -9,9 +9,21 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 public class Controller {
+    private Grid grid;
+    @FXML GridPane gridpane;
 
-    public Controller() {}
+    public Controller() {
+    }
 
+    @FXML public void play() {
+        grid = new Grid(gridpane);
+        grid.initialise();
+    }
+
+    @FXML public void restart() {
+        grid = new Grid(gridpane);
+        grid.paintReset();
+    }
 
 
 
