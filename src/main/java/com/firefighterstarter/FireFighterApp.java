@@ -14,7 +14,7 @@ public class FireFighterApp extends Application {
         Grid gridPaint = new Grid(1000, 1000, 1000, 1000);
         gridPaint.setStyle("-fx-background-color: white; -fx-grid-lines-visible: true");
 
-        Scene scene = new Scene(gridPaint, 1000, 1000);
+        Scene scene = new Scene(gridPaint, 1500, 1000);
 
         stage.setScene(scene);
         stage.show();

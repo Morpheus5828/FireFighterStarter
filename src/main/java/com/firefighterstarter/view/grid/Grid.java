@@ -27,7 +27,9 @@ public class Grid extends GridPane {
 
         drawGrid();
         createSquare();
+        paintWay();
         paintFire();
+        //paintFF();
 
     }
 
@@ -43,7 +45,7 @@ public class Grid extends GridPane {
     }
 
     void createSquare(){
-        // by default all square are white
+        // by default all square are white and grid contains 30 square by rows and columns
         for(int i = 0; i < 30; i++) {
             for(int j = 0 ; j < 30; j++) {
                 this.add(new Square(i, j, "-fx-background-color: withe;"), i, j);
@@ -52,13 +54,27 @@ public class Grid extends GridPane {
     }
 
 
-    public void paintFF(int row, int col) {
-
+    public void paintFF() {
+        int randomSquare = (int) (Math.random() * (400-1));
+        this.getChildren().get(randomSquare).setStyle("-fx-background-color: grey;");
     }
 
     public void paintFire() {
-        int randomSquare = (int) (Math.random() * (300-1));
-        this.getChildren().get(randomSquare).setStyle("-fx-background-color: red;");
+        for(int i = 0; i < 200; i++) {
+            int randomSquare = (int) (Math.random() * (900-1));
+            if(this.getChildren().get(randomSquare).getStyle().equals("-fx-background-color: #a5632a;"))
+                continue;
+            this.getChildren().get(randomSquare).setStyle("-fx-background-color: red;");
+        }
+    }
+
+    public void paintWay() {
+        for(int i = 0; i < 300; i += 30)
+            this.getChildren().get(i).setStyle("-fx-background-color: #a5632a;");
+        for(int i = 300; i < 315; i += 1)
+            this.getChildren().get(i).setStyle("-fx-background-color: #a5632a;");
+        for(int i = 315; i < 900; i += 30)
+            this.getChildren().get(i).setStyle("-fx-background-color: #a5632a;");
     }
 
 
