@@ -1,3 +1,4 @@
+
 Partie 1
 ---
 
@@ -9,6 +10,10 @@ la transition entre les deux.
 
 Voici la description de chacun de ces repos:
 
-- View:
-  - Grid une abstract class, son rôle est d'initialiser une grille.
-  - GridPaint hérité de Grid, comme son nom l'indique, elle va peindre chaque case de la grille.
+
+- # View:
+  - GridColor une classe concraite, son rôle est de s'occuper des couleurs de chaque cases.
+  
+- # Controller:
+  - Il effectue la transition avec le fichier FXML fire-fighter et la classe Grid (pour le moment).
+

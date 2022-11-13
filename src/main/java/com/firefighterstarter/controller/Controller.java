@@ -1,29 +1,41 @@
 package com.firefighterstarter.controller;
 
-import com.firefighterstarter.view.grid.Grid;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import com.firefighterstarter.view.grid.GridColor;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 
 public class Controller {
-    private Grid grid;
-    @FXML GridPane gridpane;
+    private GridColor grid;
 
-    public Controller() {
-    }
+    private static int counter = 0;
+
+    @FXML GridPane gridpane;
+    @FXML Button play;
 
     @FXML public void play() {
-        grid = new Grid(gridpane);
-        grid.initialise();
+        grid = new GridColor(gridpane);
+        if(counter == 0) {
+            grid.initialise();
+            counter = 1;
+            //play.setDisable(true);
+        } else {
+            grid.run();
+        }
+
+
+
+
+
     }
 
     @FXML public void restart() {
-        grid = new Grid(gridpane);
+        grid = new GridColor(gridpane);
         grid.paintReset();
+        counter = 0;
     }
+
+
 
 
 

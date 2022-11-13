@@ -4,19 +4,16 @@ package com.firefighterstarter.view.grid;
     Create a grid with color square
 */
 
-import com.firefighterstarter.view.square.Square;
 import javafx.scene.Node;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.RowConstraints;
 
-import java.util.List;
-
-public class Grid {
+public class GridColor {
+    private final String CLOUD_COLOR = "-fx-background-color: #706969;";
+    private final String FIRE_COLOR = "-fx-background-color: red;";
+    private final String WHITE_COLOR = "-fx-background-color: white;";
     private GridPane gridPane;
 
-    public Grid(GridPane gridPane) {
+    public GridColor(GridPane gridPane) {
         this.gridPane = gridPane;
     }
 
@@ -98,6 +95,24 @@ public class Grid {
             this.gridPane.getChildren().get(randomSquare+34).setStyle("-fx-background-color: #f3c9a2;");
         }
     }
+
+    public void run() {
+        for(int nodeIndex = 0; nodeIndex < this.gridPane.getChildren().size(); nodeIndex++) {
+            // if cloud are overhead fire, it's end
+            if(this.gridPane.getChildren().get(nodeIndex).getStyle().equals(CLOUD_COLOR)) {
+                if(this.gridPane.getChildren().get(nodeIndex + 1).getStyle().equals(FIRE_COLOR)) {
+                    this.gridPane.getChildren().get(nodeIndex +1).setStyle(WHITE_COLOR);
+                }
+
+                if(this.gridPane.getChildren().get(nodeIndex + 2).getStyle().equals(FIRE_COLOR)) {
+                    this.gridPane.getChildren().get(nodeIndex +2).setStyle(WHITE_COLOR);
+                }
+
+
+            }
+        }
+    }
+
 
 
 
