@@ -27,6 +27,7 @@ public class Grid extends GridPane {
 
         drawGrid();
         createSquare();
+        paintFire();
 
     }
 
@@ -43,8 +44,8 @@ public class Grid extends GridPane {
 
     void createSquare(){
         // by default all square are white
-        for(int i = 0; i < 39; i++) {
-            for(int j = 0 ; j < 39; j++) {
+        for(int i = 0; i < 30; i++) {
+            for(int j = 0 ; j < 30; j++) {
                 this.add(new Square(i, j, "-fx-background-color: withe;"), i, j);
             }
         }
@@ -55,6 +56,10 @@ public class Grid extends GridPane {
 
     }
 
+    public void paintFire() {
+        int randomSquare = (int) (Math.random() * (300-1));
+        this.getChildren().get(randomSquare).setStyle("-fx-background-color: red;");
+    }
 
 
 
