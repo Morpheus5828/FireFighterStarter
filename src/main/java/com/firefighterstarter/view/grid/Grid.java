@@ -101,7 +101,7 @@ public class Grid extends GridPane {
     }
 
     public void paintMountains() {
-        for(int i = 0; i < 20; i++) {
+        for(int i = 0; i < 10; i++) {
             int randomSquare = (int) (Math.random() * (900-1));
             if(
                 this.getChildren().get(randomSquare).getStyle().equals("-fx-background-color: #a5632a;") ||
