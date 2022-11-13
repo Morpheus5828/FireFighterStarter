@@ -1,28 +1,19 @@
 package com.firefighterstarter.controller;
 
+import com.firefighterstarter.view.grid.Grid;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 public class Controller {
-    @FXML private GridPane gridPane;
-    @FXML private Pane pane0;
-    @FXML private Button play;
-    @FXML private Button StepByStep;
-    @FXML private Button restart;
+
+    public Controller() {}
 
 
 
-    @FXML
-    protected void onHelloButtonClick() {
-
-    }
-
-    @FXML
-    protected void playGame() {
-
-    }
 
 
 }

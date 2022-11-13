@@ -27,7 +27,7 @@ public class Grid extends GridPane {
         drawGrid();
         createSquare();
         paintWay();
-        paintMountains();
+        //paintMountains();
         paintCloud();
         paintFire();
         paintFF();
