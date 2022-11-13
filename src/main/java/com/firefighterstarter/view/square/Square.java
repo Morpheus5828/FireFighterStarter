@@ -1,12 +1,16 @@
 package com.firefighterstarter.view.square;
 
-public class Square {
+import javafx.scene.layout.Pane;
+
+public class Square extends Pane {
     private int column;
     private int rows;
+    private String color;
 
-    public Square(int column, int rows) {
+    public Square(int column, int rows, String color) {
         this.column = column;
         this.rows = rows;
+        this.setStyle(color);
     }
 
     public int getColumn() {
@@ -23,5 +27,13 @@ public class Square {
 
     public void setRows(int rows) {
         this.rows = rows;
+    }
+
+    public String getColor() {
+        return this.getStyle();
+    }
+
+    public void setColor(String color) {
+        this.setStyle(color);
     }
 }

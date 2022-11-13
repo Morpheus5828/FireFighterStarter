@@ -1,7 +1,7 @@
 package com.firefighterstarter;
 
+import com.firefighterstarter.view.grid.Grid;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -9,10 +9,13 @@ import java.io.IOException;
 
 public class FireFighterApp extends Application {
     @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(FireFighterApp.class.getResource("fire-fighter.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+    public void start(Stage stage) {
+
+        Grid gridPaint = new Grid(1000, 1000, 1000, 1000);
+        gridPaint.setStyle("-fx-background-color: white; -fx-grid-lines-visible: true");
+
+        Scene scene = new Scene(gridPaint, 1000, 1000);
+
         stage.setScene(scene);
         stage.show();
     }
