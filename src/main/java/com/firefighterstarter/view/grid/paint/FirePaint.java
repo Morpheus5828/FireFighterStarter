@@ -1,17 +1,18 @@
 package com.firefighterstarter.view.grid.paint;
 
+import com.firefighterstarter.view.grid.GridColor;
 import javafx.scene.layout.GridPane;
 
-public class FirePaint {
-    private GridPane gridPane;
+public class FirePaint extends GridColor {
+
 
     public FirePaint(GridPane gridpane) {
-        this.gridPane = gridpane;
+        super(gridpane);
 
         paint();
     }
 
-    private void paint() {
+    public void paint() {
         for(int i = 0; i < 200; i++) {
             int randomSquare = (int) (Math.random() * 1400);
             // if square is cloud or way, don't paint a fire

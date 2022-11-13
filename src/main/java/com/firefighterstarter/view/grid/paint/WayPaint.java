@@ -1,13 +1,12 @@
 package com.firefighterstarter.view.grid.paint;
 
+import com.firefighterstarter.view.grid.GridColor;
 import javafx.scene.layout.GridPane;
 
-public class WayPaint {
-    private GridPane gridPane;
+public class WayPaint extends GridColor {
 
     public WayPaint(GridPane gridPane) {
-        this.gridPane = gridPane;
-
+        super(gridPane);
         paint();
     }
 

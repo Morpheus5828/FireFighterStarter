@@ -8,15 +8,17 @@ import com.firefighterstarter.view.grid.paint.*;
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
 
-public class GridColor {
-    private final String CLOUD_COLOR = "-fx-background-color: #706969;";
-    private final String FIRE_COLOR = "-fx-background-color: red;";
-    private final String WHITE_COLOR = "-fx-background-color: white;";
-    private GridPane gridPane;
+public abstract class GridColor {
+    protected final String CLOUD_COLOR = "-fx-background-color: #706969;";
+    protected final String FIRE_COLOR = "-fx-background-color: red;";
+    protected final String WHITE_COLOR = "-fx-background-color: white;";
+    protected GridPane gridPane;
 
     public GridColor(GridPane gridPane) {
         this.gridPane = gridPane;
     }
+
+    protected abstract void paint();
 
     public void initialise() {
         new WayPaint(this.gridPane);
@@ -30,6 +32,7 @@ public class GridColor {
         for(Node node : gridPane.getChildren())
             node.setStyle("-fx-background-color: white;");
     }
+
 
 
     public void run() {
@@ -48,14 +51,6 @@ public class GridColor {
             }
         }
     }
-
-
-
-
-
-
-
-
 
 
 

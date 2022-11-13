@@ -1,12 +1,12 @@
 package com.firefighterstarter.view.grid.paint;
 
+import com.firefighterstarter.view.grid.GridColor;
 import javafx.scene.layout.GridPane;
 
-public class MountainPaint {
-    private GridPane gridPane;
+public class MountainPaint extends GridColor {
 
     public MountainPaint(GridPane gridPane) {
-        this.gridPane = gridPane;
+        super(gridPane);
     }
 
     public void paint() {

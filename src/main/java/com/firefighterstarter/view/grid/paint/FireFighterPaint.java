@@ -1,17 +1,16 @@
 package com.firefighterstarter.view.grid.paint;
 
+import com.firefighterstarter.view.grid.GridColor;
 import javafx.scene.layout.GridPane;
 
-public class FireFighterPaint {
-    private GridPane gridPane;
+public class FireFighterPaint extends GridColor {
 
     public FireFighterPaint(GridPane gridPane) {
-        this.gridPane = gridPane;
-
+        super(gridPane);
         paint();
     }
 
-    private void paint() {
+    public void paint() {
         for(int i = 0; i < 1000; i++) {
             int randomNumber = (int) (Math.random() * 10);
             if(i != 0) {
