@@ -20,20 +20,4 @@ public abstract class GridColor {
 
     protected abstract void initPaint();
 
-    public void run() {
-        for(int nodeIndex = 0; nodeIndex < this.gridPane.getChildren().size(); nodeIndex++) {
-            // if cloud are overhead fire, it's end
-            if(this.gridPane.getChildren().get(nodeIndex).getStyle().equals(CLOUD_COLOR)) {
-                if(this.gridPane.getChildren().get(nodeIndex + 1).getStyle().equals(FIRE_COLOR)) {
-                    this.gridPane.getChildren().get(nodeIndex +1).setStyle(WHITE_COLOR);
-                }
-
-                if(this.gridPane.getChildren().get(nodeIndex + 2).getStyle().equals(FIRE_COLOR)) {
-                    this.gridPane.getChildren().get(nodeIndex +2).setStyle(WHITE_COLOR);
-                }
-            }
-        }
-    }
-
-
 }

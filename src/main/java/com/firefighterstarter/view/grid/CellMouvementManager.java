@@ -11,7 +11,6 @@ public class CellMouvementManager {
     private FireFighterPaint fireFighterPaint;
     private WayPaint wayPaint;
     private MountainPaint mountainPaint;
-    private int numberOfStep;
 
     public CellMouvementManager(GridPane gridPane) {
         this.gridPane = gridPane;
@@ -31,7 +30,7 @@ public class CellMouvementManager {
     }
 
     public void updateGrid() {
-
+        this.cloudPaint.mouveCloud();
     }
 
     public void restartGrid() {
@@ -40,7 +39,7 @@ public class CellMouvementManager {
     }
 
     public int getNumberOfFire() {
-        return this.numberOfStep;
+        return this.firePaint.getNumberOfFire();
     }
 
 

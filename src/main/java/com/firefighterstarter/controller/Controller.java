@@ -19,15 +19,13 @@ public class Controller {
         cellMouvementManager.initGrid();
 
         play.setVisible(false);
-        while (cellMouvementManager.getNumberOfFire() != 0) {
-            Timer timer = new Timer();
-            timer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    cellMouvementManager.updateGrid();;
-                }
-            }, 1000, 1000);
-        }
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                cellMouvementManager.updateGrid();;
+            }
+        }, 1000, 1000);
         System.out.println("finished");
     }
 
