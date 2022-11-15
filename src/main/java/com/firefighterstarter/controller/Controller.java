@@ -14,29 +14,33 @@ public class Controller {
     private static int counter = 0;
     @FXML GridPane gridpane;
     @FXML Button play;
+    @FXML Button stepByStep;
 
-    @FXML public void play() {
+    @FXML public void runStepByStep() {
         if(counter == 0) {
             cellMouvementManager = new CellMouvementManager(gridpane);
             cellMouvementManager.initGrid();
             counter =  1;
         }
-      else {
+      else
             cellMouvementManager.updateGrid();
-        }
-       /* play.setVisible(false);
+            //todo le update n'effectue qu'un seul déplacement
+    }
+
+    @FXML public void play() {
+        //TODO lorsque play est en commentaire le step by step fonctionne
+        cellMouvementManager = new CellMouvementManager(gridpane);
+        cellMouvementManager.initGrid();
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 cellMouvementManager.updateGrid();
             }
-        }, 4000, 4000);
-        System.out.println("finished");*/
+        },1000,1000);
     }
 
     @FXML public void restart() {
-        cellMouvementManager = new CellMouvementManager(gridpane);
         cellMouvementManager.restartGrid();
         play.setVisible(true);
         counter =  0;
