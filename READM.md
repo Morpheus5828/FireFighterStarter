@@ -17,3 +17,8 @@ Voici la description de chacun de ces repos:
 - # Controller:
   - Il effectue la transition avec le fichier FXML fire-fighter et la classe Grid (pour le moment).
 
+-----------------
+Objectif 1:
+--
+Afin d'obtenir une première version de mon application qui fonctionne, voici l'UML sur lequel je décide de me baser.
+![img.png](firstUml.png)

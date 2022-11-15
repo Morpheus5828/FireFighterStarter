@@ -33,8 +33,6 @@ public abstract class GridColor {
             node.setStyle("-fx-background-color: white;");
     }
 
-
-
     public void run() {
         for(int nodeIndex = 0; nodeIndex < this.gridPane.getChildren().size(); nodeIndex++) {
             // if cloud are overhead fire, it's end
@@ -46,13 +44,9 @@ public abstract class GridColor {
                 if(this.gridPane.getChildren().get(nodeIndex + 2).getStyle().equals(FIRE_COLOR)) {
                     this.gridPane.getChildren().get(nodeIndex +2).setStyle(WHITE_COLOR);
                 }
-
-
             }
         }
     }
-
-
 
 
 }
