@@ -34,9 +34,8 @@ public class CloudPaint extends GridColor {
             // if neighbours cell is white mouve on cloud
             if(this.gridPane.getChildren().get(cloudPosition+1).getStyle().equals(WHITE_COLOR)) {
                 this.gridPane.getChildren().get(cloudPosition).setStyle(WHITE_COLOR);
-                this.gridPane.getChildren().get(cloudPosition+1).setStyle(CLOUD_COLOR);
+                this.gridPane.getChildren().get(cloudPosition+33).setStyle(CLOUD_COLOR);
             }
-
         }
     }
 
