@@ -18,20 +18,7 @@ public abstract class GridColor {
         this.gridPane = gridPane;
     }
 
-    protected abstract void paint();
-
-    public void initialise() {
-        new WayPaint(this.gridPane);
-        new MountainPaint(this.gridPane);
-        new CloudPaint(this.gridPane);
-        new FirePaint(this.gridPane);
-        new FireFighterPaint(this.gridPane);
-    }
-
-    public void paintReset() {
-        for(Node node : gridPane.getChildren())
-            node.setStyle("-fx-background-color: white;");
-    }
+    protected abstract void initPaint();
 
     public void run() {
         for(int nodeIndex = 0; nodeIndex < this.gridPane.getChildren().size(); nodeIndex++) {

@@ -34,5 +34,6 @@ public class Controller {
     @FXML public void restart() {
         cellMouvementManager = new CellMouvementManager(gridpane);
         cellMouvementManager.restartGrid();
+        play.setVisible(true);
     }
 }

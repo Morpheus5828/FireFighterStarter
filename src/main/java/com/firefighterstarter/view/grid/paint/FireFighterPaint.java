@@ -7,10 +7,10 @@ public class FireFighterPaint extends GridColor {
 
     public FireFighterPaint(GridPane gridPane) {
         super(gridPane);
-        paint();
+        initPaint();
     }
 
-    public void paint() {
+    public void initPaint() {
         for(int i = 0; i < 1000; i++) {
             int randomNumber = (int) (Math.random() * 10);
             if(i != 0) {

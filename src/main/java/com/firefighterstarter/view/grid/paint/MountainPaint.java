@@ -9,7 +9,7 @@ public class MountainPaint extends GridColor {
         super(gridPane);
     }
 
-    public void paint() {
+    public void initPaint() {
         for(int i = 0; i < 10; i++) {
             int randomSquare = (int) (Math.random() * 1400);
             if(

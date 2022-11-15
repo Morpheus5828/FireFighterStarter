@@ -4,15 +4,14 @@ import com.firefighterstarter.view.grid.GridColor;
 import javafx.scene.layout.GridPane;
 
 public class FirePaint extends GridColor {
-
+    private int numberOfFire;
 
     public FirePaint(GridPane gridpane) {
         super(gridpane);
-
-        paint();
     }
 
-    public void paint() {
+    public void initPaint() {
+        this.numberOfFire = 200;
         for(int i = 0; i < 200; i++) {
             int randomSquare = (int) (Math.random() * 1400);
             // if square is cloud or way, don't paint a fire
@@ -21,7 +20,12 @@ public class FirePaint extends GridColor {
                     this.gridPane.getChildren().get(randomSquare).getStyle().equals("-fx-background-color: #f3c9a2;")
             )
                 continue;
-            this.gridPane.getChildren().get(randomSquare).setStyle("-fx-background-color: red;");
+            this.gridPane.getChildren().get(randomSquare).setStyle(FIRE_COLOR);
         }
     }
+
+    public int getNumberOfFire() {
+        return numberOfFire;
+    }
 }
+
