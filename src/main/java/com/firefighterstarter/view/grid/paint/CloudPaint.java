@@ -8,7 +8,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CloudPaint extends GridColor {
-    List<Integer> cloudNodes;
+    List<Cloud> cloudNodes;
+    private static class Cloud {
+        private int position;
+        public Cloud(int position) {
+            this.position = position;
+        }
+
+        public void setPosition(int position) {
+            this.position = position;
+        }
+
+        public int getPosition() {
+            return position;
+        }
+    }
 
     public CloudPaint(GridPane gridPane) {
         super(gridPane);
@@ -24,32 +38,40 @@ public class CloudPaint extends GridColor {
             )
                 continue;
             this.gridPane.getChildren().get(randomSquare).setStyle(CLOUD_COLOR);
-            this.cloudNodes.add(randomSquare);
+            Cloud cloud = new Cloud(randomSquare);
+            this.cloudNodes.add(cloud);
         }
     }
 
     public void mouveCloud() {
         deleteFire();
-        for(int cloudPosition : this.cloudNodes) {
-            // if neighbours cell is white mouve on cloud
-            if(this.gridPane.getChildren().get(cloudPosition+1).getStyle().equals(WHITE_COLOR)) {
-                this.gridPane.getChildren().get(cloudPosition).setStyle(WHITE_COLOR);
-                this.gridPane.getChildren().get(cloudPosition+33).setStyle(CLOUD_COLOR);
+
+        for(Cloud cloudPosition : this.cloudNodes) {
+            if(gridPane.getChildren().get(cloudPosition.getPosition()+33).getStyle().equals(WHITE_COLOR)) {
+                gridPane.getChildren().get(cloudPosition.getPosition()+33).setStyle(CLOUD_COLOR);
+                gridPane.getChildren().get(cloudPosition.getPosition()).setStyle(WHITE_COLOR);
             }
+
+            if(1452 < cloudPosition.getPosition()+33)
+                cloudPosition.setPosition(cloudPosition.getPosition()+33);
         }
     }
 
     private void deleteFire() {
-        for(int cloudPosition : this.cloudNodes) {
+        for(Cloud cloudPosition : this.cloudNodes) {
             Node fireNode = isFireCellNearCloud(cloudPosition);
             if (fireNode != null)
-                fireNode.setStyle("-fx-background-color: white;");
+                fireNode.setStyle(WHITE_COLOR);
         }
     }
 
-    private Node isFireCellNearCloud(int cloudPosition) {
-        if(this.gridPane.getChildren().get(cloudPosition+1).getStyle().equals(FIRE_COLOR))
-            return this.gridPane.getChildren().get(cloudPosition+1);
+    private Node isFireCellNearCloud(Cloud cloudPosition) {
+        if(this.gridPane.getChildren().get(cloudPosition.getPosition()+1).getStyle().equals(FIRE_COLOR))
+            return this.gridPane.getChildren().get(cloudPosition.getPosition()+1);
         return null;
     }
+
+    /*private void setCloudNodes(List<Integer> cloudNodes) {
+        this.cloudNodes = cloudNodes;
+    }*/
 }

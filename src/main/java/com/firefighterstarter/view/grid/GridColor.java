@@ -12,6 +12,8 @@ public abstract class GridColor {
     protected final String CLOUD_COLOR = "-fx-background-color: #706969;";
     protected final String FIRE_COLOR = "-fx-background-color: red;";
     protected final String WHITE_COLOR = "-fx-background-color: white;";
+    protected final String WAY_COLOR = "-fx-background-color: #a5632a;";
+    protected final String FF_COLOR = "-fx-background-color: black;";
     protected GridPane gridPane;
 
     public GridColor(GridPane gridPane) {

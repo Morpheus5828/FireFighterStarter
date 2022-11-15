@@ -7,7 +7,6 @@ public class FireFighterPaint extends GridColor {
 
     public FireFighterPaint(GridPane gridPane) {
         super(gridPane);
-        initPaint();
     }
 
     public void initPaint() {
@@ -15,8 +14,8 @@ public class FireFighterPaint extends GridColor {
             int randomNumber = (int) (Math.random() * 10);
             if(i != 0) {
                 if(randomNumber % 5 == 0) {
-                    if(this.gridPane.getChildren().get(i).getStyle().equals("-fx-background-color: #a5632a;"))
-                        this.gridPane.getChildren().get(i).setStyle("-fx-background-color: black;");
+                    if(this.gridPane.getChildren().get(i).getStyle().equals(WAY_COLOR))
+                        this.gridPane.getChildren().get(i).setStyle(FF_COLOR);
                 }
             }
 

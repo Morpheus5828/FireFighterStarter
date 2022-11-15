@@ -22,14 +22,16 @@ public class Controller {
             cellMouvementManager.initGrid();
             counter =  1;
         }
-      else
+      else {
             cellMouvementManager.updateGrid();
-            //todo le update n'effectue qu'un seul déplacement
+        }
+
+
     }
 
     @FXML public void play() {
         //TODO lorsque play est en commentaire le step by step fonctionne
-        cellMouvementManager = new CellMouvementManager(gridpane);
+        /*cellMouvementManager = new CellMouvementManager(gridpane);
         cellMouvementManager.initGrid();
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -37,7 +39,7 @@ public class Controller {
             public void run() {
                 cellMouvementManager.updateGrid();
             }
-        },1000,1000);
+        },1000,1000);*/
     }
 
     @FXML public void restart() {
