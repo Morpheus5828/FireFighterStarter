@@ -36,6 +36,10 @@ public class CloudPaint extends GridColor {
         deleteFire();
         List<Integer> nextCell = new ArrayList<>();
         for(int cloudPosition : this.cloudNodes) {
+            if(cloudPosition >= 1409) {
+                gridPane.getChildren().get(cloudPosition).setStyle(WHITE_COLOR);
+                continue;
+            }
             if(cloudPosition+33 < 1452) {
                 if(
                     // if right cell of cloud cell is white or red, it can move itself
@@ -51,6 +55,8 @@ public class CloudPaint extends GridColor {
             }
         }
         this.cloudNodes = nextCell;
+
+        //if touch the right grid, cloud disappear
     }
 
     private void deleteFire() {

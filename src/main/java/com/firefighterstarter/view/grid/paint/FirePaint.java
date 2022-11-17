@@ -15,9 +15,10 @@ public class FirePaint extends GridColor {
         for(int i = 0; i < 200; i++) {
             int randomSquare = (int) (Math.random() * 1400);
             // if square is cloud or way, don't paint a fire
-            if(this.gridPane.getChildren().get(randomSquare).getStyle().equals("-fx-background-color: #a5632a;") ||
-                    this.gridPane.getChildren().get(randomSquare).getStyle().equals("-fx-background-color: #706969;") ||
-                    this.gridPane.getChildren().get(randomSquare).getStyle().equals("-fx-background-color: #f3c9a2;")
+            if(this.gridPane.getChildren().get(randomSquare).getStyle().equals(WAY_COLOR) ||
+                    this.gridPane.getChildren().get(randomSquare).getStyle().equals(MOUNTAIN_COLOR) ||
+                    this.gridPane.getChildren().get(randomSquare).getStyle().equals(FF_COLOR) ||
+                    this.gridPane.getChildren().get(randomSquare).getStyle().equals(CLOUD_COLOR)
             )
                 continue;
             this.gridPane.getChildren().get(randomSquare).setStyle(FIRE_COLOR);
