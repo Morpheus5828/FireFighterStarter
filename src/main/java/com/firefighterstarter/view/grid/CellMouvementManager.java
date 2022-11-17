@@ -22,6 +22,8 @@ public class CellMouvementManager {
     }
 
     public void initGrid() {
+        for(Node node : gridPane.getChildren())
+            node.setStyle("-fx-background-color: white;");
         this.wayPaint.initPaint();
         this.mountainPaint.initPaint();
         this.fireFighterPaint.initPaint();
