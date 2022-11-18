@@ -23,4 +23,6 @@ public abstract class GridColor {
 
     protected abstract void initPaint();
 
+    //protected abstract void setThreadIsRunnable(boolean threadIsRunnable);
+
 }

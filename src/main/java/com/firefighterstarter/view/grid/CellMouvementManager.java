@@ -11,6 +11,9 @@ public class CellMouvementManager {
     private FireFighterPaint fireFighterPaint;
     private WayPaint wayPaint;
     private MountainPaint mountainPaint;
+    public static int fireQuantity;
+    private Thread cloudThread;
+    private Thread fireFighterThread;
 
     public CellMouvementManager(GridPane gridPane) {
         this.gridPane = gridPane;
@@ -19,6 +22,7 @@ public class CellMouvementManager {
         this.wayPaint = new WayPaint(this.gridPane);
         this.mountainPaint = new MountainPaint(this.gridPane);
         this.fireFighterPaint = new FireFighterPaint(this.gridPane);
+        fireQuantity = this.firePaint.getNumberOfFire();
     }
 
     public void initGrid() {
@@ -29,26 +33,29 @@ public class CellMouvementManager {
         this.fireFighterPaint.initPaint();
         this.cloudPaint.initPaint();
         this.firePaint.initPaint();
+        fireQuantity = 200;
     }
 
     public void updateGrid() {
-        Thread t = new Thread(this.cloudPaint);
-        Thread t1 = new Thread(this.fireFighterPaint);
-        t.start();
-        t1.start();
+        if(fireQuantity > 150) {  // TODO replace 150 by 0 when fireFighter can move in the grid themself
+            System.out.println(fireQuantity);
+            cloudThread = new Thread(this.cloudPaint);
+            fireFighterThread = new Thread(this.fireFighterPaint);
+            fireFighterThread.start();
+            cloudThread.start();
+        }
+        else {
+            //game finished
+            System.out.println("FINISHED");
+            fireFighterThread.interrupt();
+            cloudThread.interrupt();
 
-        //this.cloudPaint.mouveCloud();
-        //this.fireFighterPaint.run();
+        }
     }
 
     public void restartGrid() {
         for(Node node : gridPane.getChildren())
             node.setStyle("-fx-background-color: white;");
     }
-
-    public int getNumberOfFire() {
-        return this.firePaint.getNumberOfFire();
-    }
-
 
 }

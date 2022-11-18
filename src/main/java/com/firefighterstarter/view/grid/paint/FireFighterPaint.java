@@ -40,7 +40,6 @@ public class FireFighterPaint extends GridColor implements Runnable{
                 newList.add(fireFighterPosition);
             }
         }*/
-        //TODO juste a simple to test to add thread managment
         for(Integer s : this.fireFighterPosition) {
             this.gridPane.getChildren().get(s+33).setStyle(FF_COLOR);
             newList.add(s+33);

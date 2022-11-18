@@ -1,5 +1,6 @@
 package com.firefighterstarter.view.grid.paint;
 
+import com.firefighterstarter.view.grid.CellMouvementManager;
 import com.firefighterstarter.view.grid.GridColor;
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
@@ -8,11 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CloudPaint extends GridColor implements Runnable {
-    List<Integer> cloudNodes;
+    private List<Integer> cloudNodes;
+    private boolean threadIsRunnable;
 
     public CloudPaint(GridPane gridPane) {
         super(gridPane);
         this.cloudNodes = new ArrayList<>();
+        this.threadIsRunnable = false;
     }
 
     public void initPaint() {
@@ -52,6 +55,7 @@ public class CloudPaint extends GridColor implements Runnable {
                     gridPane.getChildren().get(cloudPosition +33).setStyle(CLOUD_COLOR);
                     gridPane.getChildren().get(cloudPosition).setStyle(WHITE_COLOR);
                     nextCell.add(cloudPosition+33);
+                    CellMouvementManager.fireQuantity -= 1;
                 }
 
             }
@@ -60,6 +64,8 @@ public class CloudPaint extends GridColor implements Runnable {
 
         //if touch the right grid, cloud disappear
     }
+
+
 
     private void deleteFire() {
         for(Integer cloudPosition : this.cloudNodes) {
