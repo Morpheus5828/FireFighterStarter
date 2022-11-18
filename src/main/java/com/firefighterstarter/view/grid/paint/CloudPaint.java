@@ -7,7 +7,7 @@ import javafx.scene.layout.GridPane;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CloudPaint extends GridColor {
+public class CloudPaint extends GridColor implements Runnable {
     List<Integer> cloudNodes;
 
     public CloudPaint(GridPane gridPane) {
@@ -16,6 +16,7 @@ public class CloudPaint extends GridColor {
     }
 
     public void initPaint() {
+
         for(int i = 0; i < 50; i++) {
             int randomSquare = (int) (Math.random() * 1452);
             if(
@@ -32,7 +33,8 @@ public class CloudPaint extends GridColor {
         }
     }
 
-    public void mouveCloud() {
+    @Override
+    public void run() {
         deleteFire();
         List<Integer> nextCell = new ArrayList<>();
         for(int cloudPosition : this.cloudNodes) {
@@ -72,6 +74,7 @@ public class CloudPaint extends GridColor {
             return this.gridPane.getChildren().get(cloudPosition+1);
         return null;
     }
+
 
     /*private void setCloudNodes(List<Integer> cloudNodes) {
         this.cloudNodes = cloudNodes;

@@ -32,7 +32,13 @@ public class CellMouvementManager {
     }
 
     public void updateGrid() {
-        this.cloudPaint.mouveCloud();
+        Thread t = new Thread(this.cloudPaint);
+        Thread t1 = new Thread(this.fireFighterPaint);
+        t.start();
+        t1.start();
+
+        //this.cloudPaint.mouveCloud();
+        //this.fireFighterPaint.run();
     }
 
     public void restartGrid() {
