@@ -8,7 +8,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="659.0" prefWidth="1071.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.firefighterstarter.controller.Controller">
    <children>
-      <GridPane fx:id="gridpane" layoutX="195.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="869.0" style="-fx-background-color: white; -fx-grid-lines-visible: true">
+      <GridPane fx:id="gridPane" layoutX="195.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="869.0" style="-fx-background-color: white; -fx-grid-lines-visible: true">
          <children>
             <Pane id="0. 0 " prefHeight="20.0" prefWidth="20.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
             <Pane id="0. 0 " prefHeight="20.0" prefWidth="20.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
