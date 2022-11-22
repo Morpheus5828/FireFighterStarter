@@ -26,6 +26,8 @@ public class Controller {
         }
         else {
             cmm.updateGrid();
+            dgp.setListOfCells(cmm.getListOfCells());
+            dgp.run();
         }
     }
 

@@ -50,7 +50,7 @@ public class CellMouvementManager {
             cloudPaint.initCloud();
             firePaint.initFire();
         } else {
-
+            cloudPaint.mouveCloud();
         }
     }
 
@@ -62,5 +62,6 @@ public class CellMouvementManager {
     public List<Cell> getListOfCells() {
         return listOfCells;
     }
+
 
 }

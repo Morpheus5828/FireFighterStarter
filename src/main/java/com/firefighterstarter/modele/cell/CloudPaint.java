@@ -25,4 +25,24 @@ public class CloudPaint extends Cell {
         }
     }
 
+    public void mouveCloud() {
+        for(int i = 0; i < this.listOfCells.size(); i++) {
+            if(this.listOfCells.get(i).getColor() == ColorType.CLOUD) {
+                ColorType nextColor = listOfCells.get(i+33).getColor();
+                if(nextColor == ColorType.NOTHING) {
+                    this.listOfCells.get(i+33).setColorType(ColorType.CLOUD);
+                }
+            }
+            /*ColorType nextColor = listOfCells.get(i+33).getColor();
+            if(
+                nextColor == ColorType.NOTHING
+               // nextColor == ColorType.FIRE
+            ) {
+                //listOfCells.get(i).setColorType(ColorType.NOTHING);
+                listOfCells.get(i+33).setColorType(ColorType.CLOUD);
+            }*/
+
+        }
+    }
+
 }
