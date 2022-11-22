@@ -2,15 +2,11 @@ package com.firefighterstarter.modele.cell;
 
 import javafx.scene.paint.Color;
 
+import java.util.List;
+
 public class WhitePaint extends Cell {
-    private Color color;
-
-    public WhitePaint(Color color) {
-        super(color);
+    public WhitePaint(List<Cell> listOfCells) {
+        super(listOfCells);
     }
 
-    @Override
-    protected void updateCellColor(Cell cell, String color) {
-
-    }
 }

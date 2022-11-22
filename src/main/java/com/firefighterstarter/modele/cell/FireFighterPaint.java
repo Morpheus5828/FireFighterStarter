@@ -7,15 +7,21 @@ import java.util.List;
 
 public class FireFighterPaint extends Cell {
 
-    public FireFighterPaint(String  color) {
-        super(color);
+    private int numberOfFireFighter;
+
+
+    public FireFighterPaint(List<Cell> listOfCells, int numberOfFireFighter) {
+        super(listOfCells);
+       this.listOfCells = listOfCells;
+       this.numberOfFireFighter = numberOfFireFighter;
+       init();
+    }
+
+    public void init() {
 
     }
 
-    @Override
-    protected void updateCellColor(Cell cell, String color) {
 
-    }
 
 
 }
