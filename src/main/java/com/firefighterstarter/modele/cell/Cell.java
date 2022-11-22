@@ -1,14 +1,12 @@
-package com.firefighterstarter.view.grid;
+package com.firefighterstarter.modele.cell;
 
 /*
     Create a grid with color square
 */
 
-import com.firefighterstarter.view.grid.paint.*;
-import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
 
-public abstract class GridColor {
+public abstract class Cell {
     protected final String CLOUD_COLOR = "-fx-background-color: #706969;";
     protected final String FIRE_COLOR = "-fx-background-color: red;";
     protected final String WHITE_COLOR = "-fx-background-color: white;";
@@ -17,7 +15,7 @@ public abstract class GridColor {
     protected final String MOUNTAIN_COLOR = "-fx-background-color: f3c9a2;";
     protected GridPane gridPane;
 
-    public GridColor(GridPane gridPane) {
+    public Cell(GridPane gridPane) {
         this.gridPane = gridPane;
     }
 

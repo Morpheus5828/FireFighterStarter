@@ -1,12 +1,11 @@
-package com.firefighterstarter.view.grid.paint;
+package com.firefighterstarter.modele.cell;
 
-import com.firefighterstarter.view.grid.GridColor;
 import javafx.scene.layout.GridPane;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FireFighterPaint extends GridColor implements Runnable{
+public class FireFighterPaint extends Cell implements Runnable{
     private List<Integer> fireFighterPosition;
     public FireFighterPaint(GridPane gridPane) {
         super(gridPane);

@@ -1,9 +1,8 @@
-package com.firefighterstarter.view.grid.paint;
+package com.firefighterstarter.modele.cell;
 
-import com.firefighterstarter.view.grid.GridColor;
 import javafx.scene.layout.GridPane;
 
-public class FirePaint extends GridColor {
+public class FirePaint extends Cell {
     private int numberOfFire;
 
     public FirePaint(GridPane gridpane) {

@@ -1,6 +1,5 @@
-package com.firefighterstarter.view.grid;
+package com.firefighterstarter.modele.cell;
 
-import com.firefighterstarter.view.grid.paint.*;
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
 

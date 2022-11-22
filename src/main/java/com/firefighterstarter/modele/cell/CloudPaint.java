@@ -1,14 +1,12 @@
-package com.firefighterstarter.view.grid.paint;
+package com.firefighterstarter.modele.cell;
 
-import com.firefighterstarter.view.grid.CellMouvementManager;
-import com.firefighterstarter.view.grid.GridColor;
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CloudPaint extends GridColor implements Runnable {
+public class CloudPaint extends Cell implements Runnable {
     private List<Integer> cloudNodes;
     private boolean threadIsRunnable;
 

@@ -1,12 +1,9 @@
 package com.firefighterstarter.controller;
 
-import com.firefighterstarter.view.grid.CellMouvementManager;
+import com.firefighterstarter.modele.cell.CellMouvementManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 
 public class Controller {

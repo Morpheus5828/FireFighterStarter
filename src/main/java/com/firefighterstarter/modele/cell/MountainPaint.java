@@ -1,9 +1,8 @@
-package com.firefighterstarter.view.grid.paint;
+package com.firefighterstarter.modele.cell;
 
-import com.firefighterstarter.view.grid.GridColor;
 import javafx.scene.layout.GridPane;
 
-public class MountainPaint extends GridColor {
+public class MountainPaint extends Cell {
 
     public MountainPaint(GridPane gridPane) {
         super(gridPane);

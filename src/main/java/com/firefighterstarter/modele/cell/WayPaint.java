@@ -1,9 +1,8 @@
-package com.firefighterstarter.view.grid.paint;
+package com.firefighterstarter.modele.cell;
 
-import com.firefighterstarter.view.grid.GridColor;
 import javafx.scene.layout.GridPane;
 
-public class WayPaint extends GridColor {
+public class WayPaint extends Cell {
 
     public WayPaint(GridPane gridPane) {
         super(gridPane);
