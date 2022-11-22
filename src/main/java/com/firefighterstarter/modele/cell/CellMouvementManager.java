@@ -39,19 +39,17 @@ public class CellMouvementManager {
             cell.setColorType(ColorType.NOTHING);
             this.listOfCells.add(cell);
         }
+        wayPaint.initWay(); // must be the first one to be init
+        fireFighterPaint.initFireFighter();
+        mountainPaint.initMountain();
+        cloudPaint.initCloud();
+        firePaint.initFire();
     }
 
+
     public void updateGrid() {
-        // mouve each cell with conditions
-        if(Controller._click == 0) {
-            wayPaint.initWay(); // must be the first one to be init
-            fireFighterPaint.initFireFighter();
-            mountainPaint.initMountain();
-            cloudPaint.initCloud();
-            firePaint.initFire();
-        } else {
-            cloudPaint.mouveCloud();
-        }
+        cloudPaint.mouveCloud();
+
     }
 
     public void restartGrid() {

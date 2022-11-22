@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 
 
-public class Controller {
+public final class Controller {
     @FXML GridPane gridPane;
     @FXML Button play;
     @FXML Button stepByStep;
@@ -18,7 +18,6 @@ public class Controller {
     @FXML public void runStepByStep() {
         if(_click == 0) {
             cmm = new CellMouvementManager(gridPane.getChildren().size());
-            cmm.updateGrid();
             dgp = new DisplayGridPane(gridPane);
             dgp.setListOfCells(cmm.getListOfCells());
             dgp.run();
