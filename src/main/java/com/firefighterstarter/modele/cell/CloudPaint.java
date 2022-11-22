@@ -35,11 +35,12 @@ public class CloudPaint extends Cell {
             if(cloudIndex < 1419) {
                 if(this.listOfCells.get(cloudIndex).getColor() == ColorType.CLOUD) {
                     ColorType nextColor = listOfCells.get(cloudIndex+33).getColor();
-                    if(nextColor == ColorType.WAY) {
+                    if(nextColor == ColorType.WAY || nextColor == ColorType.FIREFIGHTER) {
                         int index = cloudIndex;
 
-                        while (listOfCells.get(index+33).getColor() == ColorType.WAY) {
-                            System.out.print(index);
+                        while (listOfCells.get(index+33).getColor() == ColorType.WAY ||
+                                listOfCells.get(index+33).getColor() == ColorType.FIREFIGHTER) {
+
                             if (
                                 listOfCells.get(index + 66).getColor() == ColorType.NOTHING ||
                                 listOfCells.get(index + 66).getColor() == ColorType.FIRE ||
@@ -54,8 +55,25 @@ public class CloudPaint extends Cell {
                         }
 
                     }
+                    else if (nextColor == ColorType.MOUNTAIN) {
+                        int index = cloudIndex;
 
-                    else if
+                        while (listOfCells.get(index+33).getColor() == ColorType.MOUNTAIN) {
+                            if (
+                                    listOfCells.get(index + 99).getColor() == ColorType.NOTHING ||
+                                    listOfCells.get(index + 99).getColor() == ColorType.FIRE ||
+                                    listOfCells.get(index + 99).getColor() != ColorType.WAY
+                            ) {
+                                cloudsUpdate.add(index + 99);
+                                this.listOfCells.get(index+99).setColorType(ColorType.CLOUD);
+                                this.listOfCells.get(cloudIndex).setColorType(ColorType.NOTHING);
+                                break;
+                            }
+                            index += 33;
+                        }
+
+
+                    } else if
                     (
                         nextColor == ColorType.NOTHING ||
                         nextColor == ColorType.FIRE
