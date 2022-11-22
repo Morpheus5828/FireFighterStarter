@@ -45,6 +45,7 @@ public class CellMouvementManager {
         // mouve each cell with conditions
         if(Controller._click == 0) {
             wayPaint.initWay(); // must be the first one to be init
+            fireFighterPaint.initFireFighter();
             mountainPaint.initMountain();
             cloudPaint.initCloud();
             firePaint.initFire();

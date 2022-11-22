@@ -1,8 +1,5 @@
 package com.firefighterstarter.modele.cell;
 
-import javafx.scene.layout.GridPane;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class FireFighterPaint extends Cell {
@@ -14,11 +11,15 @@ public class FireFighterPaint extends Cell {
         super(listOfCells);
        this.listOfCells = listOfCells;
        this.numberOfFireFighter = numberOfFireFighter;
-       init();
     }
 
-    public void init() {
-
+    public void initFireFighter() {
+        for(int i = 0; i < numberOfFireFighter; i++) {
+            int randomPosition = (int) (Math.random() * 1400);
+            Cell currentCell = this.listOfCells.get(randomPosition);
+            if(currentCell.getColor() == ColorType.NOTHING)
+                this.listOfCells.get(randomPosition).setColorType(ColorType.FIREFIGHTER);
+        }
     }
 
 
