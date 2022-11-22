@@ -29,7 +29,7 @@ public class FireFighterPaint extends GridColor implements Runnable{
 
     public void run() {
         List<Integer> newList = new ArrayList<>();
-        /*for(int fireFighterPosition : this.fireFighterPosition) {
+        for(int fireFighterPosition : this.fireFighterPosition) {
             List<Integer> firePositonList = getFireNearFireFighter(fireFighterPosition);
             if(firePositonList.size() != 0) {
                 int randomCell = (int) (Math.random() * firePositonList.size());
@@ -39,10 +39,6 @@ public class FireFighterPaint extends GridColor implements Runnable{
             else {
                 newList.add(fireFighterPosition);
             }
-        }*/
-        for(Integer s : this.fireFighterPosition) {
-            this.gridPane.getChildren().get(s+33).setStyle(FF_COLOR);
-            newList.add(s+33);
         }
         this.fireFighterPosition = newList;
     }
@@ -53,15 +49,7 @@ public class FireFighterPaint extends GridColor implements Runnable{
     }
 
     private List<Integer> getFireNearFireFighter(int fireFighterPosition) {
-        List<Integer> fireInTheZone = new ArrayList<>();
-        if(this.gridPane.getChildren().get(fireFighterPosition+1).getStyle().equals(FIRE_COLOR))
-            fireInTheZone.add(fireFighterPosition + 1);
-        if(this.gridPane.getChildren().get(fireFighterPosition+-1).getStyle().equals(FIRE_COLOR))
-            fireInTheZone.add(fireFighterPosition - 1);
-        if(this.gridPane.getChildren().get(fireFighterPosition + 33).getStyle().equals(FIRE_COLOR))
-            fireInTheZone.add(fireFighterPosition + 33);
-        if(this.gridPane.getChildren().get(fireFighterPosition - 33).getStyle().equals(FIRE_COLOR))
-            fireInTheZone.add(fireFighterPosition - 33);
-        return fireInTheZone;
+        //TODO cadriller la zone +1 -1 +33 -33
+        return null;
     }
 }
