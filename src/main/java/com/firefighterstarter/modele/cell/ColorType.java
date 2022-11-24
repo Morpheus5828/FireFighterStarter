@@ -15,6 +15,8 @@ public enum ColorType {
                 return "-fx-background-color: black;";
             case MOUNTAIN:
                 return "-fx-background-color: f3c9a2;";
+            case NOTHING:
+                return "-fx-background-color: white;";
         }
         return "-fx-background-color: white;";
     }

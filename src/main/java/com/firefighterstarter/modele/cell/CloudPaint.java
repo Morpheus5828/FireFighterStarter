@@ -85,6 +85,9 @@ public class CloudPaint extends Cell {
                     }
                 }
             }
+            else {
+                this.listOfCells.get(cloudIndex).setColorType(ColorType.NOTHING);
+            }
         }
         this.clouds = cloudsUpdate;
     }

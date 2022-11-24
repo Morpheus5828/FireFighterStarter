@@ -1,6 +1,6 @@
 package com.firefighterstarter.modele.cell;
 
-import com.firefighterstarter.controller.Controller;
+import com.firefighterstarter.modele.cell.FireFighter.FireFighterPaint;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,8 +48,8 @@ public class CellMouvementManager {
 
 
     public void updateGrid() {
-        cloudPaint.mouveCloud();
-
+        //cloudPaint.mouveCloud();
+        fireFighterPaint.mouveFireFighter();
     }
 
     public void restartGrid() {

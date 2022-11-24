@@ -5,10 +5,12 @@ import java.util.List;
 public class Cell {
     protected ColorType colorType;
     protected List<Cell> listOfCells;
+    protected int CELL_NUMBER;
 
     public Cell(List<Cell> listOfCells) {
         this.listOfCells = listOfCells;
         this.colorType = ColorType.NOTHING;
+        CELL_NUMBER = this.listOfCells.size();
     }
 
     public ColorType getColor() {
