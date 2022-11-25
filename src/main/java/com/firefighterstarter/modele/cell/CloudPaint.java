@@ -10,30 +10,34 @@ import java.util.List;
 
 public class CloudPaint extends Cell {
     private int numberOfClouds;
-    private List<Integer> clouds;
+    private List<Cell> clouds;
 
-    public CloudPaint(List<Cell> listOfCells, int numberOfClouds) {
-        super(listOfCells);
+    public CloudPaint(Cell[][] listOfCells, int numberOfClouds, int gridRows, int gridColumn) {
+        super(listOfCells, gridRows, gridColumn);
         this.numberOfClouds = numberOfClouds;
         this.clouds = new ArrayList<>();
     }
 
     public void initCloud() {
         for(int i = 0; i < numberOfClouds; i++) {
-            int randomPosition = (int) (Math.random() * 1400);
-            Cell currentCell = this.listOfCells.get(randomPosition);
+            int randomColumn = (int) (Math.random() * gridColumn);
+            int randomRow = (int) (Math.random() * gridRows);
+            System.out.println(listOfCells[randomRow][randomColumn]);
+            Cell currentCell = listOfCells[randomRow][randomColumn];
             if(currentCell.getColor() == ColorType.NOTHING) {
-                this.listOfCells.get(randomPosition).setColorType(ColorType.CLOUD);
-                this.clouds.add(randomPosition);
+                this.listOfCells[randomRow][randomColumn].setColorType(ColorType.CLOUD);
+                this.clouds.add(currentCell);
             }
         }
     }
 
-    public void mouveCloud() {
+    /*public void mouveCloud() {
         List<Integer> cloudsUpdate = new ArrayList<>();
         for(Integer cloudIndex : this.clouds) {
-            if(cloudIndex < 1419) {
+            if(cloudIndex < 1419) { // 1452 - 33
                 if(this.listOfCells.get(cloudIndex).getColor() == ColorType.CLOUD) {
+                    if(this.listOfCells.get(cloudIndex+1).getColor() == ColorType.FIRE)
+                        this.listOfCells.get(cloudIndex+1).setColorType(ColorType.NOTHING);
                     ColorType nextColor = listOfCells.get(cloudIndex+33).getColor();
                     if(nextColor == ColorType.WAY || nextColor == ColorType.FIREFIGHTER) {
                         int index = cloudIndex;
@@ -73,12 +77,10 @@ public class CloudPaint extends Cell {
                         }
 
 
-                    } else if
-                    (
-                        nextColor == ColorType.NOTHING ||
-                        nextColor == ColorType.FIRE
-
-                    ) {
+                    }
+                    else if (nextColor == ColorType.NOTHING || nextColor == ColorType.FIRE
+                    )
+                    {
                         this.listOfCells.get(cloudIndex+33).setColorType(ColorType.CLOUD);
                         this.listOfCells.get(cloudIndex).setColorType(ColorType.NOTHING);
                         cloudsUpdate.add(cloudIndex+33);
@@ -90,6 +92,6 @@ public class CloudPaint extends Cell {
             }
         }
         this.clouds = cloudsUpdate;
-    }
+    }*/
 
 }

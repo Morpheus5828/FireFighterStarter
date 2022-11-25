@@ -9,17 +9,15 @@ public class FireFighterPaint extends Cell {
     private final int numberOfFireFighter;
     private List<FireFighter> listOfFireFighters;
 
-    public FireFighterPaint(List<Cell> listOfCells, int numberOfFireFighter) {
-        super(listOfCells);
-
-        this.listOfCells = listOfCells;
+    public FireFighterPaint(Cell[][] listOfCells, int numberOfFireFighter, int column, int rows) {
+        super(listOfCells, column, rows);
         this.numberOfFireFighter = numberOfFireFighter;
         this.listOfFireFighters = new ArrayList<>();
     }
 
-    public void initFireFighter() {
+    /*public void initFireFighter() {
         for(int i = 0; i < numberOfFireFighter; i++) {
-            int randomPosition = (int) (Math.random() * 1400);
+            int randomPosition = (int) (Math.random() * 1452);
             Cell currentCell = this.listOfCells.get(randomPosition);
             if(currentCell.getColor() == ColorType.NOTHING) {
                 this.listOfCells.get(randomPosition).setColorType(ColorType.FIREFIGHTER);
@@ -27,9 +25,9 @@ public class FireFighterPaint extends Cell {
             }
 
         }
-    }
+    }*/
 
-    public void mouveFireFighter() {
+    /*public void mouveFireFighter() {
         List<FireFighter> update = new ArrayList<>();
         for(FireFighter fireFighter : this.listOfFireFighters) {
             for(int ditance = 1; ditance <= 2; ditance++) {
@@ -48,101 +46,80 @@ public class FireFighterPaint extends Cell {
     }
 
     private void getFireInDistance(FireFighter fireFighter, int distance) {
-        // case one: fireFighter is on the left of grid
-        if(fireFighter.getPosition() == 0) {
-            if(this.listOfCells.get(fireFighter.getPosition() + distance).getColor() == (ColorType.FIRE))
-                fireFighter.addElement(fireFighter.getPosition() + distance);
+        try {
+            if(onTheLeftPart(fireFighter.getPosition() + distance)) {
+                if(this.listOfCells.get(fireFighter.getPosition() + distance).getColor() == ColorType.FIRE)
+                    fireFighter.addElement(fireFighter.getPosition() + distance);
+            }
 
-            if(this.listOfCells.get(fireFighter.getPosition() + (33 * distance)).getColor() == (ColorType.FIRE))
-                fireFighter.addElement(fireFighter.getPosition() + (33 * distance));
+            if(onTheLeftPart(fireFighter.getPosition() - distance)) {
+                if(this.listOfCells.get(fireFighter.getPosition() - distance).getColor() == ColorType.FIRE)
+                    fireFighter.addElement(fireFighter.getPosition() - distance);
+            }
 
-            if(this.listOfCells.get(fireFighter.getPosition() + (33 * distance) + distance).getColor() == (ColorType.FIRE))
-                fireFighter.addElement(fireFighter.getPosition() + (33 * distance) + distance);
-        }
+            if(onTheLeftPart(fireFighter.getPosition() + distance + 33)) {
+                if(this.listOfCells.get(fireFighter.getPosition() + distance+ 33).getColor() == ColorType.FIRE)
+                    fireFighter.addElement(fireFighter.getPosition() + distance + 33);
+            }
 
-        if(fireFighter.getPosition() == 1472) {
-            if(this.listOfCells.get(fireFighter.getPosition() - distance).getColor() == (ColorType.FIRE))
-                fireFighter.addElement(fireFighter.getPosition() - distance);
+            if(onTheRightPart(fireFighter.getPosition() + distance)) {
+                if(this.listOfCells.get(fireFighter.getPosition() + distance).getColor() == ColorType.FIRE)
+                    fireFighter.addElement(fireFighter.getPosition() + distance);
+            }
 
-            if(this.listOfCells.get(fireFighter.getPosition() - (33 * distance)).getColor() == (ColorType.FIRE))
-                fireFighter.addElement(fireFighter.getPosition() - (33 * distance));
+            if(onTheRightPart(fireFighter.getPosition() - distance)) {
+                if(this.listOfCells.get(fireFighter.getPosition() - distance).getColor() == ColorType.FIRE)
+                    fireFighter.addElement(fireFighter.getPosition() - distance);
+            }
 
-            if(this.listOfCells.get(fireFighter.getPosition() + (33 * distance) - distance).getColor() == (ColorType.FIRE))
-                fireFighter.addElement(fireFighter.getPosition() - (33 * distance) - distance);
-        }
+            if(onTheRightPart(fireFighter.getPosition() - distance - 33)) {
+                if(this.listOfCells.get(fireFighter.getPosition() - distance - 33).getColor() == ColorType.FIRE)
+                    fireFighter.addElement(fireFighter.getPosition() - distance - 33);
+            }
 
-        if(fireFighter.getPosition() < 33 && fireFighter.getPosition() != 0) {
-            if(this.listOfCells.get(fireFighter.getPosition() - distance).getColor() == (ColorType.FIRE))
-                fireFighter.addElement(fireFighter.getPosition() - distance);
+            else {
+                if(this.listOfCells.get(fireFighter.getPosition() + distance).getColor() == ColorType.FIRE)
+                    fireFighter.addElement(fireFighter.getPosition() + distance);
 
-            if(this.listOfCells.get(fireFighter.getPosition() + (33 * distance)).getColor() == (ColorType.FIRE))
-                fireFighter.addElement(fireFighter.getPosition() + (33 * distance));
+                if(this.listOfCells.get(fireFighter.getPosition() - distance).getColor() == ColorType.FIRE)
+                    fireFighter.addElement(fireFighter.getPosition() - distance);
 
-            if(this.listOfCells.get(fireFighter.getPosition() + distance).getColor() == (ColorType.FIRE))
-                fireFighter.addElement(fireFighter.getPosition() + distance);
+                if(this.listOfCells.get(fireFighter.getPosition() + distance + 33).getColor() == ColorType.FIRE)
+                    fireFighter.addElement(fireFighter.getPosition() + distance + 33);
 
-            if(this.listOfCells.get(fireFighter.getPosition() + (33 * distance) + distance).getColor() == (ColorType.FIRE))
-                fireFighter.addElement(fireFighter.getPosition() + (33 * distance) + distance);
+                if(this.listOfCells.get(fireFighter.getPosition() - distance -33).getColor() == ColorType.FIRE)
+                    fireFighter.addElement(fireFighter.getPosition() - distance -33);
+            }
 
-            if(this.listOfCells.get(fireFighter.getPosition() + (33 * distance) - distance).getColor() == (ColorType.FIRE))
-                fireFighter.addElement(fireFighter.getPosition() + (33 * distance) - distance);
 
-        }
-
-        if(fireFighter.getPosition() >= 33 && fireFighter.getPosition() <= 1400) {
-            if(this.listOfCells.get(fireFighter.getPosition() - distance).getColor() == (ColorType.FIRE))
-                fireFighter.addElement(fireFighter.getPosition() - distance);
-
-            if(this.listOfCells.get(fireFighter.getPosition() + distance).getColor() == (ColorType.FIRE))
-                fireFighter.addElement(fireFighter.getPosition() + distance);
-
-            if(this.listOfCells.get(fireFighter.getPosition() - (33 * distance)).getColor() == (ColorType.FIRE))
-                fireFighter.addElement(fireFighter.getPosition() - (distance * 33));
-
-            if(this.listOfCells.get(fireFighter.getPosition() + (33 * distance)).getColor() == (ColorType.FIRE))
-                fireFighter.addElement(fireFighter.getPosition() + (distance * 33));
-
-            // en diagonale
-            if(this.listOfCells.get(fireFighter.getPosition() + (33 * distance) + distance).getColor() == (ColorType.FIRE))
-                fireFighter.addElement(fireFighter.getPosition() + (distance * 33) + distance);
-
-            if(this.listOfCells.get(fireFighter.getPosition() + (33 * distance) - distance).getColor() == (ColorType.FIRE))
-                fireFighter.addElement(fireFighter.getPosition() + (distance * 33) - distance);
-
-            if(this.listOfCells.get(fireFighter.getPosition() - (33 * distance) - distance).getColor() == (ColorType.FIRE))
-                fireFighter.addElement(fireFighter.getPosition() - (distance * 33) - distance);
-
-            if(this.listOfCells.get(fireFighter.getPosition() + (33 * distance) - distance).getColor() == (ColorType.FIRE))
-                fireFighter.addElement(fireFighter.getPosition() + (distance * 33) - distance);
-
-        }
-
-        // case tree: fireFighter is on the right of grid
-        if(fireFighter.getPosition() > 1472 && fireFighter.getPosition() != 1472) {
-            if(this.listOfCells.get(fireFighter.getPosition() - distance).getColor() == (ColorType.FIRE))
-                fireFighter.addElement(fireFighter.getPosition() - distance);
-
-            if(this.listOfCells.get(fireFighter.getPosition() - (33 * distance)).getColor() == (ColorType.FIRE))
-                fireFighter.addElement(fireFighter.getPosition() - (33 * distance));
-
-            if(this.listOfCells.get(fireFighter.getPosition() + distance).getColor() == (ColorType.FIRE))
-                fireFighter.addElement(fireFighter.getPosition() + distance);
-
-            if(this.listOfCells.get(fireFighter.getPosition() - (33 * distance) -distance).getColor() == (ColorType.FIRE))
-                fireFighter.addElement(fireFighter.getPosition() - (33 * distance) -distance);
-
-            if(this.listOfCells.get(fireFighter.getPosition() - (33 * distance) + distance).getColor() == (ColorType.FIRE))
-                fireFighter.addElement(fireFighter.getPosition() - (33 * distance) + distance);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("error for fireFighter : " + fireFighter.getPosition() + " for distance : " + distance);
         }
 
 
     }
+
+
+
+    private boolean onTheRightPart(int number) {
+        return number >= 1419 && number <= 1452;
+    }
+
+    private boolean onTheLeftPart(int number) {
+        return number >= 0 && number <= 32;
+    }
+
+
+
+
+
 
     private List<FireFighter> deleteAllFireFromFireFighter(List<FireFighter> list) {
         for(FireFighter fireFighter : list)
             fireFighter.removeAllFires();
         return list;
     }
-
+*/
 
 }

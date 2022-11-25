@@ -12,22 +12,26 @@ public final class Controller {
     @FXML Button play;
     @FXML Button stepByStep;
     private CellMouvementManager cmm;
-    private DisplayGridPane dgp;
+    private DisplayGridPane display;
     public static int _click = 0;
 
     @FXML public void runStepByStep() {
         if(_click == 0) {
-            cmm = new CellMouvementManager(gridPane.getChildren().size());
-            dgp = new DisplayGridPane(gridPane);
-            dgp.setListOfCells(cmm.getListOfCells());
-            dgp.run();
+            cmm = new CellMouvementManager(gridPane.getColumnCount(), gridPane.getRowCount());
+            display = new DisplayGridPane(
+                    gridPane,
+                    gridPane.getColumnCount(),
+                    gridPane.getRowCount(),
+                    cmm.getListOfCells()
+            );
+            display.run();
             _click = 1;
         }
-        else {
+        /*else {
             cmm.updateGrid();
-            dgp.setListOfCells(cmm.getListOfCells());
-            dgp.run();
-        }
+            display.setListOfCells(cmm.getListOfCells());
+            v.run();
+        }*/
     }
 
     @FXML public void play() {
@@ -35,10 +39,10 @@ public final class Controller {
     }
 
     @FXML public void restart() {
-        cmm = new CellMouvementManager(gridPane.getChildren().size());
+        /*cmm = new CellMouvementManager(gridPane.getChildren().size());
         cmm.updateGrid();
         dgp = new DisplayGridPane(gridPane);
         dgp.setListOfCells(cmm.getListOfCells());
-        _click = 0;
+        _click = 0;*/
     }
 }

@@ -8,27 +8,36 @@ import javafx.scene.paint.Color;
 import java.util.List;
 
 public class DisplayGridPane {
-    private List<Cell> listOfCells;
+    private Cell[][] listOfCells;
     private GridPane gridPane;
     private ColorType colorType;
+    private int column;
+    private int row;
 
     /*
     Here we update all cell in grid
      */
 
-    public DisplayGridPane(GridPane gridpane) {
+    public DisplayGridPane(GridPane gridpane, int column, int row, Cell[][] listOfCells) {
         this.gridPane = gridpane;
+        this.listOfCells = listOfCells;
         colorType = ColorType.NOTHING;
+        this.column = column;
+        this.row = row;
     }
 
     public void run() {
-        for(int i = 0; i < this.listOfCells.size(); i++) {
-            ColorType color = this.listOfCells.get(i).getColor();
-            this.gridPane.getChildren().get(i).setStyle(colorType.getBackgroundColor(color));
+        int index = 0;
+        for(int i = 0; i < column; i++) {
+            for(int j = 0; j < row; j++) {
+                ColorType color = this.listOfCells[i][j].getColor();
+                this.gridPane.getChildren().get(index).setStyle(colorType.getBackgroundColor(color));
+                index++;
+            }
         }
     }
 
-    public void setListOfCells(List<Cell> listOfCells) {
+    public void setListOfCells(Cell[][] listOfCells) {
         this.listOfCells = listOfCells;
     }
 }

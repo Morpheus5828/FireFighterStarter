@@ -4,13 +4,15 @@ import java.util.List;
 
 public class Cell {
     protected ColorType colorType;
-    protected List<Cell> listOfCells;
-    protected int CELL_NUMBER;
+    protected Cell[][] listOfCells;
+    protected int gridColumn;
+    protected int gridRows;
 
-    public Cell(List<Cell> listOfCells) {
-        this.listOfCells = listOfCells;
+    public Cell(Cell[][]listOfCells, int gridRows, int gridColumn) {
+        this.gridRows = gridRows;
+        this.gridColumn = gridColumn;
         this.colorType = ColorType.NOTHING;
-        CELL_NUMBER = this.listOfCells.size();
+        this.listOfCells = listOfCells;
     }
 
     public ColorType getColor() {
@@ -19,5 +21,9 @@ public class Cell {
 
     public void setColorType(ColorType colorType) {
         this.colorType = colorType;
+    }
+
+    public void setListOfCells(Cell[][] listOfCells) {
+        this.listOfCells = listOfCells;
     }
 }

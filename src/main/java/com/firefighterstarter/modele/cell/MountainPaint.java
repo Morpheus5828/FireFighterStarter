@@ -6,14 +6,14 @@ import java.util.List;
 
 public class MountainPaint extends Cell {
     private int numberOfMountainGroup;
-    public MountainPaint(List<Cell> listOfCells, int numberOfMountainGroup) {
-        super(listOfCells);
+    public MountainPaint(Cell[][] listOfCells, int numberOfMountainGroup, int gridRows, int gridColumn) {
+        super(listOfCells, gridRows, gridColumn);
         this.numberOfMountainGroup = numberOfMountainGroup;
     }
 
 
     public void initMountain() {
-        for(int i = 0; i < numberOfMountainGroup; i++) {
+        /*for(int i = 0; i < numberOfMountainGroup; i++) {
             int randomPosition = (int) (Math.random() * 1400);
             Cell currentCell = this.listOfCells.get(randomPosition);
             Cell rightCurrentCell = this.listOfCells.get(randomPosition + 33);
@@ -31,7 +31,7 @@ public class MountainPaint extends Cell {
                 behindCurrentCell.setColorType(ColorType.MOUNTAIN);
                 diagonalCurrentCell.setColorType(ColorType.MOUNTAIN);
             }
-        }
+        }*/
     }
 
 }

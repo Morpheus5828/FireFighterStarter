@@ -6,8 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CellMouvementManager {
-    private List<Cell> listOfCells;
-    private int lenght;
+    private Cell[][] listOfCells;
+    private int column;
+    private int rows;
     private final int numberOfCloud = 20;
     private final int numberOfMountainGroup = 6;
     private final int numberOfFire = 100;
@@ -20,45 +21,48 @@ public class CellMouvementManager {
     private CloudPaint cloudPaint;
     private WhitePaint whitePaint;
 
-    public CellMouvementManager(int length) {
-        this.listOfCells = new ArrayList<>();
-        this.lenght = length;
-        this.firePaint = new FirePaint(this.listOfCells, numberOfFire);
-        this.mountainPaint = new MountainPaint(this.listOfCells, numberOfMountainGroup);
-        this.fireFighterPaint = new FireFighterPaint(this.listOfCells, numberOfFireFighter);
-        this.cloudPaint = new CloudPaint(this.listOfCells, numberOfCloud);
-        this.wayPaint = new WayPaint(this.listOfCells);
-        this.whitePaint = new WhitePaint(this.listOfCells);
-
+    public CellMouvementManager(int column, int rows) {
+        this.column = column;
+        this.rows = rows;
+        this.listOfCells = new Cell[column][rows];
         initGrid();
     }
 
     public void initGrid() {
-        for(int i = 0; i < this.lenght; i++) {
-            Cell cell = new Cell(listOfCells);
-            cell.setColorType(ColorType.NOTHING);
-            this.listOfCells.add(cell);
+        for(int i = 0; i < this.column; i++) {
+            for(int j = 0; j < this.rows; j++) {
+                Cell cell = new Cell(listOfCells, column, rows);
+                this.listOfCells[i][j] = cell;
+            }
         }
-        wayPaint.initWay(); // must be the first one to be init
-        fireFighterPaint.initFireFighter();
-        mountainPaint.initMountain();
-        cloudPaint.initCloud();
-        firePaint.initFire();
-    }
 
+        this.firePaint = new FirePaint(listOfCells, numberOfFire, column, rows);
+        this.mountainPaint = new MountainPaint(listOfCells, numberOfMountainGroup, column, rows);
+        this.fireFighterPaint = new FireFighterPaint(listOfCells, numberOfFireFighter, column, rows);
+        this.cloudPaint = new CloudPaint(listOfCells, numberOfCloud, column, rows);
+        this.wayPaint = new WayPaint(listOfCells, column, rows);
+        this.whitePaint = new WhitePaint(listOfCells, column, rows);
+
+        cloudPaint.initCloud(); // must be the first one to be init
+        //fireFighterPaint.();
+        //mountainPaint.initMountain();
+        //cloudPaint.initCloud();
+        //firePaint.initFire();
+    }
 
     public void updateGrid() {
         //cloudPaint.mouveCloud();
-        fireFighterPaint.mouveFireFighter();
+        //fireFighterPaint.mouveFireFighter();
+
     }
 
     public void restartGrid() {
-        initGrid();
+     //   initGrid();
     }
 
 
-    public List<Cell> getListOfCells() {
-        return listOfCells;
+    public Cell[][] getListOfCells() {
+        return this.listOfCells;
     }
 
 
