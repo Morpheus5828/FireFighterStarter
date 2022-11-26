@@ -6,13 +6,9 @@ import com.firefighterstarter.modele.cell.ColorType;
 import java.util.*;
 
 public class FireFighterPaint extends Cell {
-    private final int numberOfFireFighter;
-    private List<FireFighter> listOfFireFighters;
 
-    public FireFighterPaint(Cell[][] listOfCells, int numberOfFireFighter, int column, int rows) {
-        super(listOfCells, column, rows);
-        this.numberOfFireFighter = numberOfFireFighter;
-        this.listOfFireFighters = new ArrayList<>();
+    public FireFighterPaint() {
+
     }
 
     /*public void initFireFighter() {

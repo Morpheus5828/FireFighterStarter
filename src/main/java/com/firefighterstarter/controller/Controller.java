@@ -28,9 +28,10 @@ public final class Controller {
             _click = 1;
         }
         else {
-            cmm.updateGrid();
-            display.setListOfCells(cmm.getListOfCells());
+
+            display.setListOfCells(cmm.updateGrid());
             display.run();
+            cmm.setListOfCells(cmm.updateGrid());
         }
     }
 
@@ -39,10 +40,6 @@ public final class Controller {
     }
 
     @FXML public void restart() {
-        /*cmm = new CellMouvementManager(gridPane.getChildren().size());
-        cmm.updateGrid();
-        dgp = new DisplayGridPane(gridPane);
-        dgp.setListOfCells(cmm.getListOfCells());
-        _click = 0;*/
+
     }
 }

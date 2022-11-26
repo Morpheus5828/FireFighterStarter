@@ -9,31 +9,17 @@ import java.util.HashMap;
 import java.util.List;
 
 public class CloudPaint extends Cell {
-    private int numberOfClouds;
-    private Cell[][] clouds;
 
-    public CloudPaint(Cell[][] listOfCells, int numberOfClouds, int gridRows, int gridColumn) {
-        super(listOfCells, gridRows, gridColumn);
-        this.numberOfClouds = numberOfClouds;
-        this.clouds = new Cell[gridRows][gridColumn];
-        initTab(clouds);
-
+    public CloudPaint() {
 
     }
 
-    public void initCloud() {
-        for(int i = 0; i < numberOfClouds; i++) {
-            int randomColumn = (int) (Math.random() * gridColumn);
-            int randomRow = (int) (Math.random() * gridRows);
-            Cell currentCell = listOfCells[randomRow][randomColumn];
-            if(currentCell.getColor() == ColorType.NOTHING) {
-                this.listOfCells[randomRow][randomColumn].setColorType(ColorType.CLOUD);
-                this.clouds[randomRow][randomColumn] = this.listOfCells[randomRow][randomColumn];
-            }
-        }
+    public ColorType getColor() {
+        return ColorType.CLOUD;
     }
 
-    public void mouveCloud() {
+
+   /* public void mouveCloud() {
         Cell[][] cloudsUpdate = new Cell[gridRows][gridColumn];
         initTab(cloudsUpdate);
         for(int i = 0; i < gridRows; i++) {
@@ -82,5 +68,5 @@ public class CloudPaint extends Cell {
     public Cell[][] getClouds() {
         this.listOfCells = clouds;
         return listOfCells;
-    }
+    }*/
 }
