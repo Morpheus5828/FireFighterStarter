@@ -51,7 +51,7 @@ public class CellMouvementManager {
     }
 
     public void updateGrid() {
-        //cloudPaint.mouveCloud();
+        cloudPaint.mouveCloud();
         //fireFighterPaint.mouveFireFighter();
 
     }
@@ -62,7 +62,7 @@ public class CellMouvementManager {
 
 
     public Cell[][] getListOfCells() {
-        return this.listOfCells;
+        return cloudPaint.getClouds();
     }
 
 

@@ -27,11 +27,11 @@ public final class Controller {
             display.run();
             _click = 1;
         }
-        /*else {
+        else {
             cmm.updateGrid();
             display.setListOfCells(cmm.getListOfCells());
-            v.run();
-        }*/
+            display.run();
+        }
     }
 
     @FXML public void play() {

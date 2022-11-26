@@ -5,8 +5,8 @@ import java.util.List;
 public class Cell {
     protected ColorType colorType;
     protected Cell[][] listOfCells;
-    protected int gridColumn;
-    protected int gridRows;
+    protected final int gridColumn;
+    protected final int gridRows;
 
     public Cell(Cell[][]listOfCells, int gridRows, int gridColumn) {
         this.gridRows = gridRows;
