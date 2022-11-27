@@ -6,22 +6,21 @@ import com.firefighterstarter.modele.cell.ColorType;
 import java.util.*;
 
 public class FireFighterPaint extends Cell {
+    private int position;
+    private Cell fireGoal;
+    private int distance;
 
     public FireFighterPaint() {
 
     }
 
-    /*public void initFireFighter() {
-        for(int i = 0; i < numberOfFireFighter; i++) {
-            int randomPosition = (int) (Math.random() * 1452);
-            Cell currentCell = this.listOfCells.get(randomPosition);
-            if(currentCell.getColor() == ColorType.NOTHING) {
-                this.listOfCells.get(randomPosition).setColorType(ColorType.FIREFIGHTER);
-                this.listOfFireFighters.add(new FireFighter(randomPosition));
-            }
+    public ColorType getColor() {
+        return ColorType.FIREFIGHTER;
+    }
 
-        }
-    }*/
+
+
+
 
     /*public void mouveFireFighter() {
         List<FireFighter> update = new ArrayList<>();
