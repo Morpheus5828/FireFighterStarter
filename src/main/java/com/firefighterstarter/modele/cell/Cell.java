@@ -12,4 +12,6 @@ public abstract class Cell {
     public void setColorType(ColorType colorType) {
         this.colorType = colorType;
     }
+
+
 }

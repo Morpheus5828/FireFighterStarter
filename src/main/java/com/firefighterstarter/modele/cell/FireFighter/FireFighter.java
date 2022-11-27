@@ -14,7 +14,7 @@ public class FireFighter {
     private int row;
 
     public FireFighter(int column, int row) {
-        this.distance = 2;
+        this.distance = 3;
         this.fireGoal = null;
         this.column = column;
         this.row = row;
@@ -43,7 +43,7 @@ public class FireFighter {
     public void findFire(Cell[][] listOfCells) {
         try {
             while(goalIsNull()) {
-                if(distance == 3)
+                if(distance == 4)
                     break;
                 for(int i = 0; i < distance; i++) {
                     if(this.row == 0 && this.column == 0) {
@@ -763,6 +763,10 @@ public class FireFighter {
 
     public boolean goalIsNull() {
         return this.fireGoal == null;
+    }
+
+    public void killFire() {
+        System.out.println(this.fireGoal);
     }
 
 
