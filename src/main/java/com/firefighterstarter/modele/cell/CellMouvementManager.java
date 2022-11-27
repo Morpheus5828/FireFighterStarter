@@ -35,13 +35,12 @@ public class CellMouvementManager {
 
         // add clouds on the grid
         //initMountain();
-        initCloud();
+       // initCloud();
         initFire();
-        initFireFighter();
+       // initFireFighter();
     }
 
     public Cell[][] updateGrid() {
-
         Cell[][] updateTab = new Cell[columnNumber][rowsNumber];
 
         for(int i = 0; i < this.columnNumber; i++)
@@ -50,7 +49,7 @@ public class CellMouvementManager {
 
         //mouveCloud(updateTab);
        // mouveFF(updateTab);
-        mouvFire(updateTab);
+        mouveFire(updateTab);
 
         return updateTab;
     }
@@ -205,50 +204,137 @@ public class CellMouvementManager {
         this.fireFighters = updateFFList;
     }
 
-    public void mouvFire(Cell[][] updateTab) {
+    public void mouveFire(Cell[][] updateTab) {
         try {
-            updateTab[0][0] = new FirePaint();
             for (int i = 0; i < this.rowsNumber; i++) {
                 for (int j = 0; j < this.columnNumber; j++) {
-                    if (i == 0 && j == 0 && updateTab[i][j].getColor() == ColorType.FIRE) {
-                        if (updateTab[j + 1][i].getColor() == ColorType.NOTHING) updateTab[j + 1][i] = new FirePaint();
-                        if (updateTab[j + 1][i + 1].getColor() == ColorType.NOTHING)
-                            updateTab[j + 1][i + 1] = new FirePaint();
-                        if (updateTab[j][i + 1].getColor() == ColorType.NOTHING) updateTab[j][i + 1] = new FirePaint();
-                    } else if (i == 0 && j == 42 && updateTab[i][j].getColor() == ColorType.FIRE) {
+                    if ((i == 0 && j == 0) && updateTab[j][i].getColor() == ColorType.FIRE) {
+                        if (
+                            updateTab[j + 1][i].getColor() == ColorType.NOTHING ||
+                            updateTab[j + 1][i].getColor() == ColorType.FIRE
+
+                        ) updateTab[j + 1][i] = new FirePaint();
+                        if (
+                            updateTab[j + 1][i + 1].getColor() == ColorType.NOTHING ||
+                            updateTab[j + 1][i + 1].getColor() == ColorType.FIRE
+
+                        ) updateTab[j + 1][i + 1] = new FirePaint();
+
+                        if (
+                                updateTab[j][i + 1].getColor() == ColorType.NOTHING ||
+                                updateTab[j][i + 1].getColor() == ColorType.FIRE
+                        ) updateTab[j][i + 1] = new FirePaint();
+                    }
+                    else if ((i == 32 && j == 0) && updateTab[j][i].getColor() == ColorType.FIRE) {
+                        if (
+                                updateTab[j+1][i].getColor() == ColorType.NOTHING ||
+                                updateTab[j+1][i].getColor() == ColorType.FIRE
+                        ) updateTab[j+1][i] = new FirePaint();
+                        if (
+                            updateTab[j+1][i-1].getColor() == ColorType.NOTHING ||
+                            updateTab[j+1][i-1].getColor() == ColorType.FIRE
+                            ) updateTab[j+1][i-1] = new FirePaint();
+                        if (
+                            updateTab[j][i-1].getColor() == ColorType.NOTHING ||
+                            updateTab[j][i-1].getColor() == ColorType.FIRE
+                        ) updateTab[j][i-1] = new FirePaint();
+                    }
+                    else if ((i == 0 && j == 43) && updateTab[j][i].getColor() == ColorType.FIRE) {
+                        if (
+                                updateTab[j-1][i].getColor() == ColorType.NOTHING ||
+                                updateTab[j-1][i].getColor() == ColorType.FIRE
+                        ) updateTab[j-1][i] = new FirePaint();
+                        if (
+                                updateTab[j-1][i+1].getColor() == ColorType.NOTHING ||
+                                updateTab[j-1][i+1].getColor() == ColorType.FIRE
+                        ) updateTab[j-1][i+1] = new FirePaint();
+                        if (
+                                updateTab[j][i+1].getColor() == ColorType.NOTHING ||
+                                updateTab[j][i+1].getColor() == ColorType.FIRE
+                        ) updateTab[j][i+1] = new FirePaint();
+                    } else if ((i == 32 && j == 43) && updateTab[j][i].getColor() == ColorType.FIRE) {
+                        if (
+                                updateTab[j-1][i].getColor() == ColorType.NOTHING ||
+                                updateTab[j-1][i].getColor() == ColorType.FIRE
+
+                        ) updateTab[j-1][i] = new FirePaint();
+                        if (
+                                updateTab[j-1][i-1].getColor() == ColorType.NOTHING ||
+                                updateTab[j-1][i-1].getColor() == ColorType.FIRE
+                        ) updateTab[j-1][i-1] = new FirePaint();
+                        if (
+                                updateTab[j][i-1].getColor() == ColorType.NOTHING ||
+                                updateTab[j][i-1].getColor() == ColorType.FIRE
+                        ) updateTab[j][i-1] = new FirePaint();
+                    } else if (i == 0 && j != 0 && updateTab[j][i].getColor() == ColorType.FIRE) {
+                        if (
+                                updateTab[j+1][i].getColor() == ColorType.NOTHING ||
+                                updateTab[j+1][i].getColor() == ColorType.FIRE
+                        ) updateTab[j+1][i] = new FirePaint();
+                        if (
+                                updateTab[j][i+1].getColor() == ColorType.NOTHING ||
+                                updateTab[j][i+1].getColor() == ColorType.FIRE
+                        ) updateTab[j][i+1] = new FirePaint();
+                    } else if (j == 0 && i != 0 && updateTab[j][i].getColor() == ColorType.FIRE) {
+                        if (
+                                updateTab[j+1][i].getColor() == ColorType.NOTHING ||
+                                updateTab[j+1][i].getColor() == ColorType.FIRE
+                                ) updateTab[j+1][i] = new FirePaint();
+                        if (
+                                updateTab[j][i+1].getColor() == ColorType.NOTHING ||
+                                 updateTab[j][i+1].getColor() == ColorType.FIRE
+                        ) updateTab[j][i+1] = new FirePaint();
+                    }
+
+                    else {
+                        if(updateTab[j+1][i].getColor() == ColorType.FIRE) {
+                            updateTab[j+1][i] = new FirePaint();
+                            updateTab[j][i+1] = new FirePaint();
+                            updateTab[j-1][i] = new FirePaint();
+                            updateTab[j][i-1] = new FirePaint();
+                        }
+                    }
+
+                    /*
+
+                    /*else if (i == 0 && j == 42 && updateTab[i][j].getColor() == ColorType.FIRE) {
                         if (updateTab[j - 1][i].getColor() == ColorType.NOTHING) updateTab[j - 1][i] = new FirePaint();
                         if (updateTab[j - 1][i + 1].getColor() == ColorType.NOTHING)
                             updateTab[j - 1][i + 1] = new FirePaint();
                         if (updateTab[j][i + 1].getColor() == ColorType.NOTHING) updateTab[j][i + 1] = new FirePaint();
-                    } else if (i == 33 && j == 0 && updateTab[i][j].getColor() == ColorType.FIRE) {
+                    }
+
+                    else if (i == 0 && j == 32 && updateTab[i][j].getColor() == ColorType.FIRE) {
                         if (updateTab[j + 1][i].getColor() == ColorType.NOTHING) updateTab[j + 1][i] = new FirePaint();
                         if (updateTab[j + 1][i - 1].getColor() == ColorType.NOTHING)
                             updateTab[j + 1][i - 1] = new FirePaint();
                         if (updateTab[j][i - 1].getColor() == ColorType.NOTHING) updateTab[j][i - 1] = new FirePaint();
-                    } else if (i == 33 && j == 42 && updateTab[i][j].getColor() == ColorType.FIRE) {
+                    } else if (i == 32 && j == 42 && updateTab[i][j].getColor() == ColorType.FIRE) {
                         if (updateTab[j - 1][i].getColor() == ColorType.NOTHING) updateTab[j - 1][i] = new FirePaint();
                         if (updateTab[j - 1][i - 1].getColor() == ColorType.NOTHING)
                             updateTab[j - 1][i - 1] = new FirePaint();
                         if (updateTab[j][i - 1].getColor() == ColorType.NOTHING) updateTab[j][i - 1] = new FirePaint();
-                    } /*else if (i == 0) {
+                    }*/
+
+                    /*else if (i == 0 && j != 0) {
                     if(updateTab[j+1][i+1].getColor() == ColorType.NOTHING) updateTab[j+1][i+1] = new FirePaint();
                     if(updateTab[j][i+1].getColor() == ColorType.NOTHING) updateTab[j][i+1] = new FirePaint();
                     if(updateTab[j][i+1].getColor() == ColorType.NOTHING) updateTab[j][i+1] = new FirePaint();
                     if(updateTab[j-1][i].getColor() == ColorType.NOTHING) updateTab[j-1][i] = new FirePaint();
                     if(updateTab[j+1][i].getColor() == ColorType.NOTHING) updateTab[j+1][i] = new FirePaint();
-                } else if (i == 33) {
+                } else if (i == 33 && j != 0) {
                     if(updateTab[j+1][i].getColor() == ColorType.NOTHING) updateTab[j+1][i] = new FirePaint();
                     if(updateTab[j-1][i].getColor() == ColorType.NOTHING) updateTab[j-1][i] = new FirePaint();
                     if(updateTab[j+1][i-1].getColor() == ColorType.NOTHING) updateTab[j+1][i-1] = new FirePaint();
                     if(updateTab[j-1][i-1].getColor() == ColorType.NOTHING) updateTab[j-1][i-1] = new FirePaint();
                     if(updateTab[j][i-1].getColor() == ColorType.NOTHING) updateTab[j][i-1] = new FirePaint();
-                } else if (j == 0) {
+                } else if (j == 0 && i != 33) {
                     if(updateTab[j][i-1].getColor() == ColorType.NOTHING) updateTab[j][i-1] = new FirePaint();
                     if(updateTab[j][i+1].getColor() == ColorType.NOTHING) updateTab[j][i+1] = new FirePaint();
                     if(updateTab[j+1][i-1].getColor() == ColorType.NOTHING) updateTab[j+1][i-1] = new FirePaint();
                     if(updateTab[j+1][i].getColor() == ColorType.NOTHING) updateTab[j+1][i] = new FirePaint();
                     if(updateTab[j+1][i+1].getColor() == ColorType.NOTHING) updateTab[j+1][i+1] = new FirePaint();
-                } else if (j == 42) {
+                } else if (j == 42)  {
                     if(updateTab[j][i-1].getColor() == ColorType.NOTHING) updateTab[j][i-1] = new FirePaint();
                     if(updateTab[j][i+1].getColor() == ColorType.NOTHING) updateTab[j][i+1] = new FirePaint();
                     if(updateTab[j-1][i-1].getColor() == ColorType.NOTHING) updateTab[j-1][i-1] = new FirePaint();
