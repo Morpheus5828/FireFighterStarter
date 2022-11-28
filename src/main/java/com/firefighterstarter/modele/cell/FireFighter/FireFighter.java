@@ -38,8 +38,8 @@ public class FireFighter {
     }
 
     public void findFire(Cell[][] listOfCells) {
-        int i = 0;
-        int k = 0;
+        int i;
+        int k;
         try {
 
             while(goalIsNull()) {
@@ -99,7 +99,8 @@ public class FireFighter {
                             }
                         }
 
-                    } else if (this.row == 0 && this.column == 43) {
+                    }
+                    else if (this.row == 0 && this.column == 43) {
                         for(k = 1 ; k < distance; k++) {
                             if(k == 1) {
                                 if(listOfCells[column-k][row].getColor() == ColorType.FIRE) {
@@ -152,7 +153,9 @@ public class FireFighter {
                             }
                         }
 
-                    } else if (this.row == 33 && this.column == 0) {
+                    }
+
+                    else if (this.row == 33 && this.column == 0) {
                         for(k = 1 ; k < distance; k++) {
                             if(k == 1) {
                                 if(listOfCells[column+1][row].getColor() == ColorType.FIRE) {
@@ -205,7 +208,9 @@ public class FireFighter {
                             }
                         }
 
-                    } else if (this.row == 33 && this.column == 43) {
+                    }
+
+                    else if (this.row == 33 && this.column == 43) {
                         for(k = 1 ; k < distance; k++) {
                             if(k == 1) {
                                 if(listOfCells[column-1][row-1].getColor() == ColorType.FIRE) {
@@ -261,7 +266,9 @@ public class FireFighter {
                         }
 
                         // case ff is on the left side
-                    } else if (this.column == 0) {
+                    }
+
+                    else if (this.column == 0) {
                         for(k = 1 ; k < distance; k++) {
                             if(k == 1) {
                                 if(listOfCells[column][row+1].getColor() == ColorType.FIRE) {
@@ -348,94 +355,95 @@ public class FireFighter {
                         }
 
                         // case ff is on the right side
-                    } else if (this.column == 43) {
-                        for(k = 1 ; k < distance; k++) {
-                            if(k == 1) {
-                                if(listOfCells[column][row+1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row+1];
+                    }
+
+                    else if (this.column == 43) {
+                        for (k = 1; k < distance; k++) {
+                            if (k == 1) {
+                                if (listOfCells[column][row + 1].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column][row + 1];
                                     return;
                                 }
-                                if(listOfCells[column][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row-1];
+                                if (listOfCells[column][row - 1].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column][row - 1];
                                     return;
                                 }
-                                if(listOfCells[column+1][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row];
+                                if (listOfCells[column - 1][row].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column - 1][row];
                                     return;
                                 }
-                                if(listOfCells[column+1][row+1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row+1];
+                                if (listOfCells[column - 1][row + 1].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column - 1][row + 1];
                                     return;
                                 }
-                                if(listOfCells[column+1][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row-1];
+                                if (listOfCells[column - 1][row - 1].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column - 1][row - 1];
                                     return;
                                 }
-                            }
-                            else {
-                                if(listOfCells[column][row+1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row+1];
+                            } else {
+                                if (listOfCells[column][row + 1].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column][row + 1];
                                     return;
                                 }
-                                if(listOfCells[column][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row-1];
+                                if (listOfCells[column][row - 1].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column][row - 1];
                                     return;
                                 }
-                                if(listOfCells[column-1][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-1][row-1];
+                                if (listOfCells[column - 1][row].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column - 1][row];
                                     return;
                                 }
-                                if(listOfCells[column-1][row+1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-1][row+1];
+                                if (listOfCells[column - 1][row + 1].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column - 1][row + 1];
                                     return;
                                 }
-                                if(listOfCells[column-1][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-1][row];
+                                if (listOfCells[column - 1][row - 1].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column - 1][row - 1];
                                     return;
                                 }
                                 //
-                                if(listOfCells[column-k][row+k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-k][row+k];
+                                if (listOfCells[column][row - k].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column][row - k];
                                     return;
                                 }
-                                if(listOfCells[column-k][row+1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-k][row+1];
+                                if (listOfCells[column - 1][row - k].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column - 1][row - k];
                                     return;
                                 }
-                                if(listOfCells[column-k][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-k][row];
+                                if (listOfCells[column - k][row - k].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column - k][row - k];
                                     return;
                                 }
-                                if(listOfCells[column-k][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-k][row-1];
+                                if (listOfCells[column - k][row - 1].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column - k][row - 1];
                                     return;
                                 }
-                                if(listOfCells[column-k][row-k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-k][row-k];
+                                if (listOfCells[column - k][row].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column - k][row];
                                     return;
                                 }
-                                if(listOfCells[column-1][row+k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-1][row+k];
+                                if (listOfCells[column - k][row + 1].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column - k][row + 1];
                                     return;
                                 }
-                                if(listOfCells[column][row+k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row+k];
+                                if (listOfCells[column - k][row + k].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column - k][row + k];
                                     return;
                                 }
-                                if(listOfCells[column-1][row-k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-1][row-k];
+                                if (listOfCells[column - 1][row + k].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column - 1][row + k];
                                     return;
                                 }
-                                if(listOfCells[column][row-k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row-k];
+                                if (listOfCells[column][row + k].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column][row + k];
                                     return;
                                 }
 
                             }
                         }
+                    }
 
-                        // case ff is on the bottom side
-                    } else if (this.row == 0) {
+                    else if (this.row == 0) {
                         for(k = 1 ; k < distance; k++) {
                             if(k == 1) {
                                 if(listOfCells[column+1][row].getColor() == ColorType.FIRE) {
@@ -522,7 +530,9 @@ public class FireFighter {
                         }
 
                         // case ff is in downside
-                    } else if (this.row == 33) {
+                    }
+
+                    else if (this.row == 33) {
                         for(k = 1 ; k < distance; k++) {
                             if(k == 1) {
                                 if(listOfCells[column][row-1].getColor() == ColorType.FIRE) {
@@ -622,18 +632,16 @@ public class FireFighter {
                                     this.fireGoal = listOfCells[column-1][row-1];
                                     return;
                                 }
-                                if(listOfCells[column+1][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row-1];
-                                    return;
-                                }
-                                if(listOfCells[column+1][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row];
-                                    return;
-                                }
                                 if(listOfCells[column-1][row].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column-1][row];
                                     return;
                                 }
+
+                                if(listOfCells[column-1][row+1].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column-1][row+1];
+                                    return;
+                                }
+
                                 if(listOfCells[column][row+1].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column][row+1];
                                     return;
@@ -642,7 +650,11 @@ public class FireFighter {
                                     this.fireGoal = listOfCells[column+1][row+1];
                                     return;
                                 }
-                                if(listOfCells[column-1][row+1].getColor() == ColorType.FIRE) {
+                                if(listOfCells[column+1][row].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column+1][row];
+                                    return;
+                                }
+                                if(listOfCells[column+1][row-1].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column-1][row+1];
                                     return;
                                 }
@@ -656,18 +668,16 @@ public class FireFighter {
                                     this.fireGoal = listOfCells[column-1][row-1];
                                     return;
                                 }
-                                if(listOfCells[column+1][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row-1];
-                                    return;
-                                }
-                                if(listOfCells[column+1][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row];
-                                    return;
-                                }
                                 if(listOfCells[column-1][row].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column-1][row];
                                     return;
                                 }
+
+                                if(listOfCells[column-1][row+1].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column-1][row+1];
+                                    return;
+                                }
+
                                 if(listOfCells[column][row+1].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column][row+1];
                                     return;
@@ -676,11 +686,69 @@ public class FireFighter {
                                     this.fireGoal = listOfCells[column+1][row+1];
                                     return;
                                 }
-                                if(listOfCells[column-1][row+1].getColor() == ColorType.FIRE) {
+                                if(listOfCells[column+1][row].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column+1][row];
+                                    return;
+                                }
+                                if(listOfCells[column+1][row-1].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column-1][row+1];
                                     return;
                                 }
                                 //
+                                if(listOfCells[column][row-k].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column][row-k];
+                                    return;
+                                }
+
+                                if(listOfCells[column-1][row-k].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column-1][row-k];
+                                    return;
+                                }
+
+                                if(listOfCells[column+k][row-k].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column+k][row-k];
+                                    return;
+                                }
+
+                                if(listOfCells[column-k][row-1].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column-k][row-1];
+                                    return;
+                                }
+                                if(listOfCells[column-k][row].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column-k][row];
+                                    return;
+                                }
+                                if(listOfCells[column-k][row+1].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column-k][row+1];
+                                    return;
+                                }
+                                if(listOfCells[column-k][row+k].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column-k][row+k];
+                                    return;
+                                }
+
+                                if(listOfCells[column-1][row+k].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column-1][row+k];
+                                    return;
+                                }
+                                if(listOfCells[column][row+k].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column][row+k];
+                                    return;
+                                }
+
+                                if(listOfCells[column+1][row+k].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column+1][row+k];
+                                    return;
+                                }
+                                if(listOfCells[column+k][row+k].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column+k][row+k];
+                                    return;
+                                }
+                                if(listOfCells[column+k][row+1].getColor() == ColorType.FIRE) {
+                                    this.fireGoal = listOfCells[column+k][row+1];
+                                    return;
+                                }
+
                                 if(listOfCells[column+k][row].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column+k][row];
                                     return;
@@ -691,60 +759,10 @@ public class FireFighter {
                                 }
                                 if(listOfCells[column+k][row-k].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column+k][row-k];
-                                    return;
+                                    break;
                                 }
                                 if(listOfCells[column+1][row-k].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column+1][row-k];
-                                    return;
-                                }
-                                if(listOfCells[column][row-k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row-k];
-                                    return;
-                                }
-                                if(listOfCells[column-1][row-k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-1][row-k];
-                                    return;
-                                }
-                                if(listOfCells[column-k][row-k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-k][row-k];
-                                    return;
-                                }
-                                if(listOfCells[column-k][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-k][row-1];
-                                    return;
-                                }
-                                if(listOfCells[column-k][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-k][row];
-                                    return;
-                                }
-                                //
-                                if(listOfCells[column-k][row+1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-k][row+1];
-                                    return;
-                                }
-                                if(listOfCells[column-k][row+k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-k][row+k];
-                                    return;
-                                }
-                                if(listOfCells[column-1][row+k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-1][row+k];
-                                    return;
-                                }
-
-                                if(listOfCells[column+1][row+k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row+k];
-                                    return;
-                                }
-                                if(listOfCells[column][row+k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row+k];
-                                    return;
-                                }
-                                if(listOfCells[column+k][row+1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+k][row+1];
-                                    break;
-                                }
-                                if(listOfCells[column+k][row+k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+k][row+k];
                                     return;
                                 }
 
@@ -757,7 +775,7 @@ public class FireFighter {
 
             }
         } catch (Exception e) {
-            System.out.println("erreur i " + i + " et j : " + k);
+            //System.out.println("erreur i " + i + " et j : " + k);
         }
     }
 
@@ -773,7 +791,11 @@ public class FireFighter {
         this.fireGoal = null;
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return "FireFighter{" +
+                "column=" + column +
+                ", row=" + row +
+                '}';
+    }
 }
