@@ -1,5 +1,5 @@
 
-Partie 1
+Semaine 1
 ---
 
 Dans un premier temps, mettons en place le pattern MVC qui est bien adapté pour faire
@@ -17,3 +17,17 @@ Voici la description de chacun de ces repos:
 - # Controller:
   - Il effectue la transition avec le fichier FXML fire-fighter et la classe Grid (pour le moment).
 
+-----------------
+Objectif 1:
+--
+Afin d'obtenir une première version de mon application qui fonctionne, voici l'UML sur lequel je décide de me baser.
+<img width="800" src="uml/firstUml.png">
+
+Semaine 2
+---
+
+Après avoir commencé à coder les classes à partir de l'uml précédent, je me suis rendu compte
+que mon application avait un problème: la liaison logique et interface graphique est beaucoup trop proche, et finalemeent je ne me sers 
+pas bien du pattern MVC. Une des conséquences de ce fait, est l'update des panes de la grille, je percois des conflits.
+J'ai donc refait mon UML (je n'ai pas noté touts les attributs) qui devrait fasse à ce problème est respecter le principe de l'open close.
+<img width="800" src="uml/secondUml.png">
