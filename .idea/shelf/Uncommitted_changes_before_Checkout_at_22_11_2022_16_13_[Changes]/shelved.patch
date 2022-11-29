@@ -1,0 +1,237 @@
+Index: src/main/java/com/firefighterstarter/view/grid/paint/CloudPaint.java
+===================================================================
+diff --git a/src/main/java/com/firefighterstarter/view/grid/paint/CloudPaint.java b/src/main/java/com/firefighterstarter/view/grid/paint/CloudPaint.java
+--- a/src/main/java/com/firefighterstarter/view/grid/paint/CloudPaint.java	
++++ b/src/main/java/com/firefighterstarter/view/grid/paint/CloudPaint.java	
+@@ -10,12 +10,10 @@
+ 
+ public class CloudPaint extends GridColor implements Runnable {
+     private List<Integer> cloudNodes;
+-    private boolean threadIsRunnable;
+ 
+     public CloudPaint(GridPane gridPane) {
+         super(gridPane);
+         this.cloudNodes = new ArrayList<>();
+-        this.threadIsRunnable = false;
+     }
+ 
+     public void initPaint() {
+@@ -24,7 +22,8 @@
+             int randomSquare = (int) (Math.random() * 1452);
+             if(
+                 this.gridPane.getChildren().get(randomSquare).getStyle().equals(WAY_COLOR) ||
+-                this.gridPane.getChildren().get(randomSquare).getStyle().equals(MOUNTAIN_COLOR)
++                this.gridPane.getChildren().get(randomSquare).getStyle().equals(MOUNTAIN_COLOR) ||
++                this.gridPane.getChildren().get(randomSquare).getStyle().equals(FF_COLOR)
+             ) {
+                 continue;
+             }
+Index: src/main/java/com/firefighterstarter/view/grid/paint/FireFighterPaint.java
+===================================================================
+diff --git a/src/main/java/com/firefighterstarter/view/grid/paint/FireFighterPaint.java b/src/main/java/com/firefighterstarter/view/grid/paint/FireFighterPaint.java
+--- a/src/main/java/com/firefighterstarter/view/grid/paint/FireFighterPaint.java	
++++ b/src/main/java/com/firefighterstarter/view/grid/paint/FireFighterPaint.java	
+@@ -8,43 +8,35 @@
+ 
+ public class FireFighterPaint extends GridColor implements Runnable{
+     private List<Integer> fireFighterPosition;
++    private List<Integer> fireNearFF;
++    private List<Integer> ffWayPosition;
++
+     public FireFighterPaint(GridPane gridPane) {
+         super(gridPane);
+         this.fireFighterPosition = new ArrayList<>();
++        this.fireNearFF = new ArrayList<>();
++        this.ffWayPosition = new ArrayList<>();
+     }
+ 
+     public void initPaint() {
+-        for(int i = 0; i < 1000; i++) {
++        for(int i = 1; i < 1000; i++) {
+             int randomNumber = (int) (Math.random() * 10);
+-            if(i != 0) {
+-                if(randomNumber % 5 == 0) {
+-                    if(this.gridPane.getChildren().get(i).getStyle().equals(WAY_COLOR)) {
+-                        this.gridPane.getChildren().get(i).setStyle(FF_COLOR);
+-                        this.fireFighterPosition.add(randomNumber);
+-                    }
++            if(randomNumber % 5 == 0) {
++                if(this.gridPane.getChildren().get(i).getStyle().equals(WAY_COLOR)) {
++                    this.ffWayPosition.add(i);
++                    this.gridPane.getChildren().get(i).setStyle(FF_COLOR);
++                    this.fireFighterPosition.add(randomNumber);
+                 }
+             }
++
+         }
+     }
+ 
+     public void run() {
+-        List<Integer> newList = new ArrayList<>();
+-        /*for(int fireFighterPosition : this.fireFighterPosition) {
+-            List<Integer> firePositonList = getFireNearFireFighter(fireFighterPosition);
+-            if(firePositonList.size() != 0) {
+-                int randomCell = (int) (Math.random() * firePositonList.size());
+-                switchFireFighterPosition(fireFighterPosition, randomCell);
+-                newList.add(fireFighterPosition);
+-            }
+-            else {
+-                newList.add(fireFighterPosition);
+-            }
+-        }*/
+-        for(Integer s : this.fireFighterPosition) {
+-            this.gridPane.getChildren().get(s+33).setStyle(FF_COLOR);
+-            newList.add(s+33);
++        for(int i : this.ffWayPosition) {
++
+         }
+-        this.fireFighterPosition = newList;
++
+     }
+ 
+     private void switchFireFighterPosition(int position, int randomCell) {
+@@ -52,16 +44,41 @@
+         this.gridPane.getChildren().get(randomCell).setStyle(FF_COLOR);
+     }
+ 
+-    private List<Integer> getFireNearFireFighter(int fireFighterPosition) {
+-        List<Integer> fireInTheZone = new ArrayList<>();
+-        if(this.gridPane.getChildren().get(fireFighterPosition+1).getStyle().equals(FIRE_COLOR))
+-            fireInTheZone.add(fireFighterPosition + 1);
+-        if(this.gridPane.getChildren().get(fireFighterPosition+-1).getStyle().equals(FIRE_COLOR))
+-            fireInTheZone.add(fireFighterPosition - 1);
+-        if(this.gridPane.getChildren().get(fireFighterPosition + 33).getStyle().equals(FIRE_COLOR))
+-            fireInTheZone.add(fireFighterPosition + 33);
+-        if(this.gridPane.getChildren().get(fireFighterPosition - 33).getStyle().equals(FIRE_COLOR))
+-            fireInTheZone.add(fireFighterPosition - 33);
+-        return fireInTheZone;
++    private void getFireNearFireFighter(int fireFighterPosition) {
++        int distance = 1;
++        while(true) {
++            for(int i = 1; i <= distance; i++) {
++                // cell under fireFighter
++                if(this.gridPane.getChildren().get(fireFighterPosition + i).getStyle().equals(FIRE_COLOR)) {
++                    this.fireNearFF.add(fireFighterPosition + i);
++                    return;
++                }
++                //cell overhead fireFighter
++                /*if(this.gridPane.getChildren().get(fireFighterPosition - i).getStyle().equals(FIRE_COLOR)) {
++                    this.fireNearFF.add(fireFighterPosition - i);
++                    return;
++                }*/
++                //cell on the fireFighter right
++                if(this.gridPane.getChildren().get(fireFighterPosition + i + 33).getStyle().equals(FIRE_COLOR)) {
++                    this.fireNearFF.add(fireFighterPosition + i + 33);
++                    return;
++                }
++                //cell on the fireFighter left
++                /*if(this.gridPane.getChildren().get(fireFighterPosition + i - 33).getStyle().equals(FIRE_COLOR)) {
++                    this.fireNearFF.add(fireFighterPosition + i -33);
++                    return;
++                }*/
++                distance += 1;
++            }
++        }
++    }
++
++    private int getIndexFromValue(int value) {
++        for(int i = 0; i < this.ffWayPosition.size(); i++) {
++            System.out.println(this.ffWayPosition.get(i));
++            if(this.ffWayPosition.get(i) == value)
++                return this.ffWayPosition.get(i);
++        }
++        return -1;
+     }
+ }
+Index: src/main/java/com/firefighterstarter/view/grid/CellMouvementManager.java
+===================================================================
+diff --git a/src/main/java/com/firefighterstarter/view/grid/CellMouvementManager.java b/src/main/java/com/firefighterstarter/view/grid/CellMouvementManager.java
+--- a/src/main/java/com/firefighterstarter/view/grid/CellMouvementManager.java	
++++ b/src/main/java/com/firefighterstarter/view/grid/CellMouvementManager.java	
+@@ -28,6 +28,7 @@
+     public void initGrid() {
+         for(Node node : gridPane.getChildren())
+             node.setStyle("-fx-background-color: white;");
++
+         this.wayPaint.initPaint();
+         this.mountainPaint.initPaint();
+         this.fireFighterPaint.initPaint();
+@@ -37,7 +38,7 @@
+     }
+ 
+     public void updateGrid() {
+-        if(fireQuantity > 150) {  // TODO replace 150 by 0 when fireFighter can move in the grid themself
++        if(fireQuantity > 100) {  // TODO replace 150 by 0 when fireFighter can move in the grid themself
+             System.out.println(fireQuantity);
+             cloudThread = new Thread(this.cloudPaint);
+             fireFighterThread = new Thread(this.fireFighterPaint);
+Index: src/main/java/com/firefighterstarter/view/grid/paint/WayPaint.java
+===================================================================
+diff --git a/src/main/java/com/firefighterstarter/view/grid/paint/WayPaint.java b/src/main/java/com/firefighterstarter/view/grid/paint/WayPaint.java
+--- a/src/main/java/com/firefighterstarter/view/grid/paint/WayPaint.java	
++++ b/src/main/java/com/firefighterstarter/view/grid/paint/WayPaint.java	
+@@ -3,21 +3,38 @@
+ import com.firefighterstarter.view.grid.GridColor;
+ import javafx.scene.layout.GridPane;
+ 
++import java.util.ArrayList;
++import java.util.List;
++
+ public class WayPaint extends GridColor {
++    protected List<Integer> way;
+ 
+     public WayPaint(GridPane gridPane) {
+         super(gridPane);
++        this.way = new ArrayList<>();
+         initPaint();
+     }
+ 
+     public void initPaint() {
+-        for(int i = 0; i < 5; i++)
++        for(int i = 0; i < 5; i++) {
+             gridPane.getChildren().get(i).setStyle("-fx-background-color: #a5632a;");
+-        for(int i = 37; i < 400; i += 33)
++            way.add(i);
++        }
++
++        for(int i = 37; i < 400; i += 33) {
+             gridPane.getChildren().get(i).setStyle("-fx-background-color: #a5632a;");
+-        for(int i = 400; i < 415; i++)
++            way.add(i);
++        }
++
++        for(int i = 400; i < 415; i++) {
+             gridPane.getChildren().get(i).setStyle("-fx-background-color: #a5632a;");
+-        for(int i =415; i < 800; i += 33)
++            way.add(i);
++        }
++
++        for(int i = 415; i < 800; i += 33) {
+             gridPane.getChildren().get(i).setStyle("-fx-background-color: #a5632a;");
++            way.add(i);
++        }
++
+     }
+ }
+Index: src/main/java/com/firefighterstarter/view/grid/GridColor.java
+===================================================================
+diff --git a/src/main/java/com/firefighterstarter/view/grid/GridColor.java b/src/main/java/com/firefighterstarter/view/grid/GridColor.java
+--- a/src/main/java/com/firefighterstarter/view/grid/GridColor.java	
++++ b/src/main/java/com/firefighterstarter/view/grid/GridColor.java	
+@@ -8,6 +8,9 @@
+ import javafx.scene.Node;
+ import javafx.scene.layout.GridPane;
+ 
++import java.util.ArrayList;
++import java.util.List;
++
+ public abstract class GridColor {
+     protected final String CLOUD_COLOR = "-fx-background-color: #706969;";
+     protected final String FIRE_COLOR = "-fx-background-color: red;";
+@@ -23,6 +26,4 @@
+ 
+     protected abstract void initPaint();
+ 
+-    //protected abstract void setThreadIsRunnable(boolean threadIsRunnable);
+-
+ }
