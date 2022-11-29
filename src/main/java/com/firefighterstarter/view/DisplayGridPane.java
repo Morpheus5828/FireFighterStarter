@@ -37,7 +37,9 @@ public class DisplayGridPane {
         }
     }
 
-    public void setListOfCells(Cell[][] listOfCells) {
-        this.listOfCells = listOfCells;
+    public void setListOfCells(Cell[][] updateTab) {
+        for(int i = 0; i < this.column; i++)
+            if (this.row >= 0) System.arraycopy(updateTab[i], 0, this.listOfCells[i], 0, this.row);
+
     }
 }
