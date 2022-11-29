@@ -38,118 +38,118 @@ public class FireFighter {
     }
 
     public void findFire(Cell[][] listOfCells) {
-        int i;
-        int k;
         try {
 
             while(goalIsNull()) {
+                int i;
+                int k;
                 if(distance == 4)
-                    break;
+                    return;
                 for(i = 0; i < distance; i++) {
                     if(this.row == 0 && this.column == 0) {
                         for(k = 1 ; k < distance; k++) {
-                            if(k == 1) {
-                                if(listOfCells[column+k][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+k][row];
-                                    return;
-                                }
-                                if(listOfCells[column][row+k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row+k];
-                                    return;
-                                }
-                                if(listOfCells[column+k][row+k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+k][row+k];
-                                    return;
-                                }
+                            if(listOfCells[column+1][row].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+1][row];
+                                this.fireGoal.setColumn(column+1);
+                                this.fireGoal.setRow(row);
+                                return;
                             }
-                            else {
-                                if(listOfCells[column+1][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row];
-                                    return;
-                                }
-                                if(listOfCells[column][row+1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row+1];
-                                    return;
-                                }
-                                if(listOfCells[column+1][row+1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row+1];
-                                    return;
-                                }
-                                if(listOfCells[column+k][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+k][row];
-                                    return;
-                                }
-                                if(listOfCells[column+k][row+1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+k][row+1];
-                                    return;
-                                }
-                                if(listOfCells[column+k][row+k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+k][row+k];
-                                    return;
-                                }
-                                if(listOfCells[column+1][row+k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row+k];
-                                    return;
-                                }
-                                if(listOfCells[column][row+k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row+k];
-                                    return;
-                                }
+                            if(listOfCells[column][row+1].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column][row+1];
+                                this.fireGoal.setColumn(column);
+                                this.fireGoal.setRow(row+1);
+                                return;
+                            }
+                            if(listOfCells[column+1][row+1].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+1][row+1];
+                                this.fireGoal.setColumn(column+1);
+                                this.fireGoal.setRow(row+1);
+                                return;
+                            }
+                            if(listOfCells[column+k][row].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+k][row];
+                                this.fireGoal.setColumn(column+k);
+                                this.fireGoal.setRow(row);
+                                return;
+                            }
+                            if(listOfCells[column+k][row+1].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+k][row+1];
+                                this.fireGoal.setColumn(column+k);
+                                this.fireGoal.setRow(row+1);
+                                return;
+                            }
+                            if(listOfCells[column+k][row+k].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+k][row+k];
+                                this.fireGoal.setColumn(column+k);
+                                this.fireGoal.setRow(row+k);
+                                return;
+                            }
+                            if(listOfCells[column+1][row+k].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+1][row+k];
+                                this.fireGoal.setColumn(column+1);
+                                this.fireGoal.setRow(row+k);
+                                return;
+                            }
+                            if(listOfCells[column][row+k].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column][row+k];
+                                this.fireGoal.setColumn(column);
+                                this.fireGoal.setRow(row+k);
+                                return;
+                            }
 
-                            }
+
                         }
 
                     }
                     else if (this.row == 0 && this.column == 43) {
                         for(k = 1 ; k < distance; k++) {
-                            if(k == 1) {
-                                if(listOfCells[column-k][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-k][row];
-                                    return;
-                                }
-                                if(listOfCells[column][row+k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row+k];
-                                    return;
-                                }
-                                if(listOfCells[column-k][row-k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-k][row-k];
-                                    return;
-                                }
+                            if(listOfCells[column-1][row].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column-1][row];
+                                this.fireGoal.setColumn(column-1);
+                                this.fireGoal.setRow(row);
+                                return;
                             }
-                            else {
-                                if(listOfCells[column-1][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-1][row];
-                                    return;
-                                }
-                                if(listOfCells[column][row+1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row+1];
-                                    return;
-                                }
-                                if(listOfCells[column-1][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-1][row-1];
-                                    return;
-                                }
-                                if(listOfCells[column-k][row-k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-k][row-k];
-                                    return;
-                                }
-                                if(listOfCells[column][row+k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row+k];
-                                    return;
-                                }
-                                if(listOfCells[column+1][row+k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row+k];
-                                    return;
-                                }
-                                if(listOfCells[column-k][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-k][row];
-                                    return;
-                                }
-                                if(listOfCells[column-k][row+1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-k][row+1];
-                                    return;
-                                }
-
+                            if(listOfCells[column][row+1].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column][row+1];
+                                this.fireGoal.setColumn(column);
+                                this.fireGoal.setRow(row+1);
+                                return;
+                            }
+                            if(listOfCells[column-1][row-1].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column-1][row-1];
+                                this.fireGoal.setColumn(column-1);
+                                this.fireGoal.setRow(row-1);
+                                return;
+                            }
+                            if(listOfCells[column-k][row-k].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column-k][row-k];
+                                this.fireGoal.setColumn(column-k);
+                                this.fireGoal.setRow(row-k);
+                                return;
+                            }
+                            if(listOfCells[column][row+k].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column][row+k];
+                                this.fireGoal.setColumn(column);
+                                this.fireGoal.setRow(row+k);
+                                return;
+                            }
+                            if(listOfCells[column+1][row+k].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+1][row+k];
+                                this.fireGoal.setColumn(column+1);
+                                this.fireGoal.setRow(row+k);
+                                return;
+                            }
+                            if(listOfCells[column-k][row].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column-k][row];
+                                this.fireGoal.setColumn(column-k);
+                                this.fireGoal.setRow(row);
+                                return;
+                            }
+                            if(listOfCells[column-k][row+1].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column-k][row+1];
+                                this.fireGoal.setColumn(column-k);
+                                this.fireGoal.setRow(row+1);
+                                return;
                             }
                         }
 
@@ -157,112 +157,114 @@ public class FireFighter {
 
                     else if (this.row == 33 && this.column == 0) {
                         for(k = 1 ; k < distance; k++) {
-                            if(k == 1) {
-                                if(listOfCells[column+1][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row];
-                                    return;
-                                }
-                                if(listOfCells[column+1][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row-1];
-                                    return;
-                                }
-                                if(listOfCells[column][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row-1];
-                                    return;
-                                }
+                           if(listOfCells[column+1][row].getColor() == ColorType.FIRE) {
+                               this.fireGoal = listOfCells[column+1][row];
+                               this.fireGoal.setColumn(column+1);
+                               this.fireGoal.setRow(row);
+                                return;
                             }
-                            else {
-                                if(listOfCells[column+1][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row];
-                                    return;
-                                }
-                                if(listOfCells[column+1][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row-1];
-                                    return;
-                                }
-                                if(listOfCells[column][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row-1];
-                                    return;
-                                }
-                                if(listOfCells[column+k][row-k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+k][row-k];
-                                    return;
-                                }
-                                if(listOfCells[column+k][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+k][row];
-                                    return;
-                                }
-                                if(listOfCells[column+k][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+k][row-1];
-                                    return;
-                                }
-                                if(listOfCells[column+1][row-k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row-k];
-                                    return;
-                                }
-                                if(listOfCells[column][row-k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row-k];
-                                    return;
-                                }
+                            if(listOfCells[column+1][row-1].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+1][row-1];
+                                this.fireGoal.setColumn(column+1);
+                                this.fireGoal.setRow(row-1);
+                                return;
+                            }
+                            if(listOfCells[column][row-1].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column][row-1];
+                                this.fireGoal.setColumn(column);
+                                this.fireGoal.setRow(row-1);
+                                return;
+                            }
+                            if(listOfCells[column+k][row-k].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+k][row-k];
+                                this.fireGoal.setColumn(column+k);
+                                this.fireGoal.setRow(row-k);
+                                return;
+                            }
+                            if(listOfCells[column+k][row].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+k][row];
+                                this.fireGoal.setColumn(column+k);
+                                this.fireGoal.setRow(row);
+                                return;
+                            }
+                            if(listOfCells[column+k][row-1].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+k][row-1];
+                                this.fireGoal.setColumn(column+k);
+                                this.fireGoal.setRow(row-1);
+                                return;
+                            }
+                            if(listOfCells[column+1][row-k].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+1][row-k];
+                                this.fireGoal.setColumn(column+1);
+                                this.fireGoal.setRow(row-k);
+                                return;
+                            }
+                            if(listOfCells[column][row-k].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column][row-k];
+                                this.fireGoal.setColumn(column);
+                                this.fireGoal.setRow(row-k);
+                                return;
+                            }
 
-                            }
+
                         }
 
                     }
 
                     else if (this.row == 33 && this.column == 43) {
                         for(k = 1 ; k < distance; k++) {
-                            if(k == 1) {
-                                if(listOfCells[column-1][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-1][row-1];
-                                    return;
-                                }
-                                if(listOfCells[column][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row-1];
-                                    return;
-                                }
-                                if(listOfCells[column-1][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-1][row];
-                                    return;
-                                }
+                            if(listOfCells[column-1][row-1].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column-1][row-1];
+                                this.fireGoal.setColumn(column-1);
+                                this.fireGoal.setRow(row-1);
+                                return;
                             }
-                            else {
-                                if(listOfCells[column-1][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-1][row-1];
-                                    return;
-                                }
-                                if(listOfCells[column][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row-1];
-                                    return;
-                                }
-                                if(listOfCells[column-1][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-1][row];
-                                    return;
-                                }
-
-                                if(listOfCells[column-k][row-k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-k][row-k];
-                                    return;
-                                }
-                                if(listOfCells[column-1][row-k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-1][row-k];
-                                    return;
-                                }
-                                if(listOfCells[column][row-k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row-k];
-                                    return;
-                                }
-                                if(listOfCells[column-k][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-k][row];
-                                    return;
-                                }
-                                if(listOfCells[column-k][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-k][row-1];
-                                    return;
-                                }
-
-
+                            if(listOfCells[column][row-1].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column][row-1];
+                                this.fireGoal.setColumn(column);
+                                this.fireGoal.setRow(row-1);
+                                return;
                             }
+                            if(listOfCells[column-1][row].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column-1][row];
+                                this.fireGoal.setColumn(column-1);
+                                this.fireGoal.setRow(row);
+                                return;
+                            }
+
+                            if(listOfCells[column-k][row-k].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column-k][row-k];
+                                this.fireGoal.setColumn(column-k);
+                                this.fireGoal.setRow(row-k);
+                                return;
+                            }
+                            if(listOfCells[column-1][row-k].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column-1][row-k];
+                                this.fireGoal.setColumn(column-1);
+                                this.fireGoal.setRow(row-k);
+                                return;
+                            }
+                            if(listOfCells[column][row-k].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column][row-k];
+                                this.fireGoal.setColumn(column);
+                                this.fireGoal.setRow(row-k);
+                                return;
+                            }
+                            if(listOfCells[column-k][row].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column-k][row];
+                                this.fireGoal.setColumn(column-k);
+                                this.fireGoal.setRow(row);
+                                return;
+                            }
+                            if(listOfCells[column-k][row-1].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column-k][row-1];
+                                this.fireGoal.setColumn(column-k);
+                                this.fireGoal.setRow(row-1);
+                                return;
+                            }
+
+
+
                         }
 
                         // case ff is on the left side
@@ -270,88 +272,92 @@ public class FireFighter {
 
                     else if (this.column == 0) {
                         for(k = 1 ; k < distance; k++) {
-                            if(k == 1) {
-                                if(listOfCells[column][row+1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row+1];
-                                    return;
-                                }
-                                if(listOfCells[column][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row-1];
-                                    return;
-                                }
-                                if(listOfCells[column+1][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row];
-                                    return;
-                                }
-                                if(listOfCells[column+1][row+1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row+1];
-                                    return;
-                                }
-                                if(listOfCells[column+1][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row-1];
-                                    return;
-                                }
+                           if(listOfCells[column][row+1].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column][row+1];
+                               this.fireGoal.setColumn(column);
+                               this.fireGoal.setRow(row+1);
+                                return;
                             }
-                            else {
-                                if(listOfCells[column][row+1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row+1];
-                                    return;
-                                }
-                                if(listOfCells[column][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row-1];
-                                    return;
-                                }
-                                if(listOfCells[column+1][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row];
-                                    return;
-                                }
-                                if(listOfCells[column+1][row+1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row+1];
-                                    return;
-                                }
-                                if(listOfCells[column+1][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row-1];
-                                    return;
-                                }
-                                //
-                                if(listOfCells[column][row+k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row+k];
-                                    return;
-                                }
-                                if(listOfCells[column+1][row+k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row+k];
-                                    return;
-                                }
-                                if(listOfCells[column+k][row+k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+k][row+k];
-                                    return;
-                                }
-                                if(listOfCells[column+k][row+1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+k][row+1];
-                                    return;
-                                }
-                                if(listOfCells[column+k][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+k][row];
-                                    return;
-                                }
-                                if(listOfCells[column+k][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+k][row-1];
-                                    return;
-                                }
-                                if(listOfCells[column+k][row-k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+k][row-k];
-                                    return;
-                                }
-                                if(listOfCells[column+1][row-k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row-k];
-                                    return;
-                                }
-                                if(listOfCells[column][row-k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row-k];
-                                    return;
-                                }
+                            if(listOfCells[column][row-1].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column][row-1];
+                                this.fireGoal.setColumn(column);
+                                this.fireGoal.setRow(row-1);
+                                return;
+                            }
+                            if(listOfCells[column+1][row].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+1][row];
+                                this.fireGoal.setColumn(column+1);
+                                this.fireGoal.setRow(row);
+                                return;
+                            }
+                            if(listOfCells[column+1][row+1].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+1][row+1];
+                                this.fireGoal.setColumn(column+1);
+                                this.fireGoal.setRow(row+1);
+                                return;
+                            }
+                            if(listOfCells[column+1][row-1].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+1][row-1];
+                                this.fireGoal.setColumn(column+1);
+                                this.fireGoal.setRow(row-1);
+                                return;
+                            }
+                            //
+                            if(listOfCells[column][row+k].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column][row+k];
+                                this.fireGoal.setColumn(column);
+                                this.fireGoal.setRow(row+k);
+                                return;
+                            }
+                            if(listOfCells[column+1][row+k].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+1][row+k];
+                                this.fireGoal.setColumn(column+1);
+                                this.fireGoal.setRow(row+k);
+                                return;
+                            }
+                            if(listOfCells[column+k][row+k].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+k][row+k];
+                                this.fireGoal.setColumn(column+k);
+                                this.fireGoal.setRow(row+k);
+                                return;
+                            }
+                            if(listOfCells[column+k][row+1].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+k][row+1];
+                                this.fireGoal.setColumn(column+k);
+                                this.fireGoal.setRow(row+1);
+                                return;
+                            }
+                            if(listOfCells[column+k][row].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+k][row];
+                                this.fireGoal.setColumn(column+k);
+                                this.fireGoal.setRow(row);
+                                return;
+                            }
+                            if(listOfCells[column+k][row-1].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+k][row-1];
+                                this.fireGoal.setColumn(column+k);
+                                this.fireGoal.setRow(row-1);
+                                return;
+                            }
+                            if(listOfCells[column+k][row-k].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+k][row-k];
+                                this.fireGoal.setColumn(column+k);
+                                this.fireGoal.setRow(row-k);
+                                return;
+                            }
+                            if(listOfCells[column+1][row-k].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+1][row-k];
+                                this.fireGoal.setColumn(column+1);
+                                this.fireGoal.setRow(row-k);
+                                return;
+                            }
+                            if(listOfCells[column][row-k].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column][row-k];
+                                this.fireGoal.setColumn(column);
+                                this.fireGoal.setRow(row-k);
+                                return;
+                            }
 
-                            }
                         }
 
                         // case ff is on the right side
@@ -359,174 +365,184 @@ public class FireFighter {
 
                     else if (this.column == 43) {
                         for (k = 1; k < distance; k++) {
-                            if (k == 1) {
                                 if (listOfCells[column][row + 1].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column][row + 1];
+                                    this.fireGoal.setColumn(column);
+                                    this.fireGoal.setRow(row+1);
                                     return;
                                 }
                                 if (listOfCells[column][row - 1].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column][row - 1];
+                                    this.fireGoal.setColumn(column);
+                                    this.fireGoal.setRow(row-1);
                                     return;
                                 }
                                 if (listOfCells[column - 1][row].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column - 1][row];
+                                    this.fireGoal.setColumn(column-1);
+                                    this.fireGoal.setRow(row);
                                     return;
                                 }
                                 if (listOfCells[column - 1][row + 1].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column - 1][row + 1];
+                                    this.fireGoal.setColumn(column-1);
+                                    this.fireGoal.setRow(row+1);
                                     return;
                                 }
                                 if (listOfCells[column - 1][row - 1].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column - 1][row - 1];
-                                    return;
-                                }
-                            } else {
-                                if (listOfCells[column][row + 1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row + 1];
-                                    return;
-                                }
-                                if (listOfCells[column][row - 1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row - 1];
-                                    return;
-                                }
-                                if (listOfCells[column - 1][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column - 1][row];
-                                    return;
-                                }
-                                if (listOfCells[column - 1][row + 1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column - 1][row + 1];
-                                    return;
-                                }
-                                if (listOfCells[column - 1][row - 1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column - 1][row - 1];
+                                    this.fireGoal.setColumn(column-1);
+                                    this.fireGoal.setRow(row-1);
                                     return;
                                 }
                                 //
                                 if (listOfCells[column][row - k].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column][row - k];
+                                    this.fireGoal.setColumn(column);
+                                    this.fireGoal.setRow(row+k);
                                     return;
                                 }
                                 if (listOfCells[column - 1][row - k].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column - 1][row - k];
+                                    this.fireGoal.setColumn(column-1);
+                                    this.fireGoal.setRow(row-k);
                                     return;
                                 }
                                 if (listOfCells[column - k][row - k].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column - k][row - k];
+                                    this.fireGoal.setColumn(column-k);
+                                    this.fireGoal.setRow(row-k);
                                     return;
                                 }
                                 if (listOfCells[column - k][row - 1].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column - k][row - 1];
+                                    this.fireGoal.setColumn(column-k);
+                                    this.fireGoal.setRow(row-1);
                                     return;
                                 }
                                 if (listOfCells[column - k][row].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column - k][row];
+                                    this.fireGoal.setColumn(column-k);
+                                    this.fireGoal.setRow(row);
                                     return;
                                 }
                                 if (listOfCells[column - k][row + 1].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column - k][row + 1];
+                                    this.fireGoal.setColumn(column-k);
+                                    this.fireGoal.setRow(row+1);
                                     return;
                                 }
                                 if (listOfCells[column - k][row + k].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column - k][row + k];
+                                    this.fireGoal.setColumn(column-k);
+                                    this.fireGoal.setRow(row+k);
                                     return;
                                 }
                                 if (listOfCells[column - 1][row + k].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column - 1][row + k];
+                                    this.fireGoal.setColumn(column-1);
+                                    this.fireGoal.setRow(row+k);
                                     return;
                                 }
                                 if (listOfCells[column][row + k].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column][row + k];
+                                    this.fireGoal.setColumn(column);
+                                    this.fireGoal.setRow(row+k);
                                     return;
                                 }
 
-                            }
+
                         }
                     }
 
                     else if (this.row == 0) {
                         for(k = 1 ; k < distance; k++) {
-                            if(k == 1) {
                                 if(listOfCells[column+1][row].getColor() == ColorType.FIRE) {
+                                    this.fireGoal.setColumn(column+1);
+                                    this.fireGoal.setRow(row);
                                     this.fireGoal = listOfCells[column+1][row];
                                     return;
                                 }
                                 if(listOfCells[column-1][row].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column-1][row];
+                                    this.fireGoal.setColumn(column-1);
+                                    this.fireGoal.setRow(row);
                                     return;
                                 }
                                 if(listOfCells[column][row+1].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column][row+1];
+                                    this.fireGoal.setColumn(column);
+                                    this.fireGoal.setRow(row+1);
                                     return;
                                 }
                                 if(listOfCells[column+1][row+1].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column+1][row+1];
+                                    this.fireGoal.setColumn(column+1);
+                                    this.fireGoal.setRow(row+1);
                                     return;
                                 }
                                 if(listOfCells[column+1][row-1].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column+1][row-1];
-                                    return;
-                                }
-                            }
-                            else {
-                                if(listOfCells[column+1][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row];
-                                    return;
-                                }
-                                if(listOfCells[column-1][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-1][row];
-                                    return;
-                                }
-                                if(listOfCells[column][row+1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row+1];
-                                    return;
-                                }
-                                if(listOfCells[column+1][row+1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row+1];
-                                    return;
-                                }
-                                if(listOfCells[column+1][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row-1];
+                                    this.fireGoal.setColumn(column+1);
+                                    this.fireGoal.setRow(row-1);
                                     return;
                                 }
                                 //
                                 if(listOfCells[column+k][row].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column+k][row];
+                                    this.fireGoal.setColumn(column+k);
+                                    this.fireGoal.setRow(row);
                                     return;
                                 }
                                 if(listOfCells[column+k][row+1].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column+k][row+1];
+                                    this.fireGoal.setColumn(column+k);
+                                    this.fireGoal.setRow(row+1);
                                     return;
                                 }
                                 if(listOfCells[column+k][row+k].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column+k][row+k];
+                                    this.fireGoal.setColumn(column+k);
+                                    this.fireGoal.setRow(row+k);
                                     return;
                                 }
                                 if(listOfCells[column+1][row+k].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column+1][row+k];
+                                    this.fireGoal.setColumn(column+1);
+                                    this.fireGoal.setRow(row+k);
                                     return;
                                 }
                                 if(listOfCells[column][row+k].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column][row+k];
+                                    this.fireGoal.setColumn(column);
+                                    this.fireGoal.setRow(row+k);
                                     return;
                                 }
                                 if(listOfCells[column-1][row+k].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column-1][row+k];
+                                    this.fireGoal.setColumn(column-1);
+                                    this.fireGoal.setRow(row+k);
                                     return;
                                 }
                                 if(listOfCells[column-k][row+k].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column-k][row+k];
+                                    this.fireGoal.setColumn(column-k);
+                                    this.fireGoal.setRow(row+k);
                                     return;
                                 }
                                 if(listOfCells[column-k][row-1].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column-k][row-1];
+                                    this.fireGoal.setColumn(column-k);
+                                    this.fireGoal.setRow(row-1);
                                     return;
                                 }
                                 if(listOfCells[column-k][row].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column-k][row];
+                                    this.fireGoal.setColumn(column-k);
+                                    this.fireGoal.setRow(row);
                                     return;
                                 }
 
-                            }
                         }
 
                         // case ff is in downside
@@ -534,241 +550,246 @@ public class FireFighter {
 
                     else if (this.row == 33) {
                         for(k = 1 ; k < distance; k++) {
-                            if(k == 1) {
+
                                 if(listOfCells[column][row-1].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column][row-1];
+                                    this.fireGoal.setColumn(column);
+                                    this.fireGoal.setRow(row-1);
                                     return;
                                 }
                                 if(listOfCells[column-1][row-1].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column-1][row-1];
+                                    this.fireGoal.setColumn(column-1);
+                                    this.fireGoal.setRow(row-1);
                                     return;
                                 }
                                 if(listOfCells[column+1][row-1].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column+1][row-1];
+                                    this.fireGoal.setColumn(column+1);
+                                    this.fireGoal.setRow(row-1);
                                     return;
                                 }
                                 if(listOfCells[column+1][row].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column+1][row];
+                                    this.fireGoal.setColumn(column+1);
+                                    this.fireGoal.setRow(row);
                                     return;
                                 }
                                 if(listOfCells[column-1][row].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column-1][row];
-                                    return;
-                                }
-                            }
-                            else {
-                                if(listOfCells[column][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row-1];
-                                    return;
-                                }
-                                if(listOfCells[column-1][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-1][row-1];
-                                    return;
-                                }
-                                if(listOfCells[column+1][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row-1];
-                                    return;
-                                }
-                                if(listOfCells[column+1][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row];
-                                    return;
-                                }
-                                if(listOfCells[column-1][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-1][row];
+                                    this.fireGoal.setColumn(column-1);
+                                    this.fireGoal.setRow(row);
                                     return;
                                 }
                                 //
                                 if(listOfCells[column+k][row].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column+k][row];
+                                    this.fireGoal.setColumn(column+k);
+                                    this.fireGoal.setRow(row);
                                     return;
                                 }
                                 if(listOfCells[column+k][row-1].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column+k][row-1];
+                                    this.fireGoal.setColumn(column+k);
+                                    this.fireGoal.setRow(row-1);
                                     return;
                                 }
                                 if(listOfCells[column+k][row-k].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column+k][row-k];
+                                    this.fireGoal.setColumn(column+k);
+                                    this.fireGoal.setRow(row-k);
                                     return;
                                 }
                                 if(listOfCells[column+1][row-k].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column+1][row-k];
+                                    this.fireGoal.setColumn(column+1);
+                                    this.fireGoal.setRow(row-k);
                                     return;
                                 }
                                 if(listOfCells[column][row-k].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column][row-k];
+                                    this.fireGoal.setColumn(column);
+                                    this.fireGoal.setRow(row-k);
                                     return;
                                 }
                                 if(listOfCells[column-1][row-k].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column-1][row-k];
+                                    this.fireGoal.setColumn(column-1);
+                                    this.fireGoal.setRow(row-k);
                                     return;
                                 }
                                 if(listOfCells[column-k][row-k].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column-k][row-k];
+                                    this.fireGoal.setColumn(column-k);
+                                    this.fireGoal.setRow(row-k);
                                     return;
                                 }
                                 if(listOfCells[column-k][row-1].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column-k][row-1];
+                                    this.fireGoal.setColumn(column-k);
+                                    this.fireGoal.setRow(row-1);
                                     return;
                                 }
                                 if(listOfCells[column-k][row].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column-k][row];
+                                    this.fireGoal.setColumn(column-k);
+                                    this.fireGoal.setRow(row);
                                     return;
                                 }
-
-
-
                             }
-                        }
+
                     }
 
                     else {
                         for(k = 1 ; k < distance; k++) {
-                            if(k == 1) {
-                                if(listOfCells[column][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row-1];
-                                    return;
-                                }
-                                if(listOfCells[column-1][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-1][row-1];
-                                    return;
-                                }
-                                if(listOfCells[column-1][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-1][row];
-                                    return;
-                                }
-
-                                if(listOfCells[column-1][row+1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-1][row+1];
-                                    return;
-                                }
-
-                                if(listOfCells[column][row+1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row+1];
-                                    return;
-                                }
-                                if(listOfCells[column+1][row+1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row+1];
-                                    return;
-                                }
-                                if(listOfCells[column+1][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row];
-                                    return;
-                                }
-                                if(listOfCells[column+1][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-1][row+1];
-                                    return;
-                                }
+                            if(listOfCells[column][row-1].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column][row-1];
+                                this.fireGoal.setColumn(column);
+                                this.fireGoal.setRow(row-1);
+                                return;
                             }
-                            else {
-                                if(listOfCells[column][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row-1];
-                                    return;
-                                }
-                                if(listOfCells[column-1][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-1][row-1];
-                                    return;
-                                }
-                                if(listOfCells[column-1][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-1][row];
-                                    return;
-                                }
+                            if(listOfCells[column-1][row-1].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column-1][row-1];
+                                this.fireGoal.setColumn(column-1);
+                                this.fireGoal.setRow(row-1);
+                                return;
+                            }
+                            if(listOfCells[column-1][row].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column-1][row];
+                                this.fireGoal.setColumn(column-1);
+                                this.fireGoal.setRow(row);
+                                return;
+                            }
 
-                                if(listOfCells[column-1][row+1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-1][row+1];
-                                    return;
-                                }
+                            if(listOfCells[column-1][row+1].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column-1][row+1];
+                                this.fireGoal.setColumn(column-1);
+                                this.fireGoal.setRow(row+1);
+                                return;
+                            }
 
-                                if(listOfCells[column][row+1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row+1];
-                                    return;
-                                }
-                                if(listOfCells[column+1][row+1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row+1];
-                                    return;
-                                }
-                                if(listOfCells[column+1][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row];
-                                    return;
-                                }
-                                if(listOfCells[column+1][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-1][row+1];
-                                    return;
-                                }
-                                //
-                                if(listOfCells[column][row-k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row-k];
-                                    return;
-                                }
+                            if(listOfCells[column][row+1].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column][row+1];
+                                this.fireGoal.setColumn(column);
+                                this.fireGoal.setRow(row+1);
+                                return;
+                            }
+                            if(listOfCells[column+1][row+1].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+1][row+1];
+                                this.fireGoal.setColumn(column+1);
+                                this.fireGoal.setRow(row+1);
+                                return;
+                            }
+                            if(listOfCells[column+1][row].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+1][row];
+                                this.fireGoal.setColumn(column+1);
+                                this.fireGoal.setRow(row);
+                                return;
+                            }
+                            if(listOfCells[column+1][row-1].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+1][row-1];
+                                this.fireGoal.setColumn(column+1);
+                                this.fireGoal.setRow(row-1);
+                                return;
+                            }
 
-                                if(listOfCells[column-1][row-k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-1][row-k];
-                                    return;
-                                }
+                            if(listOfCells[column][row-k].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column][row-k];
+                                this.fireGoal.setColumn(column);
+                                this.fireGoal.setRow(row-k);
+                                return;
+                            }
 
-                                if(listOfCells[column+k][row-k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+k][row-k];
-                                    return;
-                                }
+                            if(listOfCells[column-1][row-k].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column-1][row-k];
+                                this.fireGoal.setColumn(column);
+                                this.fireGoal.setRow(row-k);
+                                return;
+                            }
 
-                                if(listOfCells[column-k][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-k][row-1];
-                                    return;
-                                }
-                                if(listOfCells[column-k][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-k][row];
-                                    return;
-                                }
-                                if(listOfCells[column-k][row+1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-k][row+1];
-                                    return;
-                                }
-                                if(listOfCells[column-k][row+k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-k][row+k];
-                                    return;
-                                }
+                            if(listOfCells[column-k][row-1].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column-k][row-1];
+                                this.fireGoal.setColumn(column+k);
+                                this.fireGoal.setRow(row-1);
+                                return;
+                            }
+                            if(listOfCells[column-k][row].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column-k][row];
+                                this.fireGoal.setColumn(column-k);
+                                this.fireGoal.setRow(row);
+                                return;
+                            }
+                            if(listOfCells[column-k][row+1].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column-k][row+1];
+                                this.fireGoal.setColumn(column-k);
+                                this.fireGoal.setRow(row+1);
+                                return;
+                            }
+                            if(listOfCells[column-k][row+k].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column-k][row+k];
+                                this.fireGoal.setColumn(column-k);
+                                this.fireGoal.setRow(row+k);
+                                return;
+                            }
 
-                                if(listOfCells[column-1][row+k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column-1][row+k];
-                                    return;
-                                }
-                                if(listOfCells[column][row+k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column][row+k];
-                                    return;
-                                }
+                            if(listOfCells[column-1][row+k].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column-1][row+k];
+                                this.fireGoal.setColumn(column-1);
+                                this.fireGoal.setRow(row+k);
+                                return;
+                            }
+                            if(listOfCells[column][row+k].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column][row+k];
+                                this.fireGoal.setColumn(column);
+                                this.fireGoal.setRow(row+k);
+                                return;
+                            }
 
-                                if(listOfCells[column+1][row+k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row+k];
-                                    return;
-                                }
-                                if(listOfCells[column+k][row+k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+k][row+k];
-                                    return;
-                                }
-                                if(listOfCells[column+k][row+1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+k][row+1];
-                                    return;
-                                }
+                            if(listOfCells[column+1][row+k].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+1][row+k];
+                                this.fireGoal.setColumn(column+1);
+                                this.fireGoal.setRow(row+k);
+                                return;
+                            }
+                            if(listOfCells[column+k][row+k].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+k][row+k];
+                                this.fireGoal.setColumn(column+k);
+                                this.fireGoal.setRow(row+k);
+                                return;
+                            }
+                            if(listOfCells[column+k][row+1].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+k][row+1];
+                                this.fireGoal.setColumn(column+k);
+                                this.fireGoal.setRow(row+1);
+                                return;
+                            }
 
-                                if(listOfCells[column+k][row].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+k][row];
-                                    return;
-                                }
-                                if(listOfCells[column+k][row-1].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+k][row-1];
-                                    return;
-                                }
-                                if(listOfCells[column+k][row-k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+k][row-k];
-                                    break;
-                                }
-                                if(listOfCells[column+1][row-k].getColor() == ColorType.FIRE) {
-                                    this.fireGoal = listOfCells[column+1][row-k];
-                                    return;
-                                }
-
-
+                            if(listOfCells[column+k][row].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+k][row];
+                                this.fireGoal.setColumn(column+k);
+                                this.fireGoal.setRow(row);
+                                return;
+                            }
+                            if(listOfCells[column+k][row-1].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+k][row-1];
+                                this.fireGoal.setColumn(column+k);
+                                this.fireGoal.setRow(row-1);
+                                return;
+                            }
+                            if(listOfCells[column+k][row-k].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+k][row-k];
+                                this.fireGoal.setColumn(column+k);
+                                this.fireGoal.setRow(row-k);
+                                break;
+                            }
+                            if(listOfCells[column+1][row-k].getColor() == ColorType.FIRE) {
+                                this.fireGoal = listOfCells[column+1][row-k];
+                                this.fireGoal.setColumn(column+1);
+                                this.fireGoal.setRow(row-k);
+                                return;
                             }
                         }
+
                     }
                 }
                 distance += 1;
@@ -783,18 +804,17 @@ public class FireFighter {
         return this.fireGoal == null;
     }
 
-    public void killFire() {
-        System.out.println(this.fireGoal);
-    }
 
     public void resetGoal() {
         this.fireGoal = null;
+        this.distance = 3;
     }
 
-    @Override
-    public String toString() {
+    public String display() {
         return "FireFighter{" +
-                "column=" + column +
+                "fireGoal=" + fireGoal +
+                ", distance=" + distance +
+                ", column=" + column +
                 ", row=" + row +
                 '}';
     }
