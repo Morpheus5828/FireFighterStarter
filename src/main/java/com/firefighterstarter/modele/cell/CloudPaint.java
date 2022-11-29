@@ -10,9 +10,7 @@ import java.util.List;
 
 public class CloudPaint extends Cell {
 
-    public CloudPaint() {
-
-    }
+    public CloudPaint() {}
 
     public ColorType getColor() {
         return ColorType.CLOUD;

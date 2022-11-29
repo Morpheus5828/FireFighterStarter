@@ -12,9 +12,10 @@ public class CellMouvementManager {
     private int rowsNumber;
     private final int numberOfCloud = 50;
     private final int numberOfMountainGroup = 6;
-    private int numberOfFire = 200; // 20
+    private int numberOfFire = 400; // 20
     private final int numberOfFireFighter = 100; //100
     private List<FireFighter> fireFighters;
+    private boolean endGame = false;
 
     public CellMouvementManager(int columnNumber, int rowsNumber) {
         this.columnNumber = columnNumber;
@@ -34,7 +35,7 @@ public class CellMouvementManager {
         }
 
         // add clouds on the grid
-        //initMountain();
+        initMountain();
         initCloud();
         initFire();
         initFireFighter();
@@ -54,7 +55,7 @@ public class CellMouvementManager {
         mouveFF(updateTab);
 
         if(isOver(updateTab))
-            System.out.println("CONGRATULATION !");
+            endGame = true;
 
         return updateTab;
     }
@@ -358,6 +359,10 @@ public class CellMouvementManager {
 
     public void setFireFighters(List<FireFighter> fireFighters) {
         this.fireFighters = fireFighters;
+    }
+
+    public boolean isEndGame() {
+        return endGame;
     }
 }
 
