@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b31f8302-b8ec-4ebc-8c08-b1ffcfb2f71c" name="Changes" comment="Save work">
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.lock" afterDir="false" />
-    </list>
+    <list default="true" id="70f0dfb5-3a56-42b1-ad9f-d0114e0a6fae" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,87 +18,42 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <task path="$PROJECT_DIR$">
-          <activation />
-        </task>
         <projects_view>
           <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="FireFighterStarter" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="FireFighterStarter" type="f1a62948:ProjectNode" />
-                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </tree_state>
         </projects_view>
       </state>
     </system>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="change_cell_structure" />
+    <option name="BRANCH" value="origin/change_cell_structure" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="master" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="MIXED" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2HRne7L2GPQUsCbSnSHc0N8Jagj" />
+  <component name="ProjectId" id="2IEbAZK88drwVSuLQ8F56UNqiZm" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/thorr/IdeaProjects/FireFighterStarter/src/main/java/com/firefighterstarter/view&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\thorr\IdeaProjects\FireFighterStarter\src\main\java\com\firefighterstarter\view" />
-      <recent name="C:\Users\thorr\IdeaProjects\FireFighterStarter\src\main\java\com\firefighterstarter\view\pictures" />
-      <recent name="C:\Users\thorr\IdeaProjects\FireFighterStarter\src\main\java\com\firefighterstarter\view\picture" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\thorr\IdeaProjects\FireFighterStarter\src\main\java\com\firefighterstarter\view" />
-      <recent name="C:\Users\thorr\IdeaProjects\FireFighterStarter\src\main\java\com\firefighterstarter\view\pictures" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.firefighterstarter" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Application.FireFighterApp">
+}]]></component>
+  <component name="RunManager">
     <configuration name="FireFighterApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.firefighterstarter.FireFighterApp" />
-      <module name="FireFighterStarter.main" />
+      <module name="com.FireFighterStarter.main" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.firefighterstarter.*" />
@@ -112,32 +64,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FireFighterStarter [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="run" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.FireFighterStarter [run]" />
-        <item itemvalue="Application.FireFighterApp" />
-        <item itemvalue="Gradle.FireFighterStarter [run]" />
         <item itemvalue="Application.FireFighterApp" />
       </list>
     </recent_temporary>
@@ -145,34 +73,13 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b31f8302-b8ec-4ebc-8c08-b1ffcfb2f71c" name="Changes" comment="" />
-      <created>1668256857500</created>
+      <changelist id="70f0dfb5-3a56-42b1-ad9f-d0114e0a6fae" name="Changes" comment="" />
+      <created>1669749548208</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1668256857500</updated>
-      <workItem from="1668256858610" duration="9927000" />
-      <workItem from="1668324621969" duration="26120000" />
-      <workItem from="1668447839536" duration="11446000" />
-      <workItem from="1668536856695" duration="5391000" />
-      <workItem from="1668869251990" duration="6169000" />
-      <workItem from="1669473857773" duration="12975000" />
-      <workItem from="1669489937565" duration="686000" />
-      <workItem from="1669530263950" duration="20843000" />
-      <workItem from="1669656511161" duration="7238000" />
-      <workItem from="1669701313877" duration="1444000" />
-      <workItem from="1669723809487" duration="9679000" />
-      <workItem from="1669734495119" duration="8296000" />
-      <workItem from="1669747733695" duration="115000" />
-      <workItem from="1669747856496" duration="35000" />
+      <updated>1669749548208</updated>
+      <workItem from="1669749549816" duration="131000" />
     </task>
-    <task id="LOCAL-00001" summary="Save work">
-      <created>1669747785033</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1669747785033</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,26 +90,10 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="change_cell_structure" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Save work" />
-    <option name="LAST_COMMIT_MESSAGE" value="Save work" />
   </component>
 </project>
