@@ -48,10 +48,10 @@ public class CellMouvementManager {
 
 
        // mouveCloud(updateTab);
-        mouveFF(updateTab);
-       //mouveFire(updateTab);
 
-        return updateTab;
+       // mouveFire(updateTab);
+
+        return mouveFF(updateTab);
     }
 
     public void initMountain() {
@@ -181,32 +181,39 @@ public class CellMouvementManager {
 
     }
 
-    public void mouveFF(Cell[][] updateTab) {
-        List<FireFighter> updateFFList = new ArrayList<>();
+    public Cell[][] mouveFF(Cell[][] updateTab) {
+        Cell[][] updateTabAfterFF = new Cell[columnNumber][rowsNumber];
+        for(int i = 0 ; i < columnNumber; i++) {
+            for(int j = 0; j < rowsNumber; j++) {
+                //System.out.println(updateTab[j][i].getColor());
+                if(updateTab[j][i].getColor() != ColorType.FIREFIGHTER)
+                    System.out.println("cc");
+                    //updateTabAfterFF[i][j] = updateTab[i][j];
+            }
+        }
+
         for(FireFighter fireFighter : this.fireFighters) {
             if(fireFighter.goalIsNull()) {
-                fireFighter.findFire(this.listOfCells);
+                fireFighter.findFire(updateTab);
                 Cell fire = fireFighter.getFireGoal();
                 if(fire != null) {
                     for(int i = 0; i < this.rowsNumber; i++) {
                         for (int j = 0; j < this.columnNumber; j++) {
-                            if(fire == this.listOfCells[j][i]) {
-                                updateTab[j][i] = new FireFighterPaint();
-                                updateTab[fireFighter.getColumn()][fireFighter.getRow()] = new WhitePaint();
-                                updateFFList.add(new FireFighter(j, i));
-
+                            if(fire == updateTab[j][i]) {
+                                updateTabAfterFF[j][i] = new FireFighterPaint();
+                                updateTabAfterFF[fireFighter.getColumn()][fireFighter.getRow()] = new WhitePaint();
+                                fireFighter.setColumn(i);
+                                fireFighter.setRow(j);
                             }
                         }
                     }
-                } else {
-                    updateFFList.add(fireFighter);
                 }
 
             }
+            fireFighter.resetGoal();
         }
-        displayTab();
-        setFireFighters(updateFFList);
-        displayTab();
+
+        return updateTabAfterFF;
     }
 
     public void mouveFire(Cell[][] updateTab) {
