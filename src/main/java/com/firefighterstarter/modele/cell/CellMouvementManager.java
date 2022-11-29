@@ -10,10 +10,10 @@ public class CellMouvementManager {
     private Cell[][] listOfCells;
     private int columnNumber;
     private int rowsNumber;
-    private final int numberOfCloud = 20;
+    private final int numberOfCloud = 50;
     private final int numberOfMountainGroup = 6;
-    private final int numberOfFire = 200;
-    private final int numberOfFireFighter = 20;
+    private int numberOfFire = 200; // 20
+    private final int numberOfFireFighter = 100; //100
     private List<FireFighter> fireFighters;
 
     public CellMouvementManager(int columnNumber, int rowsNumber) {
@@ -34,7 +34,7 @@ public class CellMouvementManager {
         }
 
         // add clouds on the grid
-       // initMountain();
+        //initMountain();
         initCloud();
         initFire();
         initFireFighter();
@@ -50,11 +50,25 @@ public class CellMouvementManager {
         }
 
         mouveCloud(updateTab);
-        //mouveFire(updateTab);
+        mouveFire(updateTab);
         mouveFF(updateTab);
 
+        if(isOver(updateTab))
+            System.out.println("CONGRATULATION !");
 
         return updateTab;
+    }
+
+    public boolean isOver(Cell[][] updateTab) {
+        int counter = 0;
+        for(int i = 0; i < this.columnNumber; i++) {
+            for (int j = 0; j < this.rowsNumber; j++) {
+                if(updateTab[i][j].getColor() == ColorType.FIRE)
+                    counter++;
+            }
+        }
+        System.out.println(counter);
+        return counter == 0;
     }
 
     public void initMountain() {
@@ -154,9 +168,15 @@ public class CellMouvementManager {
                                 updateTab[j+2][i] = new CloudPaint();
                                 updateTab[j][i] = new WhitePaint();
                             }
-                        } else if (this.listOfCells[j+1][i].getColor() == ColorType.FIREFIGHTER && this.listOfCells[j+2][i].getColor() == ColorType.NOTHING) {
-                            updateTab[j+2][i] = new CloudPaint();
-                            updateTab[j][i] = new WhitePaint();
+                        } else if (this.listOfCells[j+1][i].getColor() == ColorType.FIREFIGHTER) {
+                            if(j + 2 < 43) {
+                                if(this.listOfCells[j+2][i].getColor() == ColorType.NOTHING) {
+                                    updateTab[j+2][i] = new CloudPaint();
+                                    updateTab[j][i] = new WhitePaint();
+                                }
+                            } else {
+                                updateTab[j][i] = new WhitePaint();
+                            }
                         }
 
                         else {
@@ -207,123 +227,111 @@ public class CellMouvementManager {
         setFireFighters(updateFFList);
     }
 
-
-
     public void mouveFire(Cell[][] updateTab) {
+        int i = 0;
+        int j = 0;
         try {
-            for (int i = 0; i < this.rowsNumber; i++) {
-                for (int j = 0; j < this.columnNumber; j++) {
-                    if ((i == 0 && j == 0) && this.listOfCells[j][i].getColor() == ColorType.FIRE) {
-                        if (
-                                this.listOfCells[j + 1][i].getColor() == ColorType.NOTHING ||
-                                        this.listOfCells[j + 1][i].getColor() == ColorType.FIRE
+            for (i = 0; i < this.rowsNumber; i++) {
+                for (j = 0; j < this.columnNumber; j++) {
+                    if(this.listOfCells[j][i].getColor() == ColorType.FIRE) {
+                        if (i == 0 && j == 0) {
+                            if (
+                                    this.listOfCells[j + 1][i].getColor() == ColorType.NOTHING ||
+                                            this.listOfCells[j + 1][i].getColor() == ColorType.FIRE
+                            ) updateTab[j + 1][i] = new FirePaint();
+                            if (
+                                    this.listOfCells[j + 1][i + 1].getColor() == ColorType.NOTHING ||
+                                            this.listOfCells[j + 1][i + 1].getColor() == ColorType.FIRE
+                            ) updateTab[j + 1][i + 1] = new FirePaint();
 
-                        ) updateTab[j + 1][i] = new FirePaint();
-                        if (
-                                this.listOfCells[j + 1][i + 1].getColor() == ColorType.NOTHING ||
-                                        this.listOfCells[j + 1][i + 1].getColor() == ColorType.FIRE
-
-                        ) updateTab[j + 1][i + 1] = new FirePaint();
-
-                        if (
-                                this.listOfCells[j][i + 1].getColor() == ColorType.NOTHING ||
-                                        this.listOfCells[j][i + 1].getColor() == ColorType.FIRE
-                        ) updateTab[j][i + 1] = new FirePaint();
-                    }
-                    else if ((i == 32 && j == 0) && this.listOfCells[j][i].getColor() == ColorType.FIRE) {
-                        if (
-                                this.listOfCells[j+1][i].getColor() == ColorType.NOTHING ||
-                                        this.listOfCells[j+1][i].getColor() == ColorType.FIRE
-                        ) updateTab[j+1][i] = new FirePaint();
-                        if (
-                                this.listOfCells[j+1][i-1].getColor() == ColorType.NOTHING ||
-                                        this.listOfCells[j+1][i-1].getColor() == ColorType.FIRE
+                            if (
+                                    this.listOfCells[j][i + 1].getColor() == ColorType.NOTHING ||
+                                            this.listOfCells[j][i + 1].getColor() == ColorType.FIRE
+                            ) updateTab[j][i + 1] = new FirePaint();
+                        }
+                        else if (i == 32 && j == 0) {
+                            if (
+                                    this.listOfCells[j+1][i].getColor() == ColorType.NOTHING ||
+                                            this.listOfCells[j+1][i].getColor() == ColorType.FIRE
+                            ) updateTab[j+1][i] = new FirePaint();
+                            if (
+                                    this.listOfCells[j+1][i-1].getColor() == ColorType.NOTHING ||
+                                            this.listOfCells[j+1][i-1].getColor() == ColorType.FIRE
                             ) updateTab[j+1][i-1] = new FirePaint();
-                        if (
-                                this.listOfCells[j][i-1].getColor() == ColorType.NOTHING ||
-                                        this.listOfCells[j][i-1].getColor() == ColorType.FIRE
-                        ) updateTab[j][i-1] = new FirePaint();
-                    }
-                    else if ((i == 0 && j == 43) && this.listOfCells[j][i].getColor() == ColorType.FIRE) {
-                        if (
-                                this.listOfCells[j-1][i].getColor() == ColorType.NOTHING ||
-                                        this.listOfCells[j-1][i].getColor() == ColorType.FIRE
-                        ) updateTab[j-1][i] = new FirePaint();
-                        if (
-                                this.listOfCells[j-1][i+1].getColor() == ColorType.NOTHING ||
-                                        this.listOfCells[j-1][i+1].getColor() == ColorType.FIRE
-                        ) updateTab[j-1][i+1] = new FirePaint();
-                        if (
-                                this.listOfCells[j][i+1].getColor() == ColorType.NOTHING ||
-                                        this.listOfCells[j][i+1].getColor() == ColorType.FIRE
-                        ) updateTab[j][i+1] = new FirePaint();
-                    }
-                    else if ((i == 32 && j == 43) && this.listOfCells[j][i].getColor() == ColorType.FIRE) {
-                        if (
-                                this.listOfCells[j-1][i].getColor() == ColorType.NOTHING ||
-                                        this.listOfCells[j-1][i].getColor() == ColorType.FIRE
+                            if (
+                                    this.listOfCells[j][i-1].getColor() == ColorType.NOTHING ||
+                                            this.listOfCells[j][i-1].getColor() == ColorType.FIRE
+                            ) updateTab[j][i-1] = new FirePaint();
+                        }
+                        else if (i == 0 && j == 43) {
+                            if (
+                                    this.listOfCells[j-1][i].getColor() == ColorType.NOTHING ||
+                                            this.listOfCells[j-1][i].getColor() == ColorType.FIRE
+                            ) updateTab[j-1][i] = new FirePaint();
+                            if (
+                                    this.listOfCells[j-1][i+1].getColor() == ColorType.NOTHING ||
+                                            this.listOfCells[j-1][i+1].getColor() == ColorType.FIRE
+                            ) updateTab[j-1][i+1] = new FirePaint();
+                            if (
+                                    this.listOfCells[j][i+1].getColor() == ColorType.NOTHING ||
+                                            this.listOfCells[j][i+1].getColor() == ColorType.FIRE
+                            ) updateTab[j][i+1] = new FirePaint();
+                        }
+                        else if (i == 32 && j == 43) {
+                            if (
+                                    this.listOfCells[j-1][i].getColor() == ColorType.NOTHING ||
+                                            this.listOfCells[j-1][i].getColor() == ColorType.FIRE
+                            ) updateTab[j-1][i] = new FirePaint();
+                            if (
+                                    this.listOfCells[j-1][i-1].getColor() == ColorType.NOTHING ||
+                                            this.listOfCells[j-1][i-1].getColor() == ColorType.FIRE
+                            ) updateTab[j-1][i-1] = new FirePaint();
+                            if (
+                                    this.listOfCells[j][i-1].getColor() == ColorType.NOTHING ||
+                                            this.listOfCells[j][i-1].getColor() == ColorType.FIRE
+                            ) updateTab[j][i-1] = new FirePaint();
+                        }
 
-                        ) updateTab[j-1][i] = new FirePaint();
-                        if (
-                                this.listOfCells[j-1][i-1].getColor() == ColorType.NOTHING ||
-                                        this.listOfCells[j-1][i-1].getColor() == ColorType.FIRE
-                        ) updateTab[j-1][i-1] = new FirePaint();
-                        if (
-                                this.listOfCells[j][i-1].getColor() == ColorType.NOTHING ||
-                                        this.listOfCells[j][i-1].getColor() == ColorType.FIRE
-                        ) updateTab[j][i-1] = new FirePaint();
-                    }
+                        else if (i == 0) {
+                            if (this.listOfCells[j+1][i+1].getColor() == ColorType.NOTHING)
+                                updateTab[j+1][i+1] = new FirePaint();
+                            if (this.listOfCells[j-1][i+1].getColor() == ColorType.NOTHING)
+                                updateTab[j-1][i+1] = new FirePaint();
+                        }
+                        else if (j == 0) {
+                            if (this.listOfCells[j][i-1].getColor() == ColorType.NOTHING)
+                                updateTab[j][i-1] = new FirePaint();
+                            if (this.listOfCells[j][i+1].getColor() == ColorType.NOTHING)
+                                updateTab[j][i+1] = new FirePaint();
 
-                    else if (i == 0 && j != 0 && this.listOfCells[j][i].getColor() == ColorType.FIRE) {
-                        if (
-                                this.listOfCells[j+1][i].getColor() == ColorType.NOTHING
-                        )       this.listOfCells[j+1][i] = new FirePaint();
-                        if (
-                                this.listOfCells[j-1][i].getColor() == ColorType.NOTHING
-                        )       this.listOfCells[j-1][i] = new FirePaint();
-                    }
-                    else if (j == 0 && i != 0 && this.listOfCells[j][i].getColor() == ColorType.FIRE) {
-                        if (
-                                this.listOfCells[j+1][i].getColor() == ColorType.NOTHING ||
-                                        this.listOfCells[j+1][i].getColor() == ColorType.FIRE
-                                ) updateTab[j+1][i] = new FirePaint();
-                        if (
-                                this.listOfCells[j][i+1].getColor() == ColorType.NOTHING ||
-                                        this.listOfCells[j][i+1].getColor() == ColorType.FIRE
-                        ) updateTab[j][i+1] = new FirePaint();
-                    }
-                    else if(j == 43 && i != 0 && this.listOfCells[j][i].getColor() == ColorType.FIRE) {
-                        if (
-                                this.listOfCells[j][i+1].getColor() == ColorType.NOTHING ||
-                                        this.listOfCells[j][i+1].getColor() == ColorType.FIRE
-                        ) updateTab[j][i+1] = new FirePaint();
-                        if (
-                                this.listOfCells[j][i-1].getColor() == ColorType.NOTHING ||
-                                        this.listOfCells[j][i-1].getColor() == ColorType.FIRE
-                        ) updateTab[j][i-1] = new FirePaint();
-                    }
+                        }
+                        else if(j == 43) {
+                            if (this.listOfCells[j][i-1].getColor() == ColorType.NOTHING)
+                                updateTab[j][i-1] = new FirePaint();
+                            if (this.listOfCells[j][i+1].getColor() == ColorType.NOTHING)
+                                updateTab[j][i+1] = new FirePaint();
+                        }
+                        else if(i == 32) {
+                            if (this.listOfCells[j+1][i].getColor() == ColorType.NOTHING)
+                                updateTab[j+1][i] = new FirePaint();
+                            if (this.listOfCells[j-1][i].getColor() == ColorType.NOTHING)
+                                updateTab[j-1][i] = new FirePaint();
+                        }
 
-                    else if(j != 0 && i == 32 && this.listOfCells[j][i].getColor() == ColorType.FIRE) {
-                        if (
-                                this.listOfCells[j+1][i].getColor() == ColorType.NOTHING ||
-                                        this.listOfCells[j+1][i].getColor() == ColorType.FIRE
-                        ) updateTab[j+1][i] = new FirePaint();
-                        if (
-                                this.listOfCells[j-1][i].getColor() == ColorType.NOTHING ||
-                                        this.listOfCells[j-1][i].getColor() == ColorType.FIRE
-                        ) updateTab[j-1][i] = new FirePaint();
-                    } else if (this.listOfCells[j+1][i].getColor() == ColorType.NOTHING && j != 0 && i != 0 && j != 43 && i != 32) {
-                        updateTab[j+1][i] = new FirePaint();
-                        //updateTab[j][i+1] = new FirePaint();
-                    }/*else if (this.listOfCells[j][i+1].getColor() == ColorType.NOTHING && j != 0 && i != 0 && j != 43 && i != 32) {
-                        updateTab[j][i+1] = new FirePaint();
-                    }*/
+                        else {
+                            if (this.listOfCells[j+1][i].getColor() == ColorType.NOTHING)
+                                updateTab[j+1][i] = new FirePaint();
+                            if (this.listOfCells[j][i-1].getColor() == ColorType.NOTHING)
+                                updateTab[j][i-1] = new FirePaint();
+                        }
+                    }
 
 
                 }
             }
         } catch (Exception e) {
-
+            //e.printStackTrace();
+            System.out.println("erreur i :" + i + " j : " + j);
         }
 
     }

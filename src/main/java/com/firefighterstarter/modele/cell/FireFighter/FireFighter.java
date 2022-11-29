@@ -155,7 +155,7 @@ public class FireFighter {
 
                     }
 
-                    else if (this.row == 33 && this.column == 0) {
+                    else if (this.row == 32 && this.column == 0) {
                         for(k = 1 ; k < distance; k++) {
                            if(listOfCells[column+1][row].getColor() == ColorType.FIRE) {
                                this.fireGoal = listOfCells[column+1][row];
@@ -211,7 +211,7 @@ public class FireFighter {
 
                     }
 
-                    else if (this.row == 33 && this.column == 43) {
+                    else if (this.row == 32 && this.column == 43) {
                         for(k = 1 ; k < distance; k++) {
                             if(listOfCells[column-1][row-1].getColor() == ColorType.FIRE) {
                                 this.fireGoal = listOfCells[column-1][row-1];
@@ -399,7 +399,7 @@ public class FireFighter {
                                 if (listOfCells[column][row - k].getColor() == ColorType.FIRE) {
                                     this.fireGoal = listOfCells[column][row - k];
                                     this.fireGoal.setColumn(column);
-                                    this.fireGoal.setRow(row+k);
+                                    this.fireGoal.setRow(row-k);
                                     return;
                                 }
                                 if (listOfCells[column - 1][row - k].getColor() == ColorType.FIRE) {
@@ -548,7 +548,7 @@ public class FireFighter {
                         // case ff is in downside
                     }
 
-                    else if (this.row == 33) {
+                    else if (this.row == 32) {
                         for(k = 1 ; k < distance; k++) {
 
                                 if(listOfCells[column][row-1].getColor() == ColorType.FIRE) {
