@@ -1,7 +1,7 @@
 package com.firefighterstarter.modele.cell;
 
 public enum ColorType {
-    WAY, CLOUD, FIREFIGHTER, FIRE, MOUNTAIN, NOTHING, DOCTOR, VIRUS, INFECTED, NOINFECTED;
+    WAY, CLOUD, FIREFIGHTER, FIRE, MOUNTAIN, NOTHING, DOCTOR, INFECTED, NOINFECTED;
 
     public String getBackgroundColor(ColorType colorType) {
         switch (colorType) {
@@ -18,13 +18,11 @@ public enum ColorType {
             case NOTHING:
                 return "-fx-background-color: white;";
             case DOCTOR:
-                return "-fx-background-color: 3bc9d8;";
-            case VIRUS:
-                return "-fx-background-color: 5dd525;";
+                return "-fx-background-color: #3bc9d8;";
             case INFECTED:
-                return "-fx-background-color: 359f04;";
+                return "-fx-background-color: #359f04;";
             case NOINFECTED:
-                return "-fx-background-color: 727892;";
+                return "-fx-background-color: #727892;";
 
         }
         return "-fx-background-color: white;";

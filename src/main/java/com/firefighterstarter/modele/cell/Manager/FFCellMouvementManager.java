@@ -1,12 +1,13 @@
-package com.firefighterstarter.modele.cell;
+package com.firefighterstarter.modele.cell.Manager;
 
+import com.firefighterstarter.modele.cell.*;
 import com.firefighterstarter.modele.cell.FireFighter.FireFighter;
 import com.firefighterstarter.modele.cell.FireFighter.FireFighterPaint;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CellMouvementManager {
+public class FFCellMouvementManager {
     private Cell[][] listOfCells;
     private int columnNumber;
     private int rowsNumber;
@@ -17,7 +18,7 @@ public class CellMouvementManager {
     private List<FireFighter> fireFighters;
     private boolean endGame = false;
 
-    public CellMouvementManager(int columnNumber, int rowsNumber) {
+    public FFCellMouvementManager(int columnNumber, int rowsNumber) {
         this.columnNumber = columnNumber;
         this.rowsNumber = rowsNumber;
         this.listOfCells = new Cell[columnNumber][rowsNumber];
@@ -34,7 +35,7 @@ public class CellMouvementManager {
             }
         }
 
-        // add clouds on the grid
+
         initMountain();
         initCloud();
         initFire();
@@ -335,10 +336,6 @@ public class CellMouvementManager {
             System.out.println("erreur i :" + i + " j : " + j);
         }
 
-    }
-
-    public void restartGrid() {
-        initGrid();
     }
 
     public Cell[][] getListOfCells() {

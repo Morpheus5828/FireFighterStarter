@@ -37,11 +37,6 @@ public class DisplayGridPane {
             for(int j = 0; j < row; j++) {
                 ColorType color = this.listOfCells[i][j].getColor();
                 this.gridPane.getChildren().get(index).setStyle(colorType.getBackgroundColor(color));
-                /*String image = Objects.requireNonNull(this.getClass().getResource("hasbi.jpg")).toExternalForm();
-
-                this.gridPane.getChildren().get(index).setStyle(" -fx-background-image: url('" + image + "');  "
-                        + "-fx-background-position: center center; "
-                        + "-fx-background-repeat: stretch;");*/
                 index++;
             }
         }
