@@ -11,7 +11,7 @@ public class FireFighter {
     private int row;
 
     public FireFighter(int column, int row) {
-        this.distance = 3;
+        this.distance = 3; // because can juste mouve on 2 cells
         this.fireGoal = null;
         this.column = column;
         this.row = row;
@@ -39,7 +39,6 @@ public class FireFighter {
 
     public void findFire(Cell[][] listOfCells) {
         try {
-
             while(goalIsNull()) {
                 int i;
                 int k;
@@ -96,8 +95,6 @@ public class FireFighter {
                                 this.fireGoal.setRow(row+k);
                                 return;
                             }
-
-
                         }
 
                     }
@@ -803,7 +800,6 @@ public class FireFighter {
     public boolean goalIsNull() {
         return this.fireGoal == null;
     }
-
 
     public void resetGoal() {
         this.fireGoal = null;

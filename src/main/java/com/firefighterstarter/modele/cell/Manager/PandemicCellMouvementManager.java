@@ -17,6 +17,7 @@ public class PandemicCellMouvementManager {
     private int peopleInfected = 0;
     private int peopleNotInfected = 100;
     private boolean endGame = false;
+    private static boolean initVirusInstance = true;
 
     public PandemicCellMouvementManager(int columnNumber, int rowsNumber) {
         this.listOfCells = new Cell[columnNumber][rowsNumber];
@@ -35,9 +36,8 @@ public class PandemicCellMouvementManager {
             }
         }
 
-    initDoctors();
-    initPeople();
-    initVirus();
+        initDoctors();
+        initPeople();
 
     }
 
@@ -50,9 +50,17 @@ public class PandemicCellMouvementManager {
             }
         }
 
+        if(initVirusInstance) {
+            initVirus(updateTab);
+            initVirusInstance = false;
+        }
+
         mouveDoctor(updateTab);
         mouveVirus(updateTab);
-        //mouvePeople(updateTab);
+        mouvePeople(updateTab);
+
+        if(isOver(updateTab))
+            endGame = true;
 
         return updateTab;
     }
@@ -70,14 +78,18 @@ public class PandemicCellMouvementManager {
         }
     }
 
-    public void initVirus() {
-        for (int i = 0; i < numberOfVirus; i++) {
+    public void initVirus(Cell[][] updateTab) {
+        int counter = 0;
+        for (int i = 0; i < 1000; i++) {
+            if(counter == numberOfVirus)
+                return;
             int randomColumn = (int) (Math.random() * columnNumber);
             int randomRow = (int) (Math.random() * rowsNumber);
-            Cell currentCell = listOfCells[randomColumn][randomRow];
+            Cell currentCell = this.listOfCells[randomColumn][randomRow];
             if (currentCell.getColor() == ColorType.NOINFECTED) {
+                counter += 1;
                 Cell virus = new PeopleInfectedPaint();
-                this.listOfCells[randomColumn][randomRow] = virus;
+                updateTab[randomColumn][randomRow] = virus;
             }
         }
     }
@@ -95,23 +107,39 @@ public class PandemicCellMouvementManager {
     }
 
     public void mouveDoctor(Cell[][] updateTab) {
+        List<Doctor> updateDoctorList = new ArrayList<>();
+        for(Doctor doctor : this.doctors) {
+            doctor.findVirus(updateTab);
 
+            if(!doctor.goalIsNull()) {
+                updateTab[doctor.getColumn()][doctor.getRow()] = new PeopleNotInfectedPaint();
+
+                updateTab[doctor.getVirusGoal().getColumn()][doctor.getVirusGoal().getRow()] = new PeopleNotInfectedPaint();
+
+                updateDoctorList.add(new Doctor(doctor.getVirusGoal().getColumn(),doctor.getVirusGoal().getRow()));
+            }
+
+            else {
+                doctor.resetGoal();
+                updateDoctorList.add(doctor);
+            }
+        }
+        setDoctors(updateDoctorList);
     }
 
     public void mouveVirus(Cell[][] updateTab) {
-
         try {
             int i;
             int j;
             for (i = 0; i < this.rowsNumber; i++) {
                 for (j = 0; j < this.columnNumber; j++) {
-                    if(this.listOfCells[j][i].getColor() == ColorType.NOINFECTED) {
+                    if(updateTab[j][i].getColor() == ColorType.INFECTED) {
                         if (i == 0 && j == 0) {
                             if (
                                     this.listOfCells[j + 1][i].getColor() == ColorType.NOINFECTED
                             ) updateTab[j + 1][i] = new PeopleInfectedPaint();
                             if (
-                                    this.listOfCells[j + 1][i + 1].getColor() == ColorType.NOTHING
+                                    this.listOfCells[j + 1][i + 1].getColor() == ColorType.NOINFECTED
                             ) updateTab[j + 1][i + 1] = new PeopleInfectedPaint();
 
                             if (
@@ -190,11 +218,40 @@ public class PandemicCellMouvementManager {
                 }
             }
         } catch (Exception e) {
-
+           // e.printStackTrace();
+            //System.out.println("erreur i :" + i + " j : " + j);
         }
     }
 
-    public void mouvePeople() {
+    public void mouvePeople(Cell[][] updateTab) {
+        for (int i = 0; i < this.rowsNumber; i++) {
+            for (int j = 0; j < this.columnNumber; j++) {
+                if(this.listOfCells[j][i].getColor() == ColorType.INFECTED) {
+                    People people = new People(j, i);
+                    people.findEmptyPlace(updateTab);
+
+                    if(!people.emptyPlace()) {
+                        //updateTab[people.getColumn()][people.getRow()] = new WhitePaint();
+
+                        if(listOfCells[j][i].getColor() == ColorType.INFECTED)
+                            updateTab[people.getEmptyPlace().getColumn()][people.getEmptyPlace().getRow()] = new PeopleInfectedPaint();
+                    }
+
+                }
+                if(this.listOfCells[j][i].getColor() == ColorType.NOINFECTED) {
+                    People people = new People(j, i);
+                    people.findEmptyPlace(updateTab);
+
+                    if(!people.emptyPlace()) {
+                        //updateTab[people.getColumn()][people.getRow()] = new WhitePaint();
+
+                        if(listOfCells[j][i].getColor() == ColorType.NOINFECTED)
+                            updateTab[people.getEmptyPlace().getColumn()][people.getEmptyPlace().getRow()] = new PeopleInfectedPaint();
+                    }
+
+                }
+            }
+        }
 
     }
 
@@ -215,6 +272,15 @@ public class PandemicCellMouvementManager {
         return endGame;
     }
 
-
+    public boolean isOver(Cell[][] updateTab) {
+        int counter = 0;
+        for(int i = 0; i < this.columnNumber; i++) {
+            for (int j = 0; j < this.rowsNumber; j++) {
+                if(updateTab[i][j].getColor() == ColorType.INFECTED)
+                    counter++;
+            }
+        }
+        return counter == 0;
+    }
 
 }

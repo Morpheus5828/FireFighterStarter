@@ -29,13 +29,12 @@ public class Doctor {
         this.row = row;
     }
 
-    public Cell getFireGoal() {
+    public Cell getVirusGoal() {
         return virusGoal;
     }
 
     public void findVirus(Cell[][] listOfCells) {
         try {
-
             while(goalIsNull()) {
                 int i;
                 int k;

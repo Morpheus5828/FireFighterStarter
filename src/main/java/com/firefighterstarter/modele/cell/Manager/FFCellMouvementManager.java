@@ -69,7 +69,6 @@ public class FFCellMouvementManager {
                     counter++;
             }
         }
-        System.out.println(counter);
         return counter == 0;
     }
 

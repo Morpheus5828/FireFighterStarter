@@ -47,7 +47,6 @@ public final class Controller {
         this.restart.setVisible(true);
     }
 
-
     @FXML public void runStepByStep() {
         if(gameOne) {
             if(_click == 0) {
@@ -112,7 +111,31 @@ public final class Controller {
                     cmm.setListOfCells(cmm.updateGrid());
                 }
             }, 1000, 100);
+        } else {
+            stepByStep.setVisible(false);
+            pcm = new PandemicCellMouvementManager(gridPane.getColumnCount(), gridPane.getRowCount());
+            display = new DisplayGridPane(
+                    gridPane,
+                    gridPane.getColumnCount(),
+                    gridPane.getRowCount(),
+                    pcm.getListOfCells()
+            );
+            display.run();
 
+            Timer timer = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    if(pcm.isEndGame()) {
+                        cancel();
+                        //congratulation.setVisible(true);
+                    }
+
+                    display.setListOfCells(pcm.updateGrid());
+                    display.run();
+                    pcm.setListOfCells(pcm.updateGrid());
+                }
+            }, 1000, 100);
         }
     }
 
