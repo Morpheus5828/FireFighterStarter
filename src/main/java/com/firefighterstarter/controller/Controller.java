@@ -17,6 +17,7 @@ public final class Controller {
     boolean gameOne;
     boolean gameTwo;
     @FXML Label rule;
+    @FXML Label winner;
     @FXML TextField cloudNb;
     @FXML TextField moutainNb;
     @FXML TextField fireFighterNb;
@@ -127,7 +128,7 @@ public final class Controller {
                 public void run() {
                     if(cmm.isEndGame()) {
                         cancel();
-                        //congratulation.setVisible(true);
+                        winner.setVisible(true);
                     }
 
                     display.setListOfCells(cmm.updateGrid());
