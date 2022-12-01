@@ -1,4 +1,4 @@
-package com.firefighterstarter.modele.cell;
+package com.firefighterstarter.modele.CellRepo.Goal;
 
 public enum ColorType {
     WAY, CLOUD, FIREFIGHTER, FIRE, MOUNTAIN, NOTHING, DOCTOR, INFECTED, NOINFECTED;

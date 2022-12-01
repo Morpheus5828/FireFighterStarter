@@ -1,13 +1,13 @@
-package com.firefighterstarter.modele.cell.Manager;
+package com.firefighterstarter.modele.CellManager;
 
-import com.firefighterstarter.modele.cell.*;
-import com.firefighterstarter.modele.cell.FireFighter.FireFighter;
-import com.firefighterstarter.modele.cell.FireFighter.FireFighterPaint;
+import com.firefighterstarter.modele.CellRepo.Attacking.FireFighter;
+import com.firefighterstarter.modele.CellRepo.Cell;
+import com.firefighterstarter.modele.CellRepo.Goal.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FFCellMouvementManager {
+public class FFCellMouvementManager implements Manager{
     private Cell[][] listOfCells;
     private int columnNumber;
     private int rowsNumber;

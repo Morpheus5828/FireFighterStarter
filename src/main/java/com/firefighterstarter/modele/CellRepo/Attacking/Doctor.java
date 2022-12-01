@@ -1,4 +1,7 @@
-package com.firefighterstarter.modele.cell;
+package com.firefighterstarter.modele.CellRepo.Attacking;
+
+import com.firefighterstarter.modele.CellRepo.Goal.ColorType;
+import com.firefighterstarter.modele.CellRepo.Cell;
 
 public class Doctor {
     private Cell virusGoal;

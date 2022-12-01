@@ -1,7 +1,7 @@
-package com.firefighterstarter.modele.cell.FireFighter;
+package com.firefighterstarter.modele.CellRepo.Attacking;
 
-import com.firefighterstarter.modele.cell.Cell;
-import com.firefighterstarter.modele.cell.ColorType;
+import com.firefighterstarter.modele.CellRepo.Cell;
+import com.firefighterstarter.modele.CellRepo.Goal.ColorType;
 
 
 public class FireFighter {

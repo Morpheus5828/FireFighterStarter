@@ -1,8 +1,6 @@
-package com.firefighterstarter.modele.cell;
+package com.firefighterstarter.modele.CellRepo.Goal;
 
-import javafx.scene.paint.Color;
-
-import java.util.List;
+import com.firefighterstarter.modele.CellRepo.Cell;
 
 public class WhitePaint extends Cell {
     public WhitePaint() {

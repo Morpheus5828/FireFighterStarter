@@ -1,9 +1,6 @@
-package com.firefighterstarter.modele.cell.FireFighter;
+package com.firefighterstarter.modele.CellRepo.Goal;
 
-import com.firefighterstarter.modele.cell.Cell;
-import com.firefighterstarter.modele.cell.ColorType;
-
-import java.util.*;
+import com.firefighterstarter.modele.CellRepo.Cell;
 
 public class FireFighterPaint extends Cell {
     private int position;

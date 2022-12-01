@@ -1,7 +1,7 @@
 package com.firefighterstarter.controller;
 
-import com.firefighterstarter.modele.cell.Manager.FFCellMouvementManager;
-import com.firefighterstarter.modele.cell.Manager.PandemicCellMouvementManager;
+import com.firefighterstarter.modele.CellManager.FFCellMouvementManager;
+import com.firefighterstarter.modele.CellManager.PandemicCellMouvementManager;
 import com.firefighterstarter.view.DisplayGridPane;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

@@ -1,16 +1,8 @@
 package com.firefighterstarter.view;
 
-import com.firefighterstarter.modele.cell.Cell;
-import com.firefighterstarter.modele.cell.ColorType;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import com.firefighterstarter.modele.CellRepo.Cell;
+import com.firefighterstarter.modele.CellRepo.Goal.ColorType;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-
-import java.util.List;
-import java.util.Objects;
 
 public class DisplayGridPane {
     private Cell[][] listOfCells;

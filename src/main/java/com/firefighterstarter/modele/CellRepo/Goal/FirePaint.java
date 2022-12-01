@@ -1,6 +1,6 @@
-package com.firefighterstarter.modele.cell;
+package com.firefighterstarter.modele.CellRepo.Goal;
 
-import java.util.List;
+import com.firefighterstarter.modele.CellRepo.Cell;
 
 public class FirePaint extends Cell {
 

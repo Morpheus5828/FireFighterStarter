@@ -1,13 +1,14 @@
-package com.firefighterstarter.modele.cell.Manager;
+package com.firefighterstarter.modele.CellManager;
 
-import com.firefighterstarter.modele.cell.*;
-import com.firefighterstarter.modele.cell.FireFighter.FireFighter;
-import com.firefighterstarter.modele.cell.FireFighter.FireFighterPaint;
+import com.firefighterstarter.modele.CellRepo.Cell;
+import com.firefighterstarter.modele.CellRepo.Goal.*;
+import com.firefighterstarter.modele.CellRepo.Attacking.Doctor;
+import com.firefighterstarter.modele.CellRepo.Attacking.People;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PandemicCellMouvementManager {
+public class PandemicCellMouvementManager implements Manager{
     private Cell[][] listOfCells;
     private int columnNumber;
     private int rowsNumber;
@@ -53,11 +54,11 @@ public class PandemicCellMouvementManager {
         if(initVirusInstance) {
             initVirus(updateTab);
             initVirusInstance = false;
+        } else {
+            mouveDoctor(updateTab);
+            mouveVirus(updateTab);
+            //mouvePeople(updateTab);
         }
-
-        mouveDoctor(updateTab);
-        mouveVirus(updateTab);
-        mouvePeople(updateTab);
 
         if(isOver(updateTab))
             endGame = true;
@@ -79,18 +80,24 @@ public class PandemicCellMouvementManager {
     }
 
     public void initVirus(Cell[][] updateTab) {
+        List<Cell> notInfected = new ArrayList<>();
         int counter = 0;
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < this.rowsNumber; i++) {
+            for (int j = 0; j < this.columnNumber; j++) {
+                if(this.listOfCells[i][j].getColor() == ColorType.NOINFECTED)
+                    notInfected.add(this.listOfCells[i][j]);
+            }
+        }
+
+        for (int i = 0; i < 40; i++) {
             if(counter == numberOfVirus)
                 return;
-            int randomColumn = (int) (Math.random() * columnNumber);
-            int randomRow = (int) (Math.random() * rowsNumber);
-            Cell currentCell = this.listOfCells[randomColumn][randomRow];
-            if (currentCell.getColor() == ColorType.NOINFECTED) {
-                counter += 1;
-                Cell virus = new PeopleInfectedPaint();
-                updateTab[randomColumn][randomRow] = virus;
-            }
+            int randomCell = (int) (Math.random() * notInfected.size());
+
+            Cell currentCell = notInfected.get(randomCell);
+            updateTab[currentCell.getColumn()][currentCell.getRow()] = new PeopleInfectedPaint();
+
+            counter += 1;
         }
     }
 
@@ -213,7 +220,6 @@ public class PandemicCellMouvementManager {
                                 updateTab[j][i-1] = new PeopleInfectedPaint();
                         }
                     }
-
 
                 }
             }

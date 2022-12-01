@@ -1,6 +1,6 @@
-package com.firefighterstarter.modele.cell;
+package com.firefighterstarter.modele.CellRepo;
 
-import java.util.List;
+import com.firefighterstarter.modele.CellRepo.Goal.ColorType;
 
 public abstract class Cell {
     private int column = -1;
