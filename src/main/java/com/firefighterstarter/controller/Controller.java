@@ -6,6 +6,7 @@ import com.firefighterstarter.view.DisplayGridPane;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
 import java.util.Timer;
@@ -15,7 +16,11 @@ import java.util.TimerTask;
 public final class Controller {
     boolean gameOne;
     boolean gameTwo;
-    @FXML Label congratulation;
+    @FXML Label rule;
+    @FXML TextField cloudNb;
+    @FXML TextField moutainNb;
+    @FXML TextField fireFighterNb;
+    @FXML TextField fireNb;
     @FXML GridPane gridPane;
     @FXML Button play;
     @FXML Button stepByStep;
@@ -30,6 +35,11 @@ public final class Controller {
 
     /* TaskOne FireFighterApp*/
     @FXML public void fireFighterApp() {
+        rule.setVisible(true);
+        cloudNb.setVisible(true);
+        moutainNb.setVisible(true);
+        fireNb.setVisible(true);
+        fireFighterNb.setVisible(true);
         gameOne = true;
         gameTwo = false;
         this.play.setVisible(true);
@@ -57,12 +67,12 @@ public final class Controller {
                         gridPane.getRowCount(),
                         cmm.getListOfCells()
                 );
-                display.run();
+                display.updateGridColor();
                 _click = 1;
             }
             else {
                 display.setListOfCells(cmm.updateGrid());
-                display.run();
+                display.updateGridColor();
                 cmm.setListOfCells(cmm.updateGrid());
             }
         } else {
@@ -74,12 +84,12 @@ public final class Controller {
                         gridPane.getRowCount(),
                         pcm.getListOfCells()
                 );
-                display.run();
+                display.updateGridColor();
                 _click = 1;
             }
             else {
                 display.setListOfCells(pcm.updateGrid());
-                display.run();
+                display.updateGridColor();
                 pcm.setListOfCells(pcm.updateGrid());
             }
         }
@@ -89,13 +99,27 @@ public final class Controller {
         if(gameOne) {
             stepByStep.setVisible(false);
             cmm = new FFCellMouvementManager(gridPane.getColumnCount(), gridPane.getRowCount());
+            if(!cloudNb.getText().isEmpty())
+                cmm.setNumberOfCloud(Integer.parseInt(cloudNb.getText()));
+
+            if(!fireNb.getText().isEmpty())
+                cmm.setNumberOfFire(Integer.parseInt(fireNb.getText()));
+
+            if(!fireFighterNb.getText().isEmpty())
+                cmm.setNumberOfFireFighter(Integer.parseInt(fireFighterNb.getText()));
+
+            if(!moutainNb.getText().isEmpty())
+                cmm.setNumberOfMountainGroup(Integer.parseInt(moutainNb.getText()));
+
+            cmm.initGrid();
+
             display = new DisplayGridPane(
                     gridPane,
                     gridPane.getColumnCount(),
                     gridPane.getRowCount(),
                     cmm.getListOfCells()
             );
-            display.run();
+            display.updateGridColor();
 
             Timer timer = new Timer();
             timer.schedule(new TimerTask() {
@@ -107,7 +131,7 @@ public final class Controller {
                     }
 
                     display.setListOfCells(cmm.updateGrid());
-                    display.run();
+                    display.updateGridColor();
                     cmm.setListOfCells(cmm.updateGrid());
                 }
             }, 1000, 100);
@@ -120,7 +144,7 @@ public final class Controller {
                     gridPane.getRowCount(),
                     pcm.getListOfCells()
             );
-            display.run();
+            display.updateGridColor();
 
             Timer timer = new Timer();
             timer.schedule(new TimerTask() {
@@ -132,7 +156,7 @@ public final class Controller {
                     }
 
                     display.setListOfCells(pcm.updateGrid());
-                    display.run();
+                    display.updateGridColor();
                     pcm.setListOfCells(pcm.updateGrid());
                 }
             }, 1000, 100);

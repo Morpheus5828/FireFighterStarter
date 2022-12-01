@@ -77,3 +77,4 @@ Le but est d'éteindre tous les feux.
 
 Des cases docteurs, ces derniers soignent des personnes infectées, case verte et pour les remettre sur pied (case grise). 
 Les personnes infectées peuvent contaminer d'autre personne en se déplaçant. Le but est d'éradiquer le virus.
+Par manque de temps je n'ai pas résolu tous les bhugs de cette tâche (la mise à jour ne se fait pas).

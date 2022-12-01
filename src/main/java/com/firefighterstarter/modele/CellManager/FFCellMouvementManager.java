@@ -11,10 +11,10 @@ public class FFCellMouvementManager implements Manager{
     private Cell[][] listOfCells;
     private int columnNumber;
     private int rowsNumber;
-    private final int numberOfCloud = 50;
-    private final int numberOfMountainGroup = 6;
+    private int numberOfCloud = 50;
+    private int numberOfMountainGroup = 6;
     private int numberOfFire = 400; // 20
-    private final int numberOfFireFighter = 100; //100
+    private int numberOfFireFighter = 100; //100
     private List<FireFighter> fireFighters;
     private boolean endGame = false;
 
@@ -23,7 +23,6 @@ public class FFCellMouvementManager implements Manager{
         this.rowsNumber = rowsNumber;
         this.listOfCells = new Cell[columnNumber][rowsNumber];
         this.fireFighters = new ArrayList<>();
-        initGrid();
     }
 
     public void initGrid() {
@@ -348,7 +347,7 @@ public class FFCellMouvementManager implements Manager{
 
     public void displayTab(List<FireFighter> fireFightersList) {
         for(int j = 0; j < fireFightersList.size(); j++) {
-            System.out.println(fireFightersList.get(j).display());
+            System.out.println(fireFightersList.get(j).toString());
         }
         System.out.println();
     }
@@ -359,6 +358,22 @@ public class FFCellMouvementManager implements Manager{
 
     public boolean isEndGame() {
         return endGame;
+    }
+
+    public void setNumberOfCloud(int numberOfCloud) {
+        this.numberOfCloud = numberOfCloud;
+    }
+
+    public void setNumberOfMountainGroup(int numberOfMountainGroup) {
+        this.numberOfMountainGroup = numberOfMountainGroup;
+    }
+
+    public void setNumberOfFire(int numberOfFire) {
+        this.numberOfFire = numberOfFire;
+    }
+
+    public void setNumberOfFireFighter(int numberOfFireFighter) {
+        this.numberOfFireFighter = numberOfFireFighter;
     }
 }
 

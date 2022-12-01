@@ -3,7 +3,7 @@ package com.firefighterstarter.modele.CellRepo.Attacking;
 import com.firefighterstarter.modele.CellRepo.Goal.ColorType;
 import com.firefighterstarter.modele.CellRepo.Cell;
 
-public class Doctor {
+public class Doctor implements Attacking{
     private Cell virusGoal;
     private int distance;
     private int column;
@@ -809,7 +809,7 @@ public class Doctor {
         this.distance = 3;
     }
 
-    public String display() {
+    public String toString() {
         return "Doctor{" +
                 "fireGoal=" + virusGoal +
                 ", distance=" + distance +

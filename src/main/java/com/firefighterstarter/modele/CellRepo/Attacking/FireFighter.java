@@ -4,7 +4,7 @@ import com.firefighterstarter.modele.CellRepo.Cell;
 import com.firefighterstarter.modele.CellRepo.Goal.ColorType;
 
 
-public class FireFighter {
+public class FireFighter implements Attacking{
     private Cell fireGoal;
     private int distance;
     private int column;
@@ -806,7 +806,7 @@ public class FireFighter {
         this.distance = 3;
     }
 
-    public String display() {
+    public String toString() {
         return "FireFighter{" +
                 "fireGoal=" + fireGoal +
                 ", distance=" + distance +

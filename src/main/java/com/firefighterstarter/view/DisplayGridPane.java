@@ -23,7 +23,7 @@ public class DisplayGridPane {
         this.row = row;
     }
 
-    public void run() {
+    public void updateGridColor() {
         int index = 0;
         for(int i = 0; i < column; i++) {
             for(int j = 0; j < row; j++) {

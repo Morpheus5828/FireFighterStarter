@@ -3,7 +3,7 @@ package com.firefighterstarter.modele.CellRepo.Attacking;
 import com.firefighterstarter.modele.CellRepo.Goal.ColorType;
 import com.firefighterstarter.modele.CellRepo.Cell;
 
-public class People {
+public class People implements Attacking{
     private int distance;
     private int column;
     private int row;
@@ -29,6 +29,11 @@ public class People {
 
     public void setRow(int row) {
         this.row = row;
+    }
+
+    @Override
+    public boolean goalIsNull() {
+        return false;
     }
 
     public void findEmptyPlace(Cell[][] listOfCells) {
